@@ -245,6 +245,12 @@ background:#fff;min-height:48px;transition:.15s}
 .dl-bar.copy-img:active{filter:brightness(.92);background:var(--ac);color:#fff}
 .ed-pass{background:#dcfce7;color:#16a34a;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
 .ed-rej{background:#fef9c3;color:#a16207;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
+.daily-hero{background:linear-gradient(135deg,rgba(91,91,247,.10),rgba(124,58,237,.05));border:1px solid rgba(91,91,247,.25);border-radius:18px;padding:14px 14px 6px;margin-bottom:16px;box-shadow:var(--shd-sm)}
+.daily-hero-head{margin:2px 4px 12px}
+.daily-hero-title{font-size:17px;font-weight:800;color:var(--tx)}
+.daily-hero-date{font-size:12px;font-weight:600;color:var(--sub);margin-left:6px}
+.daily-hero-sub{font-size:12px;color:var(--sub);margin-top:3px}
+#daily-count{color:var(--ac)}
 
 /* Gallery */
 .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
@@ -407,18 +413,478 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
 <div id="app">
 <div class="w">
     <div class="hdr">
-        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-06-15 11:22</small></div>
+        <div class="hdr-left"><h1>X Preview</h1><small>Updated 2026-06-15 12:28</small></div>
         <div class="hdr-stat">
             <button onclick="location.reload()" class="refresh-btn">&#x1F504;</button>
-            <div class="stat-chip"><strong>1</strong> posts</div>
-            <div class="stat-chip"><strong>31</strong> media</div>
+            <div class="stat-chip"><strong>4</strong> posts</div>
+            <div class="stat-chip"><strong>36</strong> media</div>
         </div>
     </div>
 
     <div id="p0" class="pn on">
         <div class="quick-post" id="quick-post"></div>
+        <div class="daily-hero"><div class="daily-hero-head"><div class="daily-hero-title">&#x1F4C5; 今日の3枠 <span class="daily-hero-date">2026-06-15</span></div><div class="daily-hero-sub">図解/動画つき &middot; 各枠は編集長の推し1案を選んで投稿 &middot; <b id="daily-count">0/3</b> 投稿</div></div><div id="2026-06-15-daily-3-seedance-motiongraphics.md">
+    <article class="card" style="" id="card-1000">
+        <div class="card-top">
+            <div class="card-meta"><span class="ed-pass">&#x2705; 編集長合格 4/5</span><button class="status-btn" id="st-card-1000" onclick="event.stopPropagation();toggleStatus('card-1000')">Pending</button></div>
+            
+            <div class="x-row"></div>
+        </div>
+        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media — 画像はコピーしてXに貼付 / 動画は保存して添付</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4" download="C3KiP6tCAxYJ2Rl3g-xO7_video.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div></div></div>
+        <div class="card-drafts">
+        <div class="pat open" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="rec-badge">&#x2B50; 編集長の推し</span><span class="pat-label">案A: 数字 — モーグラのキネティックタイポを時間セグメントで分けたら一発で決まった</span></div>
+                <div class="pat-right"><span class="cc-warn">272/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:97%;background:#d97706"></div></div>
+            <div class="pat-b" style="display:block">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1000-0">Seedanceでモーショングラフィックス、文字がガタつくのを8秒1本で詰めてた。
+
+カメラ指示を1本に1個まで、と決めて時間で割ったら安定した。
+
+0-2s:光のスイープ / 2-5s:文字がカチッとはまってラックフォーカスで合焦 / 5-8s:微ドリーイン
+
+t2vだけ・無音。プロンプト全文は下に置いておく。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1000-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1000-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1000-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案B: 物語 — 文字が毎回ブレてた、原因は1本に2つカメラを書いてたこと</span></div>
+                <div class="pat-right"><span class="cc-over">317/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1000-1">モーグラ風のタイトル、文字が毎回ぬるっとブレて気持ち悪かった。
+
+で、原因は1プロンプトにパンとプッシュインを両方書いてたことだった。
+
+カメラは1本に1つ、残りは時間セグメントに逃がす。
+0-2s光のライン / 2-5s文字が着地して合焦 / 5-8s微ドリーイン、で落ち着いた。
+
+同じところで滲んでる人は、カメラの数を1個に削ると早いかも。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1000-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1000-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1000-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案C: 逆張り — モーグラは&quot;動かす&quot;より&quot;止め方&quot;を書くと締まる</span></div>
+                <div class="pat-right"><span class="cc-over">320/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1000-2">モーショングラフィックス、動きを足すほどブレる気がしてた。
+
+逆だった。Seedanceは「どう止まるか」を書くと締まる。
+
+文字は snap して settle、underline は left-to-right で wipe、最後は rock-steady で hold。
+動きの語彙より、着地と静止の語彙を増やすほうが効いた。
+
+無音t2v8秒。プロンプトは下に全公開。次は縦9:16でも試したい。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1000-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1000-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1000-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">参考: プロンプト全文 (Seedance 2.0 t2v / 16:9 / 8s / 720p / 無音 / seed 639004733)</span></div>
+                <div class="pat-right"><span class="cc-ref">1321/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1000-3">Premium motion-graphics title sequence, clean and minimal. Deep navy-to-charcoal gradient background with a subtle slow-drifting fine grain. 0-2s: thin cyan horizontal light-streak sweeps left to right, leaving a soft glow trail; tiny particles drift upward. 2-5s: bold white Japanese kinetic typography snaps into frame letter by letter with a crisp settle and slight motion blur, anti-aliased clean edges, the word locking precisely to a center grid; a shallow depth-of-field rack-focus pulls the text from blur into razor-sharp; a thin amber underline wipes in beneath the text from left to right. 5-8s: the camera pushes in slightly (subtle dolly-in), the text holds rock-steady while a soft cyan-to-amber gradient light blooms behind it; particles settle. Smooth easing on every motion, no jitter, broadcast-grade compositing, high contrast, crisp vector-like edges, 16:9, 24fps cinematic feel. No real-world objects, no people, pure typographic motion design. No cuts, single continuous take.
+
+設計メモ:
+- カメラは1本に1つ。パン/プッシュインを混ぜず、時間セグメント(0-2s/2-5s/5-8s)に役割を分ける
+- 感情曲線は「衝撃→着地→静止」(Energy 8→10→4)。最後は rock-steady で hold
+- 着地と静止の語彙(snap, settle, lock, wipe-in, hold, rack-focus)を厚めに書くとブレが減る
+- generate_audio=false (モーグラは無音で素材化しやすい)</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1000-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1000-3')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1000-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div></div>
+    </article></div><div id="2026-06-15-daily-2-agent-delegation-tips.md">
+    <article class="card" style="" id="card-1001">
+        <div class="card-top">
+            <div class="card-meta"><span class="ed-pass">&#x2705; 編集長合格 4/5</span><button class="status-btn" id="st-card-1001" onclick="event.stopPropagation();toggleStatus('card-1001')">Pending</button></div>
+            
+            <div class="x-row"></div>
+        </div>
+        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media — 画像はコピーしてXに貼付 / 動画は保存して添付</div><div class="mg-scroll"><div class="mg-item"><img src="media/2026-06-15-daily-2-agent-delegation-tips/" loading="lazy"><div class="mg-bar"><button class="dl-bar copy-img" onclick="event.stopPropagation();copyImg('media/2026-06-15-daily-2-agent-delegation-tips/',this)">&#x1F4CB; 画像コピー</button><a class="dl-bar" href="media/2026-06-15-daily-2-agent-delegation-tips/" download="" target="_blank">&#x2B07; 保存</a></div></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png" loading="lazy"><div class="mg-bar"><button class="dl-bar copy-img" onclick="event.stopPropagation();copyImg('https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png',this)">&#x1F4CB; 画像コピー</button><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png" download="RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png" target="_blank">&#x2B07; 保存</a></div></div></div></div>
+        <div class="card-drafts">
+        <div class="pat open" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="rec-badge">&#x2B50; 編集長の推し</span><span class="pat-label">案A: 数字 — AIエージェントの丸投げで損しない&quot;4手&quot;</span></div>
+                <div class="pat-right"><span class="cc-warn">261/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:93%;background:#d97706"></div></div>
+            <div class="pat-b" style="display:block">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1001-0">AIエージェントへの丸投げで毎回ブレてた頃、効いたのは小さい4手だった。
+
+①任せる前に&quot;完了条件&quot;を1行で書く
+②品質チェックは$0の目視ゲートを挟む
+③ルールはhookで自動強制(書くだけは効かない)
+④作る役と評価する役を分ける
+
+知らないと毎回やり直しになるやつ。図解に置いた。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1001-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1001-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1001-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案B: 物語 — &quot;とりあえず動かす&quot;をやめたら、やり直しが激減した</span></div>
+                <div class="pat-right"><span class="cc-over">309/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1001-1">AIエージェントを「とりあえず動かします!」で回してた頃、出力が毎回ブレてた。
+
+で、抜けてたのは1手だけ。任せる前に&quot;何を完了とするか&quot;を1行で決めること。
+
+完了条件を先に書いて、チェックをルール化して自動で止める。これだけで再現性が出た。
+
+「書いたルール」と「自動で強制されるルール」は別物、ってあとで気づいた話。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1001-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1001-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1001-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案C: 逆張り — エージェントは&quot;賢くする&quot;より&quot;任せ方&quot;を直すほうが速い</span></div>
+                <div class="pat-right"><span class="cc-over">315/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1001-2">エージェントが思い通りに動かないとき、モデルやプロンプトを賢くしようとしてた。
+
+でも効いたのは逆で、賢くするより「任せ方」を固定するほうだった。
+
+完了条件を1行で定義 → チェックは目視$0ゲート → ルールはhookで自動強制 → 作る役と評価する役を分ける。
+
+賢くなるのはAIじゃなくて&quot;手順メモ&quot;のほう、という感覚。4手は図解に。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1001-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1001-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1001-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">参考: 図解プロンプト (GPT Image 2 Edit / kamuicode / landscape_16_9 / 白猫キャラ参照2枚)</span></div>
+                <div class="pat-right"><span class="cc-ref">1116/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1001-3">Create a clean, professional 16:9 landscape infographic in NeurIPS-academic poster style, with the white cat mascot as the guide character. Japanese labels. Title: 「AIエージェントに丸投げして失敗する人がやっていない&quot;1手&quot;」
+
+CHARACTER REFERENCE: attached 3-view sheet + main visual. White fluffy chibi cat, large amber eyes, orange inner ears, peach blush, orange paw pads. Match the reference exactly. Mascot stands center-bottom holding a clipboard.
+
+LAYOUT: top is a BEFORE/AFTER 2-column comparison, bottom is a checklist card.
+LEFT (red)「とりあえず動かす丸投げ」confused robot + ・目的が曖昧なまま実行 ・出力を毎回人がチェック ・再現性がなくブレる
+RIGHT (teal)「先に&quot;何を任せるか&quot;を固定」focused robot + ・タスクの完了条件を1行で定義 ・チェックはルール化して自動ブロック ・成功パターンを即メモ化
+center divider arrow「ここが分かれ目」
+BOTTOM (blue)「丸投げで損しないための4手」: ①任せる前に&quot;完了条件&quot;を1行で書く ②品質チェックは$0の目視ゲートを挟む ③ルールはhook等で自動強制(書くだけは効かない) ④作る役と評価する役を分ける
+
+soft rounded cards, muted academic palette, crisp JP sans-serif, footer「自動化 / Ryo」</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1001-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1001-3')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1001-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div></div>
+    </article></div><div id="2026-06-15-daily-1-face-consistency-rescue.md">
+    <article class="card" style="" id="card-1002">
+        <div class="card-top">
+            <div class="card-meta"><span class="ed-pass">&#x2705; 編集長合格 4/5</span><button class="status-btn" id="st-card-1002" onclick="event.stopPropagation();toggleStatus('card-1002')">Pending</button></div>
+            
+            <div class="x-row"></div>
+        </div>
+        <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media — 画像はコピーしてXに貼付 / 動画は保存して添付</div><div class="mg-scroll"><div class="mg-item"><img src="media/2026-06-15-daily-1-face-consistency-rescue/" loading="lazy"><div class="mg-bar"><button class="dl-bar copy-img" onclick="event.stopPropagation();copyImg('media/2026-06-15-daily-1-face-consistency-rescue/',this)">&#x1F4CB; 画像コピー</button><a class="dl-bar" href="media/2026-06-15-daily-1-face-consistency-rescue/" download="" target="_blank">&#x2B07; 保存</a></div></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png" loading="lazy"><div class="mg-bar"><button class="dl-bar copy-img" onclick="event.stopPropagation();copyImg('https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png',this)">&#x1F4CB; 画像コピー</button><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png" download="qqmva4xQhuT3oNO44dS9U_unIEoN4u.png" target="_blank">&#x2B07; 保存</a></div></div></div></div>
+        <div class="card-drafts">
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案A: 数字 — 正面顔の参照をやめたら失敗率が8/10から1/10になった</span></div>
+                <div class="pat-right"><span class="cc-warn">261/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:93%;background:#d97706"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1002-0">キャラの顔が長尺で崩れる問題、同じ条件で参照画像だけ変えて並べてみた。
+
+正面の&quot;顔NG&quot;画像を参照に渡す: 10本中8本が崩れる。
+後ろ姿1枚 + 手のみ1枚に差し替える: 10本中1本まで減った。
+
+崩れるのはモデルじゃなくて参照のほうだったかも。
+チェックは図解にまとめておいた。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1002-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1002-0')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1002-0')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat open" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="rec-badge">&#x2B50; 編集長の推し</span><span class="pat-label">案B: 物語 — 半年崩れ続けた顔が、参照を変えただけで通った</span></div>
+                <div class="pat-right"><span class="cc-warn">252/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:90%;background:#d97706"></div></div>
+            <div class="pat-b" style="display:block">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1002-1">複数シーンでキャラの顔が毎回崩れて、半年絶望してた。
+
+で、原因は「正面の顔NG画像」を参照に渡してたことだった。
+
+後ろ姿1枚 + 手のみ1枚に差し替えたら、崩れが8/10→1/10まで減った。
+
+同じ壁にぶつかってる人は、ツールを変える前に参照画像から見直すと早いかも。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1002-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1002-1')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1002-1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">案C: 逆張り — 顔の一貫性は&quot;顔を参照に渡さない&quot;ほうが上がる</span></div>
+                <div class="pat-right"><span class="cc-over">300/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1002-2">キャラの顔を安定させたいなら、正面顔をしっかり参照に渡す——と思ってた。
+
+逆だった。正面の&quot;顔NG&quot;画像ほど崩れの原因になってた。
+
+後ろ姿+手だけ渡して顔はプロンプトで指定したら、失敗が8/10→1/10に。
+顔は&quot;見せて固定&quot;より&quot;情報を絞って委ねる&quot;ほうが通る感覚。
+
+崩れを減らすチェックは図解に4項目で置いておいた。</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1002-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1002-2')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1002-2')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="pat" onclick="toggle(this)">
+            <div class="pat-h">
+                <div class="pat-left"><span class="pat-label">参考: 図解プロンプト (GPT Image 2 Edit / kamuicode / landscape_16_9 / 白猫キャラ参照2枚)</span></div>
+                <div class="pat-right"><span class="cc-ref">1163/280</span><span class="pat-arrow">&#x25BC;</span></div>
+            </div>
+            <div class="char-bar"><div class="char-fill" style="width:100%;background:#dc2626"></div></div>
+            <div class="pat-b" style="display:none">
+                <div class="tweet-sim">
+                    <div class="tweet-head">
+                        <div class="tweet-avatar">R</div>
+                        <div><strong>Ryo</strong> <span class="tweet-handle">@kamui_code</span></div>
+                    </div>
+                    <pre class="tweet-body" id="b1002-3">Create a clean, professional 16:9 landscape infographic in NeurIPS-academic poster style, with the white cat mascot as the guide character. Japanese language labels. Title: 「キャラの顔が崩れる問題、参照画像を変えると通る」
+
+CHARACTER REFERENCE: attached 3-view sheet (front/side/back) + main visual. White fluffy chibi cat, large amber eyes, orange inner ears, peach blush, orange paw pads. Must match the reference exactly.
+
+LAYOUT (left-to-right, 4 color-zoned panels, mascot at bottom-left pointing to panel 1):
+PANEL 1 (red) 痛み: 長尺・複数シーンで顔/服/体型が崩れる。melting face icon。subhead「特にアップ顔・手・服のライン」
+PANEL 2 (amber) 原因: 正面の&quot;顔NG&quot;画像を参照に渡している。front-face ref with red X.
+PANEL 3 (teal) Ryo実測の解: 参照を 後ろ姿1枚 + 手のみ1枚 に差し替える。back-view + hand thumbnails。stat bar「正面顔参照: 8/10 失敗 → 後ろ姿+手: 1/10 失敗」
+PANEL 4 (blue) 持ち帰りチェックカード「崩れを減らすチェック」4項目: ①キャラシートを先に作る ②正面顔NG画像を参照にしない ③後ろ姿+手の参照を足す ④長尺は参照固定で多ショット
+
+soft rounded cards, thin connecting arrows, muted academic palette, crisp JP sans-serif, footer「AI動画 検証 / Ryo」</pre>
+                </div>
+                
+                
+            <div class="action-row">
+                <button class="btn-copy" onclick="event.stopPropagation();cp('b1002-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy
+                </button>
+                <button class="btn-post" onclick="event.stopPropagation();copyAndPost('b1002-3')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Post
+                </button>
+                <button class="btn-share" onclick="event.stopPropagation();sharePost('b1002-3')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+                </button>
+            </div>
+            </div>
+        </div></div>
+    </article></div></div>
         <div class="progress-bar-container">
-            <div class="progress-info"><span>Today's Posts</span><span id="prog-text">1 drafts</span></div>
+            <div class="progress-info"><span>Today's Posts</span><span id="prog-text">4 drafts</span></div>
             <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
             <div class="streak-row" id="streak-row"></div>
         </div>
@@ -450,7 +916,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
                 <div class="sched-time" style="background:#ede9fe;color:#5b21b6">&#x1F319; 21:00</div>
                 <div class="sched-theme" style="color:#94a3b8">Not planned</div>
             </div></div>
-        <div class="sec-title">&#x270F;&#xFE0F; Manual Drafts</div>
+        <div class="sec-title">&#x270F;&#xFE0F; その他の下書き</div>
         <div id="2026-06-15-x-draft-automation.md">
     <article class="card" style="" id="card-0">
         <div class="card-top">
@@ -462,7 +928,7 @@ box-shadow:0 4px 16px rgba(22,163,74,.35)}
         <div class="card-drafts"></div>
     </article></div>
     </div>
-    <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><img src="media/2026-06-12-ai-cannot-write-folder/" loading="lazy"><div class="gi"><span>2026-06-12-ai-cannot-write-fol</span><a class="btn-dl-sm" href="media/2026-06-12-ai-cannot-write-folder/" download="">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png" loading="lazy"><div class="gi"><span>2026-05-04-gpt-image2-short-dr</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png" download="68MFU35mewvmsMZDMS24p_L5ROcmuE.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4" download="W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png" download="4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png" download="5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png" download="ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png" download="xzLT_rROnO_RraVrWOHMn_A6koH83k.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4" download="VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png" download="oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png" download="N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png" download="ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png" download="PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4" download="r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png" download="bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png" download="3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png" download="lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png" download="wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" download="W2bNnFR9dFlOE0wJSLzBZ_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" download="C63mxi02apJhNaG_cLKtT_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" download="o4V9mWLFjcjTydrAeUIvg_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" download="ouGunbygGu109BaEq4j6u_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" download="aT2ir9H_5zbSoST0Ytknz_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" download="wDc6SjKLFiGI1PpeMA7s4_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
+    <div id="p1" class="pn"><div class="sec-title">&#x1F3AC; Media</div><div class="gg"><div class="gc"><video src="https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-06-15-daily-3-seedance-mo</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4" download="C3KiP6tCAxYJ2Rl3g-xO7_video.mp4">DL</a></div></div><div class="gc"><img src="media/2026-06-15-daily-2-agent-delegation-tips/" loading="lazy"><div class="gi"><span>2026-06-15-daily-2-agent-deleg</span><a class="btn-dl-sm" href="media/2026-06-15-daily-2-agent-delegation-tips/" download="">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png" loading="lazy"><div class="gi"><span>2026-06-15-daily-2-agent-deleg</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png" download="RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png">DL</a></div></div><div class="gc"><img src="media/2026-06-15-daily-1-face-consistency-rescue/" loading="lazy"><div class="gi"><span>2026-06-15-daily-1-face-consis</span><a class="btn-dl-sm" href="media/2026-06-15-daily-1-face-consistency-rescue/" download="">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png" loading="lazy"><div class="gi"><span>2026-06-15-daily-1-face-consis</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png" download="qqmva4xQhuT3oNO44dS9U_unIEoN4u.png">DL</a></div></div><div class="gc"><img src="media/2026-06-12-ai-cannot-write-folder/" loading="lazy"><div class="gi"><span>2026-06-12-ai-cannot-write-fol</span><a class="btn-dl-sm" href="media/2026-06-12-ai-cannot-write-folder/" download="">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png" loading="lazy"><div class="gi"><span>2026-05-04-gpt-image2-short-dr</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png" download="68MFU35mewvmsMZDMS24p_L5ROcmuE.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4" download="W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png" download="4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png" download="5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png" download="ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png" loading="lazy"><div class="gi"><span>2026-04-26-postcards-from-gold</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png" download="xzLT_rROnO_RraVrWOHMn_A6koH83k.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4" download="VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png" download="oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png" download="N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png" download="ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png" loading="lazy"><div class="gi"><span>2026-04-26-gpt-image2-golden-w</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png" download="PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4" download="r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png" download="bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png" download="3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png" download="lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png" loading="lazy"><div class="gi"><span>2026-04-26-existing-summer-sof</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png" download="wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P3-overseas-techniq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4" download="W2bNnFR9dFlOE0wJSLzBZ_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4" download="C63mxi02apJhNaG_cLKtT_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-round2</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4" download="o4V9mWLFjcjTydrAeUIvg_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4" download="ouGunbygGu109BaEq4j6u_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4" download="aT2ir9H_5zbSoST0Ytknz_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-04-P1-technique-hq</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4" download="wDc6SjKLFiGI1PpeMA7s4_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4">DL</a></div></div><div class="gc"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4">DL</a></div></div><div class="gc"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="gi"><span>2026-04-03-cinema-techniques-f</span><a class="btn-dl-sm" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png">DL</a></div></div></div></div>
     <div id="p2" class="pn"><div class="sec-title">&#x1F4CA; Trend Intelligence</div><div class="empty">No trend report today</div></div>
     <div id="p3" class="pn"><div class="sec-title">&#x1F4C1; Archive</div><div class="date-nav"><div class="date-chip" onclick="scrollToDate('2026-06-12')">2026-06-12</div><div class="date-chip" onclick="scrollToDate('2026-06-11')">2026-06-11</div><div class="date-chip" onclick="scrollToDate('2026-05-29')">2026-05-29</div><div class="date-chip" onclick="scrollToDate('2026-05-20')">2026-05-20</div><div class="date-chip" onclick="scrollToDate('2026-05-04')">2026-05-04</div><div class="date-chip" onclick="scrollToDate('2026-04-26')">2026-04-26</div><div class="date-chip" onclick="scrollToDate('2026-04-25')">2026-04-25</div><div class="date-chip" onclick="scrollToDate('2026-04-08')">2026-04-08</div><div class="date-chip" onclick="scrollToDate('2026-04-07')">2026-04-07</div><div class="date-chip" onclick="scrollToDate('2026-04-05')">2026-04-05</div><div class="date-chip" onclick="scrollToDate('2026-04-04')">2026-04-04</div><div class="date-chip" onclick="scrollToDate('2026-04-03')">2026-04-03</div><div class="date-chip" onclick="scrollToDate('2026-04-02')">2026-04-02</div></div><div class="dg" id="arch-2026-06-12"><div class="dl">2026-06-12</div>
     <article class="card" style="" id="card-200">
@@ -2941,7 +3407,7 @@ Claude Codeから全部MCPで操作してるから、
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><button class="status-btn" id="st-card-214" onclick="event.stopPropagation();toggleStatus('card-214')">Pending</button></div>
             <p class="summary">Seedance 2.0のマルチリファレンスでキャラ一貫性が別次元に</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/IqraSaifiii/status/2041160745778585662" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@IqraSaifiii</a><a class="x-chip" href="https://x.com/KakuDrop/status/2041085748401918462" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@KakuDrop</a><a class="x-chip" href="https://x.com/YaseenK7212/status/2041008659031830645" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@YaseenK7212</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -3073,7 +3539,7 @@ Kling 3.0: カメラワーク◎
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$3.94</span><button class="status-btn" id="st-card-215" onclick="event.stopPropagation();toggleStatus('card-215')">Pending</button></div>
             <p class="summary">日本語セリフが一番自然なAI動画モデルはどれか</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a><a class="x-chip" href="https://x.com/jboogx_creative/status/2040177902118228149" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@jboogx_creative</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -3216,7 +3682,7 @@ Viduが発音の自然さで頭一つ抜けてる印象。
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><span class="cost-tag">$1.24</span><button class="status-btn" id="st-card-216" onclick="event.stopPropagation();toggleStatus('card-216')">Pending</button></div>
             <p class="summary">US/JP制限のSeedance 2.0、日本から使える迂回ルート</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/bindureddy/status/2040457599376904692" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@bindureddy</a><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/Hoshimiko_AIart/status/2040401464649302295" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Hoshimiko_AIart</a><a class="x-chip" href="https://x.com/bindureddy/status/2040457599376904692" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@bindureddy</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -3336,7 +3802,7 @@ Seedance 2.0は映像品質は高いけど、セリフは英語の方が得意�
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fef2f2;color:#e8384f">&#x1F525; Breakthrough</span><span class="cost-tag">$1.24</span><button class="status-btn" id="st-card-217" onclick="event.stopPropagation();toggleStatus('card-217')">Pending</button></div>
             <p class="summary">無料でどこまでやれる？Kling 3.0（66cr/日）vs Veo 3.1（Google Vids無料）</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/MustafyOf/status/2040042901288227037" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@MustafyOf</a><a class="x-chip" href="https://x.com/GilangR90760584/status/2040065641340911868" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@GilangR90760584</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -3592,7 +4058,7 @@ L3: 必要時だけ
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$2.24</span><button class="status-btn" id="st-card-219" onclick="event.stopPropagation();toggleStatus('card-219')">Pending</button></div>
             <p class="summary">海外クリエイターが発見したAI動画プロンプト技法を検証</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/onofumi_AI/status/2038213681067274555" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@onofumi_AI</a><a class="x-chip" href="https://x.com/Kling_ai/status/2038949432985637063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@Kling_ai</a><a class="x-chip" href="https://x.com/doctorwasif/status/2039221897116725724" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@doctorwasif</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media — 画像はコピーしてXに貼付 / 動画は保存して添付</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4" download="FOZgh47rWxdQasO9uavyb_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4" download="tSJf-xUMmdpvZTPqCXJR6_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4" download="0FTK-aHwHHU0_xgc2vvSn_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div></div></div>
         <div class="card-drafts">
@@ -3865,7 +4331,7 @@ Kling / Veo / Seedance / Hailuo / Sora / Vidu / WANを検証。
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#eff6ff;color:#2563eb">&#x2699;&#xFE0F; Workflow</span><span class="cost-tag">$2.73</span><button class="status-btn" id="st-card-221" onclick="event.stopPropagation();toggleStatus('card-221')">Pending</button></div>
             <p class="summary">Claude Codeの本当の力は動画制作にある</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/om_patel5/status/2039939578694438979" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@om_patel5</a><a class="x-chip" href="https://x.com/SuguruKun_ai/status/2039997135664648215" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@SuguruKun_ai</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/SuguruKun_ai/status/2039997135664648215" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@SuguruKun_ai</a><a class="x-chip" href="https://x.com/om_patel5/status/2039939578694438979" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@om_patel5</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -4602,7 +5068,7 @@ Kling / Vidu / Hailuo / Sora / Seedance / Wan...
         <div class="card-top">
             <div class="card-meta"><span class="pill" style="background:#fffbeb;color:#d97706">&#x1F50D; Compare</span><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-226" onclick="event.stopPropagation();toggleStatus('card-226')">Pending</button></div>
             <p class="summary">## コンセプト</p>
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-media-area"></div>
         <div class="card-drafts">
@@ -4877,7 +5343,7 @@ NB2 Edit（$0.03）→ Kling V3 Pro（$0.35）
         <div class="card-top">
             <div class="card-meta"><span class="cost-tag">$1.78</span><button class="status-btn" id="st-card-228" onclick="event.stopPropagation();toggleStatus('card-228')">Pending</button></div>
             
-            <div class="x-row"><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
+            <div class="x-row"><a class="x-chip" href="https://x.com/HBCoop_/status/2039800144493752416" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@HBCoop_</a><a class="x-chip" href="https://x.com/yourPlugAI/status/2039765554639040929" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@yourPlugAI</a><a class="x-chip" href="https://x.com/drpeepee/status/2039811667979297181" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14"><path fill="#1d9bf0" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@drpeepee</a></div>
         </div>
         <div class="card-media-area"><div class="mg-label">&#x1F3AC; Media — 画像はコピーしてXに貼付 / 動画は保存して添付</div><div class="mg-scroll"><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4" download="gWonMnxfj4d3-gOUtAcgU_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4" download="B5FR7JRzB6JmyK6yZ5VyV_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4" download="_vFfTbBEeOAQZfgoYdPCs_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><video src="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" controls playsinline preload="metadata"></video><div class="mg-bar"><a class="dl-bar" href="https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4" download="6lAph5KEHQt_NMjC3lWuz_output.mp4" target="_blank">&#x2B07; 動画を保存</a></div></div><div class="mg-item"><img src="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" loading="lazy"><div class="mg-bar"><button class="dl-bar copy-img" onclick="event.stopPropagation();copyImg('https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png',this)">&#x1F4CB; 画像コピー</button><a class="dl-bar" href="https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" download="HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png" target="_blank">&#x2B07; 保存</a></div></div></div></div>
         <div class="card-drafts">
@@ -5850,7 +6316,7 @@ function toggleStatus(id){const btn=document.getElementById('st-'+id);const k='x
 const posted=localStorage.getItem(k)==='1';
 if(posted){localStorage.removeItem(k);btn.textContent='Pending';btn.classList.remove('posted')}
 else{localStorage.setItem(k,'1');btn.textContent='Posted \u2713';btn.classList.add('posted');toast('Marked as posted')}
-updateProgress();updateStreak()}
+updateProgress();updateStreak();updateDailyCount()}
 /* Restore status on load */
 document.querySelectorAll('.status-btn').forEach(btn=>{const id=btn.id.replace('st-','');const k='xst-'+id;
 if(localStorage.getItem(k)==='1'){btn.textContent='Posted \u2713';btn.classList.add('posted')}});
@@ -5864,7 +6330,13 @@ function updateProgress(){
     if(fill)fill.style.width=pct+'%';
     if(text)text.textContent=posted+'/'+total+' posted';
 }
-updateProgress();
+function updateDailyCount(){
+const wrap=document.querySelector('.daily-hero');if(!wrap)return;
+const total=wrap.querySelectorAll('.status-btn').length;
+const posted=wrap.querySelectorAll('.status-btn.posted').length;
+const el=document.getElementById('daily-count');if(el)el.textContent=posted+'/'+total;
+}
+updateProgress();updateDailyCount();
 
 /* Copy & open X compose */
 function copyAndPost(id){const el=document.getElementById(id);const t=el.textContent;
