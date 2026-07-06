@@ -48,8 +48,9 @@ color:#fff;font-weight:700;font-size:15px;min-height:44px}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:14px;margin-bottom:12px}
 .card.dim{opacity:.45}
 .sec-h{font-size:12px;font-weight:800;color:var(--sub);text-transform:uppercase;letter-spacing:.6px;
-margin:18px 0 8px;display:flex;align-items:center;gap:6px}
+margin:18px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:6px}
 .sec-h:first-child{margin-top:0}
+.sec-h .cnt{font-weight:700;color:var(--sub);font-size:11px}
 .empty-note{color:var(--sub);text-align:center;padding:30px 14px;font-size:13px}
 
 /* Today: big tiles */
@@ -86,7 +87,24 @@ background:var(--card2);color:var(--accent);letter-spacing:.3px}
 .badge.work{color:#fbbf24}
 .qbadge{font-size:11px;font-weight:800;color:var(--green)}
 
-/* Draft card */
+/* Segmented control (platform tabs) */
+.seg{display:flex;gap:6px;background:var(--card);border:1px solid var(--bd);border-radius:14px;
+padding:5px;margin-bottom:10px;position:sticky;top:calc(6px + var(--safe-t));z-index:60}
+.seg button{flex:1;min-height:40px;border-radius:10px;font-size:13px;font-weight:800;color:var(--sub);
+display:flex;align-items:center;justify-content:center;gap:5px}
+.seg button.on{background:var(--accent);color:#fff}
+.seg .b-cnt{font-size:10px;font-weight:800;background:rgba(245,158,11,.9);color:#231a02;
+border-radius:999px;min-width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
+.seg button.on .b-cnt{background:#fff;color:var(--accent)}
+
+/* Time filter chips */
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;background:var(--card2);
+border:1px solid var(--bd);color:var(--sub);min-height:36px}
+.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chip-row.time{margin:0 0 12px}
+
+/* Draft card (承認待ち: フル表示) */
 .dcard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
 .dcard-body{font-size:14px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
 .dcard-thread{margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd)}
@@ -102,7 +120,19 @@ align-items:center;justify-content:center;gap:6px;border:1px solid var(--bd);bac
 .btn.wide{flex:none;width:100%}
 .btn:disabled{opacity:.5}
 .btn.small{min-height:36px;font-size:12px;padding:0 12px;flex:0 0 auto}
+.btn.ghost{background:none;border:1px dashed var(--bd);color:var(--sub);font-size:12px;min-height:38px}
 .status-note{font-size:12px;font-weight:700;color:var(--green);text-align:center;padding:8px 0}
+
+/* Post row (キュー/過去: コンパクト・タップで展開) */
+.post-row{padding:12px 14px}
+.post-row .pr-head{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;min-height:32px}
+.post-row .pr-main{flex:1;min-width:0}
+.post-row .pr-ttl{font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.post-row .pr-sub{font-size:11px;color:var(--sub);margin-top:2px}
+.post-row .pr-body{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd)}
+.post-row.open .pr-body{display:block}
+.date-h{font-size:11px;font-weight:800;color:var(--sub);margin:14px 0 6px;display:flex;justify-content:space-between}
+.date-h:first-child{margin-top:0}
 
 /* Video card */
 .vcard{display:flex;gap:12px}
@@ -122,18 +152,15 @@ background:var(--card2);border-radius:10px;padding:10px;white-space:pre-wrap;wor
 border:1px solid rgba(245,158,11,.35);border-radius:12px;padding:10px;margin-top:8px}
 .tiktok-hot .hh{font-size:13px;font-weight:800;color:var(--amber)}
 
-/* Distribute */
-.dist-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;
-border-bottom:1px solid var(--bd)}
-.dist-row:last-child{border-bottom:none}
-.dist-row .main{min-width:0;flex:1}
-.dist-row .ttl{font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dist-row .sub{font-size:11px;color:var(--sub);margin-top:2px}
+/* Pills */
 .pill{font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.pill.review{background:rgba(245,158,11,.15);color:var(--amber)}
 .pill.approved{background:rgba(91,124,250,.15);color:var(--accent)}
 .pill.queued{background:rgba(245,158,11,.15);color:var(--amber)}
+.pill.draft{background:var(--card2);color:var(--sub)}
 .pill.posted{background:rgba(34,197,94,.15);color:var(--green)}
 .pill.sent_to_inbox{background:rgba(245,158,11,.18);color:var(--amber)}
+.pill.rejected{background:rgba(239,68,68,.14);color:var(--red)}
 .pill.other{background:var(--card2);color:var(--sub)}
 
 /* Money */
@@ -156,6 +183,20 @@ position:relative}
 .conv-row:last-child{border-bottom:none}
 .cpp-lines{font-size:13px;line-height:1.9;padding-left:18px;margin:6px 0}
 
+/* Apps (リンク集) */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.app-card{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--bd);
+border-radius:var(--radius);padding:14px;text-decoration:none;color:var(--tx);min-height:96px}
+.app-card:active{background:var(--card2)}
+.app-card .ai{font-size:26px;line-height:1}
+.app-card .an{font-size:13px;font-weight:800}
+.app-card .ad{font-size:11px;color:var(--sub);line-height:1.5}
+.app-card .ah{font-size:10px;color:var(--accent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-card.local{border-style:dashed}
+.app-card.local .ah{color:var(--sub)}
+.app-launch{font-size:11px;background:var(--card2);border-radius:8px;padding:6px 8px;color:var(--sub);
+font-family:ui-monospace,Menlo,monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
 /* Toast */
 .toast{position:fixed;left:50%;bottom:calc(90px + var(--safe-b));transform:translateX(-50%) translateY(10px);
 background:#1e2230;color:#fff;padding:11px 20px;border-radius:999px;font-size:13px;font-weight:700;
@@ -174,6 +215,21 @@ nav.btm .bt.on{color:var(--accent)}
 nav.btm .bt .dot{position:absolute;top:4px;right:calc(50% - 20px);width:8px;height:8px;border-radius:50%;
 background:var(--amber);display:none}
 nav.btm .bt .dot.show{display:block}
+
+/* Voice */
+.voice-rec-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 0}
+.voice-timer{font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.voice-rec-btn{width:92px;height:92px;border-radius:50%;background:var(--accent);border:4px solid rgba(91,124,250,.25);
+display:flex;align-items:center;justify-content:center;font-size:36px}
+.voice-rec-btn.recording{background:var(--red);border-color:rgba(239,68,68,.3);animation:voicePulse 1.4s infinite}
+@keyframes voicePulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 18px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.voice-hint{font-size:12px;color:var(--sub)}
+.voice-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;
+border-bottom:1px solid var(--bd)}
+.voice-row:last-child{border-bottom:none}
+.voice-row .vtxt{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.voice-row .vtype{font-size:10px;color:var(--sub);margin-top:2px}
+.voice-row .vst{font-size:16px;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -200,15 +256,18 @@ nav.btm .bt .dot.show{display:block}
     <!-- 今日 -->
     <div class="view on" id="view-today">
       <div class="tiles">
-        <div class="tile" onclick="showView('approve')">
+        <div class="tile" onclick="showView('posts')">
           <div class="n" id="t-approve-n">0</div>
           <div class="l">承認待ち</div>
         </div>
-        <div class="tile" onclick="showView('approve')">
+        <div class="tile" onclick="showView('posts')">
           <div class="n" id="t-onetap-n">0</div>
           <div class="l">ワンタップ待ち</div>
         </div>
       </div>
+
+      <div class="sec-h">&#x1F4C5; 今日の投稿案 <span class="cnt" id="today-drafts-cnt"></span></div>
+      <div class="card" id="today-drafts"><div class="empty-note">今日の投稿案はまだありません</div></div>
 
       <div class="card">
         <div class="prog-wrap">
@@ -228,22 +287,10 @@ nav.btm .bt .dot.show{display:block}
       </div>
     </div>
 
-    <!-- 承認 -->
-    <div class="view" id="view-approve">
-      <div class="sec-h" id="approve-x-h">&#x1F4DD; X下書き</div>
-      <div id="approve-x-list"></div>
-
-      <div class="sec-h" id="approve-v-h">&#x1F3AC; 動画リリース</div>
-      <div id="approve-v-list"></div>
-    </div>
-
-    <!-- 配信 -->
-    <div class="view" id="view-distribute">
-      <div class="sec-h">&#x1F4E4; X</div>
-      <div id="dist-x-list"></div>
-
-      <div class="sec-h">&#x1F4F1; 動画</div>
-      <div id="dist-v-list"></div>
+    <!-- 投稿 (SNS横断ハブ: 承認+キュー+過去) -->
+    <div class="view" id="view-posts">
+      <div class="seg" id="plat-seg"></div>
+      <div id="posts-body"></div>
     </div>
 
     <!-- 売上 -->
@@ -260,6 +307,44 @@ nav.btm .bt .dot.show{display:block}
       <div class="sec-h">&#x1F5C2;&#xFE0F; CPP台帳</div>
       <div class="card" id="money-cpp"><div class="empty-note">データなし</div></div>
     </div>
+
+    <!-- 声 -->
+    <div class="view" id="view-voice">
+      <div class="card">
+        <div class="voice-rec-wrap">
+          <div class="voice-timer" id="voice-timer">00:00</div>
+          <button class="voice-rec-btn" id="voice-rec-btn" onclick="toggleRecording()">&#x1F3A4;</button>
+          <div class="voice-hint" id="voice-hint">タップして録音開始</div>
+        </div>
+      </div>
+
+      <div class="card hidden" id="voice-review-card">
+        <audio id="voice-preview" controls style="width:100%"></audio>
+        <div class="chip-row" id="voice-chips">
+          <button class="chip on" data-type="">自動</button>
+          <button class="chip" data-type="insight">知見</button>
+          <button class="chip" data-type="belief">信念</button>
+          <button class="chip" data-type="diary">日記</button>
+          <button class="chip" data-type="task">タスク</button>
+          <button class="chip" data-type="idea">アイデア</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn reject" onclick="discardRecording()">&#x1F5D1;&#xFE0F; 破棄</button>
+          <button class="btn approve" id="voice-send-btn" onclick="sendVoiceMemo()">&#x1F4E4; 送信</button>
+        </div>
+      </div>
+
+      <div class="sec-h">&#x1F5C2;&#xFE0F; 直近のメモ</div>
+      <div class="card" id="voice-list"><div class="empty-note">読み込み中…</div></div>
+    </div>
+
+    <!-- Apps (リンク集) -->
+    <div class="view" id="view-apps">
+      <div class="sec-h">&#x1F310; 公開アプリ <span class="cnt" id="apps-pub-cnt"></span></div>
+      <div class="app-grid" id="apps-public"></div>
+      <div class="sec-h">&#x1F4BB; ローカル (PC起動) <span class="cnt" id="apps-local-cnt"></span></div>
+      <div id="apps-local"></div>
+    </div>
   </div>
 </div>
 
@@ -267,9 +352,10 @@ nav.btm .bt .dot.show{display:block}
 
 <nav class="btm">
   <div class="bt on" data-view="today" onclick="showView('today',this)"><span class="bi">&#x1F4CB;</span><span>今日</span></div>
-  <div class="bt" data-view="approve" onclick="showView('approve',this)"><span class="dot" id="dot-approve"></span><span class="bi">&#x2705;</span><span>承認</span></div>
-  <div class="bt" data-view="distribute" onclick="showView('distribute',this)"><span class="bi">&#x1F4E1;</span><span>配信</span></div>
+  <div class="bt" data-view="posts" onclick="showView('posts',this)"><span class="dot" id="dot-posts"></span><span class="bi">&#x1F4DD;</span><span>投稿</span></div>
   <div class="bt" data-view="money" onclick="showView('money',this)"><span class="bi">&#x1F4B4;</span><span>売上</span></div>
+  <div class="bt" data-view="voice" onclick="showView('voice',this)"><span class="bi">&#x1F3A4;</span><span>声</span></div>
+  <div class="bt" data-view="apps" onclick="showView('apps',this)"><span class="bi">&#x1F517;</span><span>Apps</span></div>
 </nav>
 
 <script>
@@ -302,9 +388,10 @@ if(sessionStorage.getItem('ryoops_h')===H){
 }
 
 /* ---- Data ---- */
-const DATA = {"generated_at":"2026-07-04T22:44:18.737430+09:00","x_drafts":[{"id":"2026-05-20-aiehon-style-3patterns","path":"10_X-Marketing/drafts/posts/2026-05-20-aiehon-style-3patterns.md","title":"2026-05-20-aiehon-style-3patterns","post_type":"","status":"draft","quality":"","body":"え、トーキングヘッド動画、まだ画角固定で作ってない…？！\n\nAI喋り動画で5秒以上飽きさせない黄金値は\n「画角変化 ±30」だよ。\nアップ=130 / 引き=70 を 5-7秒ごとに交互。\n10秒に1回は画像インサートも入れる。テストにでます。\n\n[画像: before/after 2枚並列 — 固定画角 vs ±30振り]","thread":["3日間422で詰んでた。原因これだった。\n\n❌ wrangler r2 object put ← 個別ファイルだとpublic URLに反映されず404\n↓\n✅ rclone copy file r2:bucket/ で解決\n\n公式CLIなのにバグってる。同じ症状で詰んだ人いる？\n\n[画像: エラーログ before / 成功 after の2枚]"],"media":[],"created":"2026-05-20"},{"id":"2026-06-11-grok-v15-cinematic","path":"10_X-Marketing/drafts/posts/2026-06-11-grok-v15-cinematic.md","title":"2026-06-11-grok-v15-cinematic","post_type":"verification","status":"review","quality":"","body":"Grok Imagine の動画v1.5、英語圏だと話題なのに日本語の検証はまだ少ない。\n気になって回してみたら、I2V専用で duration 15 がそのまま通る。15秒・720p、しかも音声トラックまで一緒に出てくる。\n雨のネオン街で刀を構えるカット、動きが滑らかで破綻しなかった。\n次は芝居＋セリフでも試したい。","thread":["作り方はシンプル。\n1. Grok Imagine T2I で 16:9 の元画像(サイバーパンク・ネオン・被写体1体)\n2. その1枚を Grok Imagine Video v1.5 (I2V) に渡す\n3. プロンプトは「動き＋カメラ＋タイミング」中心に簡潔(duration 15 / 720p)\n※参照は画像1枚のみ。複数キャラ参照が要るなら Seedance 2.0 R2V か Vidu Q3。","詰まりやすい点:\n・出力アスペクトは入力画像の比に追従する。16:9が欲しいなら16:9画像を入れる(縦絵を入れると縦動画になる)\n・音声は出るけど日本語TTSの精度は要確認。気になれば ElevenLabs/Gemini TTS で作り直し→lipsync差し替え","このクオリティが画像1枚＋1プロンプトで出るのは普通に便利。\n次はキャラの芝居＋セリフ尺(10秒前後)で、A-roll候補になるか試したい。"],"media":[],"created":"2026-06-11"},{"id":"2026-06-12-ai-cannot-write-folder","path":"10_X-Marketing/drafts/posts/2026-06-12-ai-cannot-write-folder.md","title":"2026-06-12-ai-cannot-write-folder","post_type":"rescue","status":"review","quality":"","body":"Obsidianに「AIが書き込めないフォルダ」をhookで作ってみた。\n\nAIのノートと手書きメモが混ざると「これ自分の経験だっけ?」が分からなくなる。\n\nで、256ノートを監査して物理分離したら、発信素材の純度が別物になった✍️\n\nAIメモと自分のメモ、分けてる?","thread":["ちなみに分離した後、AIに「離れたノート2枚を強制的に掛け合わせて仮説を出す」スキルを足したら、今朝さっそく自分では思いつかない接続を提案してきた。手書き知見が混ざってないからこそ、掛け算の出どころが信用できる。","ちなみに分離した後、AIに「離れたノート2枚を強制的に掛け合わせて仮説を出す」スキルを足したら、今朝さっそく自分では思いつかない接続を提案してきた。手書き知見が混ざってないからこそ、掛け算の出どころが信用できる。"],"media":["T","O","D",":"," ","p","a","e","r","b","n","-","i","f","o","g","h","c","で","『","3","層","分","離","』","図","解","1","枚","(","0","_","N","t","s","/","A","I","L","k","の","構","造",")"],"created":"2026-06-12"},{"id":"2026-06-12-course-launch-wave1","path":"10_X-Marketing/drafts/posts/2026-06-12-course-launch-wave1.md","title":"2026-06-12-course-launch-wave1","post_type":"launch","status":"review","quality":"","body":"AIで作った動画が、なぜか毎回\"ホームビデオ\"っぽくなる——あれ、センスの問題じゃない。\n\nプロ品質との分岐点は、画づくりより前の「設計（カット割り・カメラ・一貫性の固定）」にある。生成のガチャを、設計で殺せる。\n\n何が分岐点だったかを言語化してみた。\n\nあなたの動画が\"素人っぽく見える\"のは、どの瞬間だと思いますか？","thread":[],"media":[],"created":"2026-06-12"},{"id":"2026-06-15-daily-1-face-consistency-rescue","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-1-face-consistency-rescue.md","title":"2026-06-15-daily-1-face-consistency-rescue","post_type":"rescue","status":"review","quality":"4/5","body":"キャラの顔が長尺で崩れる問題、同じ条件で参照画像だけ変えて並べてみた。\n\n正面の\"顔NG\"画像を参照に渡す: 10本中8本が崩れる。\n後ろ姿1枚 + 手のみ1枚に差し替える: 10本中1本まで減った。\n\n崩れるのはモデルじゃなくて参照のほうだったかも。\nチェックは図解にまとめておいた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","5","7","2","q","4","x","Q","u","T","o","N","O","S","U","_","n","I","E","g","]","https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png"],"created":"2026-06-15"},{"id":"2026-06-15-daily-2-agent-delegation-tips","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-2-agent-delegation-tips.md","title":"2026-06-15-daily-2-agent-delegation-tips","post_type":"tips","status":"review","quality":"4/5","body":"AIエージェントへの丸投げで毎回ブレてた頃、効いたのは小さい4手だった。\n\n①任せる前に\"完了条件\"を1行で書く\n②品質チェックは$0の目視ゲートを挟む\n③ルールはhookで自動強制(書くだけは効かない)\n④作る役と評価する役を分ける\n\n知らないと毎回やり直しになるやつ。図解に置いた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","5","7","R","M","X","A","T","-","F","4","G","j","P","Q","J","E","_","Z","O","8","n","g","]","https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png"],"created":"2026-06-15"},{"id":"2026-06-15-daily-3-seedance-motiongraphics","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-3-seedance-motiongraphics.md","title":"2026-06-15-daily-3-seedance-motiongraphics","post_type":"verification","status":"review","quality":"4/5","body":"Seedanceでモーショングラフィックス、文字がガタつくのを8秒1本で詰めてた。\n\nカメラ指示を1本に1個まで、と決めて時間で割ったら安定した。\n\n0-2s:光のスイープ / 2-5s:文字がカチッとはまってラックフォーカスで合焦 / 5-8s:微ドリーイン\n\nt2vだけ・無音。プロンプト全文は下に置いておく。","thread":[],"media":["https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4"],"created":"2026-06-15"},{"id":"2026-06-15-x-draft-automation","path":"10_X-Marketing/drafts/posts/2026-06-15-x-draft-automation.md","title":"2026-06-15-x-draft-automation","post_type":"rescue","status":"queued","quality":"","body":"Xの投稿、毎朝ネタを考える時間がなくて気づけば1週間止まってた。\n原因は「書く」工程まで自分で抱えてたこと。続かないのは意志じゃなく仕組みの問題。\n今は知見メモから下書きまでAIに任せて、朝は承認するだけ。投稿はアプリでワンタップ。\n自動投稿はしてない。最後に人が見る一拍は残したい。","thread":[],"media":[],"created":"2026-06-15"},{"id":"2026-06-16-daily-1-handfix-anime-keyframe","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-1-handfix-anime-keyframe.md","title":"2026-06-16-daily-1-handfix-anime-keyframe","post_type":"rescue","status":"review","quality":"4/5","body":"実写系のAI動画で手と物理がよく崩れて、テイクを何度も捨ててた。\n\nで、自分が崩しやすかったのは①素早い手の動き ②接触・衝突の瞬間 の2か所だった。\n\nこの2か所を避ける動き設計にして、難しいカットはアニメ調へ寄せたら歩留まりが上がった。\n\n崩れやすい箇所と回避の対応表、図解に置いた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","7","6","g","z","K","J","Z","Q","Y","R","H","y","k","C","_","n","w","]","https://v3b.fal.media/files/b/0a9e76fb/3gz7K6JZQY6vRHsYgykCQ_CynRwHin.png"],"created":"2026-06-16"},{"id":"2026-06-16-daily-2-seedance-start-end-morph","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-2-seedance-start-end-morph.md","title":"2026-06-16-daily-2-seedance-start-end-morph","post_type":"verification","status":"review","quality":"4/5","body":"「最初と最後だけ決めれば動画」テク、t2vだと中間だけ急にワープすることがある。\n\n効いたのは、始点と終点を別カット扱いにしないこと。Seedance 2.0のt2vで変化を\"1本の連続動作\"として時間セグメントで書くと今回は中間が繋がった。カメラも1つに絞る。\n\nプロンプトは下に。2枚補間派? t2v派?","thread":[],"media":["https://v3b.fal.media/files/b/0a9e76f5/tvFaswkT-RoJb-ESl5eJ4_video.mp4"],"created":"2026-06-16"},{"id":"2026-06-16-daily-3-agent-irreversible-approval","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-3-agent-irreversible-approval.md","title":"2026-06-16-daily-3-agent-irreversible-approval","post_type":"tips","status":"review","quality":"4/5","body":"AIエージェントに作業を任せる時、どこで人間が止まるかを決めてないと事故るな、と最近の話題で再確認した。\n\nまず止めるべき代表例は①送信(メール/DM) ②削除 ③決済 の不可逆な操作。\n\nポイントは「会話で確認させる」じゃなく、ツール側で実行直前に人を挟むこと。会話内の承認ログはAIが生成できてしまう。\n\n止めどころの切り分け、図解にした。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","7","6","Q","k","S","-","g","Y","c","T","L","P","r","y","R","F","A","q","_","O","5","J","K","n","]","https://v3b.fal.media/files/b/0a9e76fd/vQktS-gYcTLPryRFRAqqP_6iO5JgK6.png"],"created":"2026-06-16"},{"id":"2026-07-03-daily-1-face-consistency-refs","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-1-face-consistency-refs.md","title":"2026-07-03-daily-1-face-consistency-refs","post_type":"rescue","status":"review","quality":"4/5","body":"「キャラ登録したのに顔が毎回変わる」という声をSora2界隈で見かけた。自分も60秒超の物語で148クリップ回した時、同じ壁にぶつかった。効いたのは参照の渡し方で、1枚抜き参照をやめてシート+4面図を毎回セットで渡す。制作ログ上では別人化が減った感触がある。手順は図解に👇","thread":[],"media":["[","]"],"created":"2026-07-03"},{"id":"2026-07-03-daily-2-seedance25-onetake","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-2-seedance25-onetake.md","title":"2026-07-03-daily-2-seedance25-onetake","post_type":"verification","status":"review","quality":"4/5","body":"中国圏でSeedance 2.5の予告が出てた(30秒ワンショット対応の話も)。手前の2.0でワンテイク風にどこまで寄せられるか検証。このクリップで効いたのは ①遮蔽物の通過で場面を繋ぐ ②被写体1人を追い続ける ③カメラ速度を一定に保つ、の3つ。プロンプト全文はリプ欄に👇","thread":["(Phase 3 で x-seedance-lab 生成後に記載)"],"media":["null"],"created":"2026-07-03"},{"id":"2026-07-03-daily-3-claudecode-remotion-zeroedit","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-3-claudecode-remotion-zeroedit.md","title":"2026-07-03-daily-3-claudecode-remotion-zeroedit","post_type":"verification","status":"review","quality":"4/5","body":"自分の検証では、キャラ画像1枚からMV完成まで約30分。手編集はほぼナシで最終チェックだけ人間。映像はSeedance、編集はRemotion、指揮はClaude Code。Xでも同様の事例が増えてきた。自分は npx skills add remotion-dev/skills から始めた。最初の3歩は図解に👇","thread":[],"media":["[","]"],"created":"2026-07-03"},{"id":"2026-07-03-vidu-q3-multiline-refs","path":"10_X-Marketing/drafts/posts/2026-07-03-vidu-q3-multiline-refs.md","title":"2026-07-03-vidu-q3-multiline-refs","post_type":"rescue","status":"review","quality":"3/5","body":"AI動画でキャラが毎回別人になる問題、参照を複数渡す方式がだいぶ効く。7/2のVidu Q3告知でも複数参照キャラ固定や音声同期が前面に出てた。自分も1枚参照だと別人化してたけど、シート+4面図の束で安定しやすくなった。崩れる人は参照の渡し方から見直すと早いかも🎬","thread":[],"media":[],"created":"2026-07-03"},{"id":"2026-05-29-data-driven-gap-batch","path":"10_X-Marketing/drafts/posts/2026-05-29-data-driven-gap-batch.md","title":"2026-05-29-data-driven-gap-batch","post_type":"post-drafts","status":"legacy","quality":"","body":"Vidu Q3、泣き顔のシーンだけ何回投げても生成拒否されて、半年くらい放置してた。\n\n犯人は \"tears\" \"trembling\" みたいな感情語。ネガティブ表現がフィルタで弾かれてたっぽい。\n\n「光をためた瞳」みたいに前向きに言い換えたら、普通に通るようになった。\n\n同じところで止まってた人、プロンプト側を疑うと早いかも。","thread":["完全プロンプト（コピペ可）:\n\n[ここにSeedance 2.0 R2Vの実プロンプト全文を貼る]\n\nモデル: Seedance 2.0 R2V\n参照: キャラ正面1枚 + 背景1枚\n出力: 1080p / 5s\nコツ: 動詞は1つに絞ると破綻しにくい","AI動画作ってて、いちばん時間が溶けるのってどこだろう。\n\n・プロンプトの試行錯誤\n・キャラの一貫性キープ\n・モデル選びと課金管理\n・書き出し/編集まわり\n\n自分は最近ずっと「一貫性」なんだけど、みんなどう？"],"media":[],"created":"2026-05-29"},{"id":"2026-05-04-gpt-image2-short-drama-4walls","path":"10_X-Marketing/drafts/posts/2026-05-04-gpt-image2-short-drama-4walls.md","title":"2026-05-04-gpt-image2-short-drama-4walls","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | フック | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 4つの壁を1枚チェックリストにまとめる救済図解 | 5/4 12:00 or 5/5 7:00 |\n| 2 | B 純救済 | キャラ一貫性に絞った深掘り（参照添付 + 新規チャット再投） | 5/5 12:00 |\n| 3 | B 純救済 | 出力ムラを潰すハイブリッド（GPT Image 2 → NB2 Edit） | ストック |\n\n---","thread":[],"media":["null","図解1【生成済】: 「GPT Image 2でショートドラマ ぶつかる4つの壁」チェックリスト","図解2【未着手】: Before/After（参照なし4シーン顔バラバラ → 参照あり統一）visual-director発注候補","https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png"],"created":"2026-05-04"},{"id":"2026-04-26-existing-summer-soft-vlog","path":"10_X-Marketing/drafts/posts/2026-04-26-existing-summer-soft-vlog.md","title":"2026-04-26-existing-summer-soft-vlog","post_type":"post-drafts-with-reply-chain","status":"legacy","quality":"","body":"AI動画にテキスト入れる時、毎回デジタル感が出てた。\n\nRemotion + Google Fonts の Caveat (英語手書き) と Klee One (日本語やわらか) を重ねて、\nwashi tape ・ハッシュタグステッカー・微回転（-2°〜+5°）で、Instagram旅Vlogみたいな手書き編集に振った。\n\n「夏のかけら」というMVを置いておきます。\n画像とプロンプトはリプ欄に。","thread":["4章のヒーロー画像（GPT Image 2 で T2I 生成）。\n朝の空港 / 古宇利の海 / 壺屋やちむん通り / サンセットビーチ。\n4枚とも Kodak Portra 400 + Fujifilm Pro 400H 質感プリセットで光が揃う。","4章のGPT Image 2プロンプト、共通部品＋章別パートで構成しました。\n\n▼ 共通質感プリセット（全章末尾に貼る）\n\"Faded Kodak Portra 400 + Fujifilm Pro 400H aesthetic, candid smartphone snapshot, handheld slight motion blur, fine grain, 35mm lens feel, creamy soft skin, milky highlights, slightly tilted composition. Photo-realistic, NOT illustration.\"\n\n▼ Ch1 朝・那覇空港 (5:47)\n\"Young Japanese couple at Naha Airport at 5:47 AM dawn. Soft golden first light through floor-to-ceiling windows. Girl in oversized white linen shirt holding iced latte. Boy in cream tee with navy cap backwards. Empty terminal, faded JAL/ANA signage softly blurred.\"\n\n▼ Ch2 昼・古宇利ビーチ (13:22)\n\"Same couple on Kouri Beach at 1:22 PM. Bright cobalt-blue Okinawan ocean, vivid white sand. Selfie angle: boy in front (close-up smile), girl walking toward water in background, white loose tee tucked into denim shorts, hair flying. Bright midday sun, palm shadows, ocean blue saturation pulled cyan.\"\n\n▼ Ch3 夕・壺屋やちむん通り (17:45)\n\"Same couple holding hands walking down a narrow Tsuboya pottery alley in Naha at 5:45 PM golden hour. Vintage red Coca-Cola vending machine glowing on the left, weathered shisa stone lion guardian on the wall. Honey-orange light, long shadows. Girl in white floral sundress, boy in black tee + cargo shorts.\"\n\n▼ Ch4 夜・サンセットビーチ (22:03)\n\"Same couple in cotton yukata (girl mint-wave / boy navy-stripe) sitting on dark sand at Sunset Beach at 10:03 PM. Both holding senko-hanabi sparklers, golden sparks falling. Distant moon over Pacific, paper lanterns on a fishing boat far out. Cinestill 800T + Kodak Portra 800 night film, halation around sparkler glow, deep teal shadows.\"\n\nquality=high / image_size=portrait_16_9 / 4枚並列で約2分・$0.20 でした。","Vlog風オーバーレイの仕掛けは @remotion/google-fonts で5本のフォントをロードするだけ:\n\nimport { loadFont as loadCaveat } from '@remotion/google-fonts/Caveat';\nimport { loadFont as loadKleeOne } from '@remotion/google-fonts/KleeOne';\nimport { loadFont as loadHachi } from '@remotion/google-fonts/HachiMaruPop';\n\n▼ 役割分担\n- Caveat → 英字手書き（dates, hashtags, EN副題）\n- KleeOne → 日本語やわらか毛筆（メインキャプション）\n- HachiMaruPop → 丸文字ポップ吹き出し（中央の「ついた〜」「ぶらぶら」）\n\n▼ 人間味の演出（4つだけ）\n1. washi tape: rgba(248,215,165,0.55) を1枚敷いて transform: rotate(2deg)\n2. 全要素に -2°〜+5° の微回転をランダムに振る\n3. Spring物理アニメで「ぴょこ」と着地（damping:14, stiffness:90）\n4. 強調語の下に弧型下線（borderRadius:50% rotate:-1deg）でhand-drawn感\n\nこれだけで「人が編集した感」になる。","60秒MVの章構成（参考用）:\n\nCh1 朝 / Ch2 昼 / Ch3 夕 / Ch4 夜 = 各15秒\n↓\ntitle 3s（夏のかけら）→ 15s × 4章 → reveal 5s（thanks for watching ♡）\n合計 64秒\n\nメタ告白の落としを「ぜんぶ、AIが見てた夢でした」に振ったら、急に余韻が出た。"],"media":["https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4","https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png","https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png","https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png","https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png"],"created":"2026-04-26"},{"id":"2026-04-26-gpt-image2-golden-week-mv","path":"10_X-Marketing/drafts/posts/2026-04-26-gpt-image2-golden-week-mv.md","title":"2026-04-26-gpt-image2-golden-week-mv","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 季節シンクロ + コスト実測 + 体験共有 | 4/26 7:00 or 12:00 |\n| 2 | B 純救済 | 失敗体験告白 + テンプレ配布（プロンプト全文） | 4/27 12:00 |\n| 3 | A 純トレンド | 数字対比（T2Iだけでここまで） | ストック |\n| 4 | A/作品発表 | GW記念作披露・余韻型 | 4/29-5/6 GW期間中 |\n| 5 | B 純救済 | 自然体・淡々報告 | ストック |\n\n---","thread":[],"media":["https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4","https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png","https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png","https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png","https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png"],"created":"2026-04-26"},{"id":"2026-04-26-postcards-from-golden-week","path":"10_X-Marketing/drafts/posts/2026-04-26-postcards-from-golden-week.md","title":"2026-04-26-postcards-from-golden-week","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 季節シンクロ + プロセス透明化 + 体験共有 | 4/26 12:00 or 4/27 7:00 |\n| 2 | B 純救済 | プロンプト全文配布（Stage1+2両方） | 4/28 12:00 |\n| 3 | A 純トレンド | 数字対比（1人 + 65秒 + $5でVlog） | ストック |\n| 4 | C 融合 | 4枚画像セット保存価値 + 質感プロンプト | 4/29 GW初日 |\n| 5 | B 自然体 | 余韻型・淡々報告 | ストック |\n\n---","thread":[],"media":["https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4","https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png","https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png","https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png","https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png"],"created":"2026-04-26"},{"id":"2026-04-25-5posts","path":"10_X-Marketing/drafts/posts/2026-04-25-5posts.md","title":"2026-04-25-5posts","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | テーマ | 痛み | 推奨配信 |\n|---|---|---|---|---|---|\n| 1 | A 純トレンド | 時間プレッシャー＋リスト宣言 | Sora終了18時間前・7モデル用途別ベスト | #2 | 7:00 |\n| 2 | **C 融合（本命）** | 失敗回数告白＋数字対比＋テンプレ配布 | Klingキャラ崩れ × 4Kリリースでも通る型 | #1 | 12:00 |\n| 3 | B 純救済 | コスト実測公開＋公式vs実測対比 | 動画AIクレジット実測（料金表のウソ） | #3 | 21:00 |\n| 4 | B 純救済 | 失敗体験告白＋テンプレ配布 | Vidu Q3 NGワード置換マップ | #4 | ストック |\n| 5 | B 純救済 | 半年絶望→突破物語＋7パターン | Remotion音ズレ × WSL2環境問題 | #5 | ストック |\n\n→ モード配分: A=1 / B=3 / C=1 → **B+C=80%** ✅\n\n---","thread":[],"media":[],"created":"2026-04-25"},{"id":"2026-04-08-p1-seedance-vs-kling-t2v","path":"10_X-Marketing/drafts/posts/2026-04-08-p1-seedance-vs-kling-t2v.md","title":"2026-04-08-p1-seedance-vs-kling-t2v","post_type":"","status":"legacy","quality":"","body":"- プロンプト: 雨の東京路地×ネオン×シネマティック（完全同一）\n- Seedance 1.5 Pro: FAL API, 720p, 5s, 音声あり\n- Kling V3 Pro: FAL API, 1080p, 5s, 音声あり","thread":["Seedance話題だから、Kling V3 Proと同一プロンプトでT2V比較してみた\n\n同じ「雨の東京路地×ネオン」で生成した結果:\n\nSeedance → ネオン反射が鮮明で色が派手。MV映え\nKling → 被写界深度が映画的。フォグの空気感が別格\n\n正直、同じプロンプトでここまでスタイル変わるとは思わなかった\n\n用途で選ぶのが結局一番早い。みんなはどっち派？","検証データ:\nSeedance 1.5 Pro: 720p/24fps/音声あり/5s\nKling V3 Pro: 1080p/24fps/音声あり/5s\n\n解像度はKlingが上。ただSeedanceの雨反射の質感は720pでもかなり良い。2.0がRunwayで無制限になったから、次はそっちも比較してみたい"],"media":[],"created":"2026-04-08"},{"id":"2026-04-08-p4-ai-video-flag","path":"10_X-Marketing/drafts/posts/2026-04-08-p4-ai-video-flag.md","title":"2026-04-08-p4-ai-video-flag","post_type":"","status":"legacy","quality":"","body":"---","thread":["ちなみに現時点で気になるポイント:\n\n・Topazアプスケ後もAI判定されるのか\n・Remotionで編集した動画は？\n・実写+AI合成のハイブリッドは？\n\n判定基準がどこまで精密かで、影響の大きさが全然変わりそう。","補足:\n\n・YouTube/TikTokは既にAIラベル義務化の流れ\n・Xが自動判定に踏み切ったのは一歩先\n・クリエイター側は「隠す」より「活かす」にシフトしたほうが健全\n\n透明性の波は止まらないと思う。","考えてみると:\n\n・写真加工アプリも最初は「加工=ズルい」って言われてた\n・今は誰もフィルター使うことに抵抗ない\n・AI動画も同じ道をたどる気がする\n\n5年後には「AI使ってない方が珍しい」になってるかも。"],"media":[],"created":"2026-04-08"},{"id":"2026-04-07-P1-seedance2-multiref","path":"10_X-Marketing/drafts/posts/2026-04-07-P1-seedance2-multiref.md","title":"2026-04-07-P1-seedance2-multiref","post_type":"","status":"legacy","quality":"","body":"- https://x.com/YaseenK7212/status/2041008659031830645 (❤️2,411 🔁249 🔖779 👀52k)\n- https://x.com/IqraSaifiii/status/2041160745778585662 (❤️102 🔁19 🔖83 👀6k)\n- https://x.com/KakuDrop/status/2041085748401918462 (❤️83 🔖27 👀15k)","thread":["検証メモ:\n\n・リファレンス3枚: 一貫性70%くらい\n・リファレンス5枚(3面図+表情2枚): 90%近い\n・omni reference: 服装・髪色までほぼ維持\n\nVidu Q3のR2Vと比べると、動きの自然さはSeedanceが上。\n顔の精度はViduが上。用途で使い分けが良さそう。"],"media":[],"created":"2026-04-07"},{"id":"2026-04-07-P2-nb2-kling-workflow","path":"10_X-Marketing/drafts/posts/2026-04-07-P2-nb2-kling-workflow.md","title":"2026-04-07-P2-nb2-kling-workflow","post_type":"","status":"legacy","quality":"","body":"- https://x.com/markproduct/status/2041116651685589297 (❤️344 🔁20 🔖385 👀24k)\n- https://x.com/viktoroddy/status/2040766748677333161 (❤️443 🔖416 👀18k)","thread":["コスト内訳:\n\n・NB2 Edit: $0.03/枚（FAL MCP経由）\n・Kling 3.0 R2V: 無料66cr/日で2-3本\n・Remotion編集: $0（ローカル）\n・音声: Gemini TTS $0.05\n\n60秒の映像が$0.11で作れる。\n1年前は同じクオリティに$50かかってた。","Klingのプロンプトで効くコツ:\n\n・カメラワークを最初に書く\n・感情の変化を時間軸で指定\n・環境光の描写を入れる\n・「cinematic, 8K」より具体的な演出意図\n\nプロンプト設計スキルで自動生成してるけど、\n手動でも↑を意識するだけで別物になる。"],"media":[],"created":"2026-04-07"}],"video_releases":[],"money":{"revenue_months":[{"month":"2026-04","pillars":{"instructor":"¥10,000","contract":"—","brain":"—","note":"—"},"total":10000,"goal":null,"rate":"—"},{"month":"2026-05","pillars":{"instructor":"¥80,000","contract":"¥20,000 (AIPET demo)","brain":"—","note":"—"},"total":100000,"goal":null,"rate":"—"},{"month":"2026-06","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":120000,"rate":null},{"month":"2026-07","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":400000,"rate":null},{"month":"2026-08","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":500000,"rate":null}],"deals":[{"name":"ソフビ案件 (3D化)","client":"グローバルハーモニー(篠崎功)","stage":"提案","quote":180000,"confirmed":null,"next_action":"[[ask_kit_202607]] ASK1 を 7/3 に X DM 送信 (添付=ケローネン3Dキャプチャ1点)","updated":"2026-07-02"},{"name":"PixVerse Originals","client":"PixVerse (creator@pixverse.ai)","stage":"lead","quote":null,"confirmed":null,"next_action":"[[ask_kit_202607]] ASK6 を 7/9 に送信 (シリーズ名のみ要記入)","updated":"2026-07-02"}],"conversions":[],"cpp":{"summary_lines":["PixVerse CPP 専用台帳ファイルは vault 未作成 (pixverse_cpp_ledger.md 不在) — 締切は .claude/skills/pixverse-cpp-pipeline/SKILL.md の固定要件から算出","毎週日曜 23:59 UTC 提出 / #pixversecpp + @PixVerse タグ必須 / 30%以上PixVerse制作"],"next_deadline_utc":"2026-07-05T23:59:00+00:00"}},"counts":{"approve_wait":13,"onetap_wait":1}};
+const DATA = {"generated_at":"2026-07-06T09:42:12.867025+09:00","today":"2026-07-06","x_drafts":[{"id":"2026-05-20-aiehon-style-3patterns","path":"10_X-Marketing/drafts/posts/2026-05-20-aiehon-style-3patterns.md","title":"2026-05-20-aiehon-style-3patterns","post_type":"","status":"draft","quality":"","body":"え、トーキングヘッド動画、まだ画角固定で作ってない…？！\n\nAI喋り動画で5秒以上飽きさせない黄金値は\n「画角変化 ±30」だよ。\nアップ=130 / 引き=70 を 5-7秒ごとに交互。\n10秒に1回は画像インサートも入れる。テストにでます。\n\n[画像: before/after 2枚並列 — 固定画角 vs ±30振り]","thread":["3日間422で詰んでた。原因これだった。\n\n❌ wrangler r2 object put ← 個別ファイルだとpublic URLに反映されず404\n↓\n✅ rclone copy file r2:bucket/ で解決\n\n公式CLIなのにバグってる。同じ症状で詰んだ人いる？\n\n[画像: エラーログ before / 成功 after の2枚]"],"media":[],"created":"2026-05-20"},{"id":"2026-06-11-grok-v15-cinematic","path":"10_X-Marketing/drafts/posts/2026-06-11-grok-v15-cinematic.md","title":"2026-06-11-grok-v15-cinematic","post_type":"verification","status":"review","quality":"","body":"Grok Imagine の動画v1.5、英語圏だと話題なのに日本語の検証はまだ少ない。\n気になって回してみたら、I2V専用で duration 15 がそのまま通る。15秒・720p、しかも音声トラックまで一緒に出てくる。\n雨のネオン街で刀を構えるカット、動きが滑らかで破綻しなかった。\n次は芝居＋セリフでも試したい。","thread":["作り方はシンプル。\n1. Grok Imagine T2I で 16:9 の元画像(サイバーパンク・ネオン・被写体1体)\n2. その1枚を Grok Imagine Video v1.5 (I2V) に渡す\n3. プロンプトは「動き＋カメラ＋タイミング」中心に簡潔(duration 15 / 720p)\n※参照は画像1枚のみ。複数キャラ参照が要るなら Seedance 2.0 R2V か Vidu Q3。","詰まりやすい点:\n・出力アスペクトは入力画像の比に追従する。16:9が欲しいなら16:9画像を入れる(縦絵を入れると縦動画になる)\n・音声は出るけど日本語TTSの精度は要確認。気になれば ElevenLabs/Gemini TTS で作り直し→lipsync差し替え","このクオリティが画像1枚＋1プロンプトで出るのは普通に便利。\n次はキャラの芝居＋セリフ尺(10秒前後)で、A-roll候補になるか試したい。"],"media":[],"created":"2026-06-11"},{"id":"2026-06-12-ai-cannot-write-folder","path":"10_X-Marketing/drafts/posts/2026-06-12-ai-cannot-write-folder.md","title":"2026-06-12-ai-cannot-write-folder","post_type":"rescue","status":"review","quality":"","body":"Obsidianに「AIが書き込めないフォルダ」をhookで作ってみた。\n\nAIのノートと手書きメモが混ざると「これ自分の経験だっけ?」が分からなくなる。\n\nで、256ノートを監査して物理分離したら、発信素材の純度が別物になった✍️\n\nAIメモと自分のメモ、分けてる?","thread":["ちなみに分離した後、AIに「離れたノート2枚を強制的に掛け合わせて仮説を出す」スキルを足したら、今朝さっそく自分では思いつかない接続を提案してきた。手書き知見が混ざってないからこそ、掛け算の出どころが信用できる。","ちなみに分離した後、AIに「離れたノート2枚を強制的に掛け合わせて仮説を出す」スキルを足したら、今朝さっそく自分では思いつかない接続を提案してきた。手書き知見が混ざってないからこそ、掛け算の出どころが信用できる。"],"media":["T","O","D",":"," ","p","a","e","r","b","n","-","i","f","o","g","h","c","で","『","3","層","分","離","』","図","解","1","枚","(","0","_","N","t","s","/","A","I","L","k","の","構","造",")"],"created":"2026-06-12"},{"id":"2026-06-12-course-launch-wave1","path":"10_X-Marketing/drafts/posts/2026-06-12-course-launch-wave1.md","title":"2026-06-12-course-launch-wave1","post_type":"launch","status":"review","quality":"","body":"AIで作った動画が、なぜか毎回\"ホームビデオ\"っぽくなる——あれ、センスの問題じゃない。\n\nプロ品質との分岐点は、画づくりより前の「設計（カット割り・カメラ・一貫性の固定）」にある。生成のガチャを、設計で殺せる。\n\n何が分岐点だったかを言語化してみた。\n\nあなたの動画が\"素人っぽく見える\"のは、どの瞬間だと思いますか？","thread":[],"media":[],"created":"2026-06-12"},{"id":"2026-06-15-daily-1-face-consistency-rescue","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-1-face-consistency-rescue.md","title":"2026-06-15-daily-1-face-consistency-rescue","post_type":"rescue","status":"review","quality":"4/5","body":"キャラの顔が長尺で崩れる問題、同じ条件で参照画像だけ変えて並べてみた。\n\n正面の\"顔NG\"画像を参照に渡す: 10本中8本が崩れる。\n後ろ姿1枚 + 手のみ1枚に差し替える: 10本中1本まで減った。\n\n崩れるのはモデルじゃなくて参照のほうだったかも。\nチェックは図解にまとめておいた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","5","7","2","q","4","x","Q","u","T","o","N","O","S","U","_","n","I","E","g","]","https://v3b.fal.media/files/b/0a9e57d2/qqmva4xQhuT3oNO44dS9U_unIEoN4u.png"],"created":"2026-06-15"},{"id":"2026-06-15-daily-2-agent-delegation-tips","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-2-agent-delegation-tips.md","title":"2026-06-15-daily-2-agent-delegation-tips","post_type":"tips","status":"review","quality":"4/5","body":"AIエージェントへの丸投げで毎回ブレてた頃、効いたのは小さい4手だった。\n\n①任せる前に\"完了条件\"を1行で書く\n②品質チェックは$0の目視ゲートを挟む\n③ルールはhookで自動強制(書くだけは効かない)\n④作る役と評価する役を分ける\n\n知らないと毎回やり直しになるやつ。図解に置いた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","5","7","R","M","X","A","T","-","F","4","G","j","P","Q","J","E","_","Z","O","8","n","g","]","https://v3b.fal.media/files/b/0a9e57d9/RMsXAT-fF4G3a-vjPQ5JE_v9ZOZ83v.png"],"created":"2026-06-15"},{"id":"2026-06-15-daily-3-seedance-motiongraphics","path":"10_X-Marketing/drafts/posts/2026-06-15-daily-3-seedance-motiongraphics.md","title":"2026-06-15-daily-3-seedance-motiongraphics","post_type":"verification","status":"review","quality":"4/5","body":"Seedanceでモーショングラフィックス、文字がガタつくのを8秒1本で詰めてた。\n\nカメラ指示を1本に1個まで、と決めて時間で割ったら安定した。\n\n0-2s:光のスイープ / 2-5s:文字がカチッとはまってラックフォーカスで合焦 / 5-8s:微ドリーイン\n\nt2vだけ・無音。プロンプト全文は下に置いておく。","thread":[],"media":["https://v3b.fal.media/files/b/0a9e57b2/C3KiP6tCAxYJ2Rl3g-xO7_video.mp4"],"created":"2026-06-15"},{"id":"2026-06-15-x-draft-automation","path":"10_X-Marketing/drafts/posts/2026-06-15-x-draft-automation.md","title":"2026-06-15-x-draft-automation","post_type":"rescue","status":"queued","quality":"","body":"Xの投稿、毎朝ネタを考える時間がなくて気づけば1週間止まってた。\n原因は「書く」工程まで自分で抱えてたこと。続かないのは意志じゃなく仕組みの問題。\n今は知見メモから下書きまでAIに任せて、朝は承認するだけ。投稿はアプリでワンタップ。\n自動投稿はしてない。最後に人が見る一拍は残したい。","thread":[],"media":[],"created":"2026-06-15"},{"id":"2026-06-16-daily-1-handfix-anime-keyframe","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-1-handfix-anime-keyframe.md","title":"2026-06-16-daily-1-handfix-anime-keyframe","post_type":"rescue","status":"review","quality":"4/5","body":"実写系のAI動画で手と物理がよく崩れて、テイクを何度も捨ててた。\n\nで、自分が崩しやすかったのは①素早い手の動き ②接触・衝突の瞬間 の2か所だった。\n\nこの2か所を避ける動き設計にして、難しいカットはアニメ調へ寄せたら歩留まりが上がった。\n\n崩れやすい箇所と回避の対応表、図解に置いた。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","7","6","g","z","K","J","Z","Q","Y","R","H","y","k","C","_","n","w","]","https://v3b.fal.media/files/b/0a9e76fb/3gz7K6JZQY6vRHsYgykCQ_CynRwHin.png"],"created":"2026-06-16"},{"id":"2026-06-16-daily-2-seedance-start-end-morph","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-2-seedance-start-end-morph.md","title":"2026-06-16-daily-2-seedance-start-end-morph","post_type":"verification","status":"review","quality":"4/5","body":"「最初と最後だけ決めれば動画」テク、t2vだと中間だけ急にワープすることがある。\n\n効いたのは、始点と終点を別カット扱いにしないこと。Seedance 2.0のt2vで変化を\"1本の連続動作\"として時間セグメントで書くと今回は中間が繋がった。カメラも1つに絞る。\n\nプロンプトは下に。2枚補間派? t2v派?","thread":[],"media":["https://v3b.fal.media/files/b/0a9e76f5/tvFaswkT-RoJb-ESl5eJ4_video.mp4"],"created":"2026-06-16"},{"id":"2026-06-16-daily-3-agent-irreversible-approval","path":"10_X-Marketing/drafts/posts/2026-06-16-daily-3-agent-irreversible-approval.md","title":"2026-06-16-daily-3-agent-irreversible-approval","post_type":"tips","status":"review","quality":"4/5","body":"AIエージェントに作業を任せる時、どこで人間が止まるかを決めてないと事故るな、と最近の話題で再確認した。\n\nまず止めるべき代表例は①送信(メール/DM) ②削除 ③決済 の不可逆な操作。\n\nポイントは「会話で確認させる」じゃなく、ツール側で実行直前に人を挟むこと。会話内の承認ログはAIが生成できてしまう。\n\n止めどころの切り分け、図解にした。","thread":[],"media":["[","\"","h","t","p","s",":","/","v","3","b",".","f","a","l","m","e","d","i","0","9","7","6","Q","k","S","-","g","Y","c","T","L","P","r","y","R","F","A","q","_","O","5","J","K","n","]","https://v3b.fal.media/files/b/0a9e76fd/vQktS-gYcTLPryRFRAqqP_6iO5JgK6.png"],"created":"2026-06-16"},{"id":"2026-07-03-daily-1-face-consistency-refs","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-1-face-consistency-refs.md","title":"2026-07-03-daily-1-face-consistency-refs","post_type":"rescue","status":"review","quality":"4/5","body":"「キャラ登録したのに顔が毎回変わる」という声をSora2界隈で見かけた。自分も60秒超の物語で148クリップ回した時、同じ壁にぶつかった。効いたのは参照の渡し方で、1枚抜き参照をやめてシート+4面図を毎回セットで渡す。制作ログ上では別人化が減った感触がある。手順は図解に👇","thread":[],"media":["[","]"],"created":"2026-07-03"},{"id":"2026-07-03-daily-2-seedance25-onetake","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-2-seedance25-onetake.md","title":"2026-07-03-daily-2-seedance25-onetake","post_type":"verification","status":"review","quality":"4/5","body":"中国圏でSeedance 2.5の予告が出てた(30秒ワンショット対応の話も)。手前の2.0でワンテイク風にどこまで寄せられるか検証。このクリップで効いたのは ①遮蔽物の通過で場面を繋ぐ ②被写体1人を追い続ける ③カメラ速度を一定に保つ、の3つ。プロンプト全文はリプ欄に👇","thread":["(Phase 3 で x-seedance-lab 生成後に記載)"],"media":["null"],"created":"2026-07-03"},{"id":"2026-07-03-daily-3-claudecode-remotion-zeroedit","path":"10_X-Marketing/drafts/posts/2026-07-03-daily-3-claudecode-remotion-zeroedit.md","title":"2026-07-03-daily-3-claudecode-remotion-zeroedit","post_type":"verification","status":"review","quality":"4/5","body":"自分の検証では、キャラ画像1枚からMV完成まで約30分。手編集はほぼナシで最終チェックだけ人間。映像はSeedance、編集はRemotion、指揮はClaude Code。Xでも同様の事例が増えてきた。自分は npx skills add remotion-dev/skills から始めた。最初の3歩は図解に👇","thread":[],"media":["[","]"],"created":"2026-07-03"},{"id":"2026-07-03-vidu-q3-multiline-refs","path":"10_X-Marketing/drafts/posts/2026-07-03-vidu-q3-multiline-refs.md","title":"2026-07-03-vidu-q3-multiline-refs","post_type":"rescue","status":"review","quality":"3/5","body":"AI動画でキャラが毎回別人になる問題、参照を複数渡す方式がだいぶ効く。7/2のVidu Q3告知でも複数参照キャラ固定や音声同期が前面に出てた。自分も1枚参照だと別人化してたけど、シート+4面図の束で安定しやすくなった。崩れる人は参照の渡し方から見直すと早いかも🎬","thread":[],"media":[],"created":"2026-07-03"},{"id":"2026-05-29-data-driven-gap-batch","path":"10_X-Marketing/drafts/posts/2026-05-29-data-driven-gap-batch.md","title":"2026-05-29-data-driven-gap-batch","post_type":"post-drafts","status":"legacy","quality":"","body":"Vidu Q3、泣き顔のシーンだけ何回投げても生成拒否されて、半年くらい放置してた。\n\n犯人は \"tears\" \"trembling\" みたいな感情語。ネガティブ表現がフィルタで弾かれてたっぽい。\n\n「光をためた瞳」みたいに前向きに言い換えたら、普通に通るようになった。\n\n同じところで止まってた人、プロンプト側を疑うと早いかも。","thread":["完全プロンプト（コピペ可）:\n\n[ここにSeedance 2.0 R2Vの実プロンプト全文を貼る]\n\nモデル: Seedance 2.0 R2V\n参照: キャラ正面1枚 + 背景1枚\n出力: 1080p / 5s\nコツ: 動詞は1つに絞ると破綻しにくい","AI動画作ってて、いちばん時間が溶けるのってどこだろう。\n\n・プロンプトの試行錯誤\n・キャラの一貫性キープ\n・モデル選びと課金管理\n・書き出し/編集まわり\n\n自分は最近ずっと「一貫性」なんだけど、みんなどう？"],"media":[],"created":"2026-05-29"},{"id":"2026-05-04-gpt-image2-short-drama-4walls","path":"10_X-Marketing/drafts/posts/2026-05-04-gpt-image2-short-drama-4walls.md","title":"2026-05-04-gpt-image2-short-drama-4walls","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | フック | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 4つの壁を1枚チェックリストにまとめる救済図解 | 5/4 12:00 or 5/5 7:00 |\n| 2 | B 純救済 | キャラ一貫性に絞った深掘り（参照添付 + 新規チャット再投） | 5/5 12:00 |\n| 3 | B 純救済 | 出力ムラを潰すハイブリッド（GPT Image 2 → NB2 Edit） | ストック |\n\n---","thread":[],"media":["null","図解1【生成済】: 「GPT Image 2でショートドラマ ぶつかる4つの壁」チェックリスト","図解2【未着手】: Before/After（参照なし4シーン顔バラバラ → 参照あり統一）visual-director発注候補","https://v3b.fal.media/files/b/0a98d20f/68MFU35mewvmsMZDMS24p_L5ROcmuE.png"],"created":"2026-05-04"},{"id":"2026-04-26-existing-summer-soft-vlog","path":"10_X-Marketing/drafts/posts/2026-04-26-existing-summer-soft-vlog.md","title":"2026-04-26-existing-summer-soft-vlog","post_type":"post-drafts-with-reply-chain","status":"legacy","quality":"","body":"AI動画にテキスト入れる時、毎回デジタル感が出てた。\n\nRemotion + Google Fonts の Caveat (英語手書き) と Klee One (日本語やわらか) を重ねて、\nwashi tape ・ハッシュタグステッカー・微回転（-2°〜+5°）で、Instagram旅Vlogみたいな手書き編集に振った。\n\n「夏のかけら」というMVを置いておきます。\n画像とプロンプトはリプ欄に。","thread":["4章のヒーロー画像（GPT Image 2 で T2I 生成）。\n朝の空港 / 古宇利の海 / 壺屋やちむん通り / サンセットビーチ。\n4枚とも Kodak Portra 400 + Fujifilm Pro 400H 質感プリセットで光が揃う。","4章のGPT Image 2プロンプト、共通部品＋章別パートで構成しました。\n\n▼ 共通質感プリセット（全章末尾に貼る）\n\"Faded Kodak Portra 400 + Fujifilm Pro 400H aesthetic, candid smartphone snapshot, handheld slight motion blur, fine grain, 35mm lens feel, creamy soft skin, milky highlights, slightly tilted composition. Photo-realistic, NOT illustration.\"\n\n▼ Ch1 朝・那覇空港 (5:47)\n\"Young Japanese couple at Naha Airport at 5:47 AM dawn. Soft golden first light through floor-to-ceiling windows. Girl in oversized white linen shirt holding iced latte. Boy in cream tee with navy cap backwards. Empty terminal, faded JAL/ANA signage softly blurred.\"\n\n▼ Ch2 昼・古宇利ビーチ (13:22)\n\"Same couple on Kouri Beach at 1:22 PM. Bright cobalt-blue Okinawan ocean, vivid white sand. Selfie angle: boy in front (close-up smile), girl walking toward water in background, white loose tee tucked into denim shorts, hair flying. Bright midday sun, palm shadows, ocean blue saturation pulled cyan.\"\n\n▼ Ch3 夕・壺屋やちむん通り (17:45)\n\"Same couple holding hands walking down a narrow Tsuboya pottery alley in Naha at 5:45 PM golden hour. Vintage red Coca-Cola vending machine glowing on the left, weathered shisa stone lion guardian on the wall. Honey-orange light, long shadows. Girl in white floral sundress, boy in black tee + cargo shorts.\"\n\n▼ Ch4 夜・サンセットビーチ (22:03)\n\"Same couple in cotton yukata (girl mint-wave / boy navy-stripe) sitting on dark sand at Sunset Beach at 10:03 PM. Both holding senko-hanabi sparklers, golden sparks falling. Distant moon over Pacific, paper lanterns on a fishing boat far out. Cinestill 800T + Kodak Portra 800 night film, halation around sparkler glow, deep teal shadows.\"\n\nquality=high / image_size=portrait_16_9 / 4枚並列で約2分・$0.20 でした。","Vlog風オーバーレイの仕掛けは @remotion/google-fonts で5本のフォントをロードするだけ:\n\nimport { loadFont as loadCaveat } from '@remotion/google-fonts/Caveat';\nimport { loadFont as loadKleeOne } from '@remotion/google-fonts/KleeOne';\nimport { loadFont as loadHachi } from '@remotion/google-fonts/HachiMaruPop';\n\n▼ 役割分担\n- Caveat → 英字手書き（dates, hashtags, EN副題）\n- KleeOne → 日本語やわらか毛筆（メインキャプション）\n- HachiMaruPop → 丸文字ポップ吹き出し（中央の「ついた〜」「ぶらぶら」）\n\n▼ 人間味の演出（4つだけ）\n1. washi tape: rgba(248,215,165,0.55) を1枚敷いて transform: rotate(2deg)\n2. 全要素に -2°〜+5° の微回転をランダムに振る\n3. Spring物理アニメで「ぴょこ」と着地（damping:14, stiffness:90）\n4. 強調語の下に弧型下線（borderRadius:50% rotate:-1deg）でhand-drawn感\n\nこれだけで「人が編集した感」になる。","60秒MVの章構成（参考用）:\n\nCh1 朝 / Ch2 昼 / Ch3 夕 / Ch4 夜 = 各15秒\n↓\ntitle 3s（夏のかけら）→ 15s × 4章 → reveal 5s（thanks for watching ♡）\n合計 64秒\n\nメタ告白の落としを「ぜんぶ、AIが見てた夢でした」に振ったら、急に余韻が出た。"],"media":["https://v3b.fal.media/files/b/0a97bab8/r9Gl_APme3OvNxJpPRP-8_existing_summer_mv_vlog.mp4","https://v3b.fal.media/files/b/0a97bab5/bfk7Lb95NJOtGzlFlkzfH_ch1_airport_dawn.png","https://v3b.fal.media/files/b/0a97bab6/3ItFKf7LtsXeKAit8q1jf_ch2_cobalt_beach.png","https://v3b.fal.media/files/b/0a97bab7/lFPssYIiBY4wNSOFZPITw_ch3_amber_alley.png","https://v3b.fal.media/files/b/0a97bab7/wYU_sMAHXRMBKuPgjY8FE_ch4_sparkler_night.png"],"created":"2026-04-26"},{"id":"2026-04-26-gpt-image2-golden-week-mv","path":"10_X-Marketing/drafts/posts/2026-04-26-gpt-image2-golden-week-mv.md","title":"2026-04-26-gpt-image2-golden-week-mv","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 季節シンクロ + コスト実測 + 体験共有 | 4/26 7:00 or 12:00 |\n| 2 | B 純救済 | 失敗体験告白 + テンプレ配布（プロンプト全文） | 4/27 12:00 |\n| 3 | A 純トレンド | 数字対比（T2Iだけでここまで） | ストック |\n| 4 | A/作品発表 | GW記念作披露・余韻型 | 4/29-5/6 GW期間中 |\n| 5 | B 純救済 | 自然体・淡々報告 | ストック |\n\n---","thread":[],"media":["https://v3b.fal.media/files/b/0a97babc/VHCTrWjjJ-eiv9HqdTzIA_golden_week_mv.mp4","https://v3b.fal.media/files/b/0a97a5eb/oDEhxJ9brw5uHMPOaWn6y_ElMFI0Q4.png","https://v3b.fal.media/files/b/0a97a5ec/N46vHXi_tWxKTxf3AzDbt_rS3IC7Ih.png","https://v3b.fal.media/files/b/0a97a5ed/ExiIKe6WYadGA0cWy6xxq_Qgci9Bwx.png","https://v3b.fal.media/files/b/0a97a5ed/PCxAFxDzd_Q0jz8AUtCdQ_yYv6Kfyd.png"],"created":"2026-04-26"},{"id":"2026-04-26-postcards-from-golden-week","path":"10_X-Marketing/drafts/posts/2026-04-26-postcards-from-golden-week.md","title":"2026-04-26-postcards-from-golden-week","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | 推奨配信 |\n|---|---|---|---|\n| 1 | **C 融合（本命）** | 季節シンクロ + プロセス透明化 + 体験共有 | 4/26 12:00 or 4/27 7:00 |\n| 2 | B 純救済 | プロンプト全文配布（Stage1+2両方） | 4/28 12:00 |\n| 3 | A 純トレンド | 数字対比（1人 + 65秒 + $5でVlog） | ストック |\n| 4 | C 融合 | 4枚画像セット保存価値 + 質感プロンプト | 4/29 GW初日 |\n| 5 | B 自然体 | 余韻型・淡々報告 | ストック |\n\n---","thread":[],"media":["https://v3b.fal.media/files/b/0a97babb/W33pKWI0VtVLxNV45s4KS_golden_week_trip_vlog.mp4","https://v3b.fal.media/files/b/0a97b0cd/4Vu2esC8Fwho6JWvnhpWA_Q5HBrzCA.png","https://v3b.fal.media/files/b/0a97b0cd/5IuTBfHyLmjNZAk94aSGR_c3R2tr3v.png","https://v3b.fal.media/files/b/0a97b0cd/ooMUVqDfOn-W5_46S1cob_lNJ5wBgV.png","https://v3b.fal.media/files/b/0a97b0ce/xzLT_rROnO_RraVrWOHMn_A6koH83k.png"],"created":"2026-04-26"},{"id":"2026-04-25-5posts","path":"10_X-Marketing/drafts/posts/2026-04-25-5posts.md","title":"2026-04-25-5posts","post_type":"post-drafts","status":"legacy","quality":"","body":"| # | モード | バズフック型 | テーマ | 痛み | 推奨配信 |\n|---|---|---|---|---|---|\n| 1 | A 純トレンド | 時間プレッシャー＋リスト宣言 | Sora終了18時間前・7モデル用途別ベスト | #2 | 7:00 |\n| 2 | **C 融合（本命）** | 失敗回数告白＋数字対比＋テンプレ配布 | Klingキャラ崩れ × 4Kリリースでも通る型 | #1 | 12:00 |\n| 3 | B 純救済 | コスト実測公開＋公式vs実測対比 | 動画AIクレジット実測（料金表のウソ） | #3 | 21:00 |\n| 4 | B 純救済 | 失敗体験告白＋テンプレ配布 | Vidu Q3 NGワード置換マップ | #4 | ストック |\n| 5 | B 純救済 | 半年絶望→突破物語＋7パターン | Remotion音ズレ × WSL2環境問題 | #5 | ストック |\n\n→ モード配分: A=1 / B=3 / C=1 → **B+C=80%** ✅\n\n---","thread":[],"media":[],"created":"2026-04-25"},{"id":"2026-04-08-p1-seedance-vs-kling-t2v","path":"10_X-Marketing/drafts/posts/2026-04-08-p1-seedance-vs-kling-t2v.md","title":"2026-04-08-p1-seedance-vs-kling-t2v","post_type":"","status":"legacy","quality":"","body":"- プロンプト: 雨の東京路地×ネオン×シネマティック（完全同一）\n- Seedance 1.5 Pro: FAL API, 720p, 5s, 音声あり\n- Kling V3 Pro: FAL API, 1080p, 5s, 音声あり","thread":["Seedance話題だから、Kling V3 Proと同一プロンプトでT2V比較してみた\n\n同じ「雨の東京路地×ネオン」で生成した結果:\n\nSeedance → ネオン反射が鮮明で色が派手。MV映え\nKling → 被写界深度が映画的。フォグの空気感が別格\n\n正直、同じプロンプトでここまでスタイル変わるとは思わなかった\n\n用途で選ぶのが結局一番早い。みんなはどっち派？","検証データ:\nSeedance 1.5 Pro: 720p/24fps/音声あり/5s\nKling V3 Pro: 1080p/24fps/音声あり/5s\n\n解像度はKlingが上。ただSeedanceの雨反射の質感は720pでもかなり良い。2.0がRunwayで無制限になったから、次はそっちも比較してみたい"],"media":[],"created":"2026-04-08"},{"id":"2026-04-08-p4-ai-video-flag","path":"10_X-Marketing/drafts/posts/2026-04-08-p4-ai-video-flag.md","title":"2026-04-08-p4-ai-video-flag","post_type":"","status":"legacy","quality":"","body":"---","thread":["ちなみに現時点で気になるポイント:\n\n・Topazアプスケ後もAI判定されるのか\n・Remotionで編集した動画は？\n・実写+AI合成のハイブリッドは？\n\n判定基準がどこまで精密かで、影響の大きさが全然変わりそう。","補足:\n\n・YouTube/TikTokは既にAIラベル義務化の流れ\n・Xが自動判定に踏み切ったのは一歩先\n・クリエイター側は「隠す」より「活かす」にシフトしたほうが健全\n\n透明性の波は止まらないと思う。","考えてみると:\n\n・写真加工アプリも最初は「加工=ズルい」って言われてた\n・今は誰もフィルター使うことに抵抗ない\n・AI動画も同じ道をたどる気がする\n\n5年後には「AI使ってない方が珍しい」になってるかも。"],"media":[],"created":"2026-04-08"},{"id":"2026-04-07-P1-seedance2-multiref","path":"10_X-Marketing/drafts/posts/2026-04-07-P1-seedance2-multiref.md","title":"2026-04-07-P1-seedance2-multiref","post_type":"","status":"legacy","quality":"","body":"- https://x.com/YaseenK7212/status/2041008659031830645 (❤️2,411 🔁249 🔖779 👀52k)\n- https://x.com/IqraSaifiii/status/2041160745778585662 (❤️102 🔁19 🔖83 👀6k)\n- https://x.com/KakuDrop/status/2041085748401918462 (❤️83 🔖27 👀15k)","thread":["検証メモ:\n\n・リファレンス3枚: 一貫性70%くらい\n・リファレンス5枚(3面図+表情2枚): 90%近い\n・omni reference: 服装・髪色までほぼ維持\n\nVidu Q3のR2Vと比べると、動きの自然さはSeedanceが上。\n顔の精度はViduが上。用途で使い分けが良さそう。"],"media":[],"created":"2026-04-07"},{"id":"2026-04-07-P2-nb2-kling-workflow","path":"10_X-Marketing/drafts/posts/2026-04-07-P2-nb2-kling-workflow.md","title":"2026-04-07-P2-nb2-kling-workflow","post_type":"","status":"legacy","quality":"","body":"- https://x.com/markproduct/status/2041116651685589297 (❤️344 🔁20 🔖385 👀24k)\n- https://x.com/viktoroddy/status/2040766748677333161 (❤️443 🔖416 👀18k)","thread":["コスト内訳:\n\n・NB2 Edit: $0.03/枚（FAL MCP経由）\n・Kling 3.0 R2V: 無料66cr/日で2-3本\n・Remotion編集: $0（ローカル）\n・音声: Gemini TTS $0.05\n\n60秒の映像が$0.11で作れる。\n1年前は同じクオリティに$50かかってた。","Klingのプロンプトで効くコツ:\n\n・カメラワークを最初に書く\n・感情の変化を時間軸で指定\n・環境光の描写を入れる\n・「cinematic, 8K」より具体的な演出意図\n\nプロンプト設計スキルで自動生成してるけど、\n手動でも↑を意識するだけで別物になる。"],"media":[],"created":"2026-04-07"},{"id":"2026-04-07-P4-ai-video-limits","path":"10_X-Marketing/drafts/posts/2026-04-07-P4-ai-video-limits.md","title":"2026-04-07-P4-ai-video-limits","post_type":"","status":"legacy","quality":"","body":"- https://x.com/atmoio/status/2041165774740496519 (❤️1,934 🔁332 🔖892 👀109k)","thread":["僕がよくやる回避テク:\n\n・手のアップは避けてバストショットに\n・文字は後からRemotionで合成\n・物理演算が必要なシーンはKling 3.0が安定\n・顔崩壊はリファレンス画像を4枚渡す\n\n知ってるだけで成功率が全然変わる。"],"media":[],"created":"2026-04-07"},{"id":"2026-04-05-P1-kling-vs-veo-free","path":"10_X-Marketing/drafts/posts/2026-04-05-P1-kling-vs-veo-free.md","title":"2026-04-05-P1-kling-vs-veo-free","post_type":"","status":"legacy","quality":"","body":"- Kling viral: https://x.com/GilangR90760584/status/2040065641340911868 (❤️1,083 👀1M)\n- Veo無料化: https://x.com/MustafyOf/status/2040042901288227037 (❤️512 🔖518)\n\n---","thread":["Kling 3.0（無料66cr/日）の強み:\n\n・カメラワーク制御が圧倒的\n・アクション/物理表現が自然\n・10秒まで生成可能\n・無料プランでも4K60fps出力\n\n苦手: 顔の表情の細かい変化、日本語セリフ\n\n僕のメインツール。CM制作でも使ってる🎬","Veo 3.1（Google Vids無料）の強み:\n\n・自然な物理表現（水・布・髪）\n・Google認証だけで即使える\n・ネイティブ音声同期\n・8秒まで生成\n\n苦手: カメラワーク指定の精度\n\n初心者の最初の1本には最適だと思う✨","用途別おすすめ:\n\nアクション/カメラワーク → Kling 3.0\n自然な動き/初心者 → Veo 3.1\n有料でもキャラ一貫性 → Vidu Q3\n\n無料2ツールを「用途で使い分け」するだけで、\n月$0でかなり遊べる。\n\nどっち派？🎬"],"media":[],"created":"2026-04-05"},{"id":"2026-04-05-P2-seedance-jp-workaround","path":"10_X-Marketing/drafts/posts/2026-04-05-P2-seedance-jp-workaround.md","title":"2026-04-05-P2-seedance-jp-workaround","post_type":"","status":"legacy","quality":"","body":"- US/JP制限: https://x.com/bindureddy/status/2040457599376904692 (🔖39)\n- 日本語レビュー: https://x.com/Hoshimiko_AIart/status/2040401464649302295 (🔖202)\n\n---","thread":["① CapCut Dreamina経由\n・メリット: CapCutアプリで完結。編集まで1本道\n・デメリット: UIが英語\n・料金: 無料枠あり\n\n② Pollo経由\n・メリット: Seedance含む複数モデルを一つのUIで\n・デメリット: キューで待つことあり\n・料金: 月$12〜\n\n③ fal.ai MCP経由（自分のメイン）\n・メリット: Claude Codeから自然言語で叩ける\n・デメリット: API従量課金\n・料金: 5秒720p $0.26","日本語セリフの品質を同じ台本で比較してみた:\n\nSeedance 2.0: ★★★☆☆（発音やや不自然）\nVidu Q3: ★★★★☆（安定）\nKling 3.0: ★★☆☆☆（英語寄り）\n\n日本語音声のベストはまだVidu Q3かなという印象。\nSeedance 2.0は映像品質は高いけど、セリフは英語の方が得意🎬"],"media":[],"created":"2026-04-05"},{"id":"2026-04-05-P3-jp-voice-comparison","path":"10_X-Marketing/drafts/posts/2026-04-05-P3-jp-voice-comparison.md","title":"2026-04-05-P3-jp-voice-comparison","post_type":"","status":"legacy","quality":"","body":"- Hoshimiko日本語レビュー: https://x.com/Hoshimiko_AIart/status/2040401464649302295 (🔖202)\n- Seedanceプロンプト: https://x.com/jboogx_creative/status/2040177902118228149 (🔖452)\n- Ryo独自検証データ\n\n---","thread":["日本語セリフ音声品質 詳細比較:\n\nVidu Q3（有料$0.90/10s）\n・発音: ★★★★☆ 日本語ネイティブに近い\n・抑揚: ★★★★☆ 自然な感情表現\n・口パク: ★★★☆☆ やや遅延あり\n\nSeedance 2.0（無料〜$0.26/5s）\n・発音: ★★★☆☆ 英語訛りあり\n・抑揚: ★★☆☆☆ 機械的\n・口パク: ★★★★☆ 同期は良い\n\nKling 3.0（無料66cr/日）\n・発音: ★★☆☆☆ 英語寄り\n・抑揚: ★★☆☆☆ 平坦\n・口パク: ★★★★★ 最も精密","用途別おすすめ（日本語セリフ目的）:\n\n【ストーリー動画/会話劇】 → Vidu Q3\n発音の自然さが物語の没入感に直結\n\n【映像重視/SNSショート】 → Seedance 2.0\n映像品質は最高。セリフは字幕で補完\n\n【アクション/BGM重視】 → Kling 3.0\nセリフより映像・物理演出で魅せる\n\n日本語音声が必要ならVidu Q3が現状の答えかな🎬","日本語セリフを自然にするプロンプトTips:\n\n・カタカナ英語は発音記号で指定\n・感情を英語で添える（\"speaking softly with determination\"）\n・キャラ名を事前定義（名前・声質）\n・セリフは短く切る（10-15文字単位）\n\nこれで品質が一段上がる。\n同じ台本で試してみてほしい🎬"],"media":[],"created":"2026-04-05"},{"id":"2026-04-04-P1-seedance-mcp","path":"10_X-Marketing/drafts/posts/2026-04-04-P1-seedance-mcp.md","title":"2026-04-04-P1-seedance-mcp","post_type":"","status":"legacy","quality":"","body":"- https://x.com/higgsfield/status/2039535191098802315 (❤️2,600 🔖1,386 👀4.3M)\n\n---","thread":[],"media":[],"created":"2026-04-04"},{"id":"2026-04-04-P1-technique-hq","path":"10_X-Marketing/drafts/posts/2026-04-04-P1-technique-hq.md","title":"2026-04-04-P1-technique-hq","post_type":"","status":"legacy","quality":"","body":"- Timeline Markers: @doctorwasif\n- Art World Step-In: @Kling_ai公式\n- Top-View Miniature: @onofumi_AI\n- 品質ブースター: Ryo独自のvocabulary.md知見","thread":["①Timeline Markers（秒数制御 + 明暗演出）\n\nCinematic masterpiece, 8k, professional lighting. 0-3s: slow motion close-up of a young samurai's face, chiaroscuro lighting, rain droplets frozen in mid-air, eyes reflecting firelight, camera slowly pulling back. 3-6s: medium shot, time resumes, samurai draws katana in one fluid motion, cherry blossom petals swirl in golden hour backlight, camera tracks in circular orbit. 6-10s: extreme wide angle, supernatural shockwave erupts from the blade strike, volumetric dust illuminated by ethereal glow, camera rapidly zooms out.\n\nKling V3 Pro / 10秒 / 16:9 / 音声ON","②Art World Step-In 浮世絵版（2D→3D没入トランジション）\n\nCinematic masterpiece, 8k, professional lighting. Camera glides through a dimly lit Japanese art museum, warm spotlights on wooden floors, serene atmosphere. Camera approaches Hokusai's Great Wave ukiyo-e painting in ornate gold frame. As camera crosses the frame threshold, seamless morphing transition: flat brushstrokes dissolve into volumetric 3D ocean. Massive turquoise waves crash with realistic water physics, spray catches golden hour sunlight, Mount Fuji emerges through mist. Camera continues forward, low-angle tracking shot skimming the wave surface.\n\n個人的にこれが一番映画的だった✨","③Top-View Miniature（俯瞰ジオラマ追跡）\n\nCinematic masterpiece, 8k. Extreme overhead top-down view, miniature tilt-shift diorama effect with shallow depth of field bokeh. A delicate glowing golden paper crane flies through an exquisitely detailed miniature Japanese garden. The crane soars over a tiny stone lantern, dips between red maple leaves, circles around a moss-covered rock, then glides across a crystal-clear koi pond where orange fish scatter beneath. Camera smoothly tracks the crane in continuous one-take. Warm afternoon sun creates long miniature shadows. Dust particles float in light beams.","プロンプトの品質を底上げするキーワード:\n\n・cinematic masterpiece, 8k → 全体品質の引き上げ\n・chiaroscuro lighting → ドラマチックな明暗対比\n・volumetric → 霧・光線・煙に立体感\n・golden hour → 黄金色の柔らかい光\n・ethereal glow → 幻想的な発光\n・dust particles → 空気感の演出\n・tilt-shift bokeh → ミニチュア感\n\nこれらを「カメラワーク指定」と組み合わせるのがコツ。\n3本の合計コスト: $1.05（¥158）🎬"],"media":["https://v3b.fal.media/files/b/0a94dc17/ouGunbygGu109BaEq4j6u_output.mp4","https://v3b.fal.media/files/b/0a94dc18/aT2ir9H_5zbSoST0Ytknz_output.mp4","https://v3b.fal.media/files/b/0a94dc19/wDc6SjKLFiGI1PpeMA7s4_output.mp4"],"created":"2026-04-04"},{"id":"2026-04-04-P1-technique-round2","path":"10_X-Marketing/drafts/posts/2026-04-04-P1-technique-round2.md","title":"2026-04-04-P1-technique-round2","post_type":"","status":"legacy","quality":"","body":"- Through-Wall: @techhalla (❤️3,148 🔖2,394 👀4.5M)\n- Time-Freeze: @CharaspowerAI (❤️1,312 🔖1,328)\n- Macro Cherry: Ryo独自（wabi-sabi × cinematography）","thread":["①壁通過ワンテイク\n\nCinematic masterpiece, 8k, professional lighting. Continuous single-take camera smoothly passing through solid walls. Camera starts in a rain-soaked neon Tokyo alley at night, chiaroscuro lighting from flickering signs. Camera glides forward, passes directly through a concrete wall with seamless dissolution effect, enters a steamy ramen kitchen where a chef throws noodles in slow motion, camera continues through steam clouds and another wall, emerging into a serene tatami room where an old samurai meditates by candlelight.\n\nポイント: \"passes through solid wall\" + 各部屋の色温度を変える🎬","②時間停止POV\n\nCinematic masterpiece, 8k, professional lighting. POV first-person walking shot through a frozen moment in time. The entire world is suspended: rain droplets hang motionless in mid-air catching neon light reflections, a woman's hair is frozen mid-flip, a cat leaps between rooftops suspended in space, splashing puddle water forms a crystalline crown shape frozen solid. Camera slowly walks forward through this frozen tableau, weaving between suspended raindrops. Chiaroscuro lighting, golden hour light breaks through storm clouds.\n\nポイント: \"frozen moment in time\" + 具体的な静止物を列挙する✨","③桜マクロ × 侘寂\n\nCinematic masterpiece, 8k. Extreme close-up of a single cherry blossom petal falling in ultra slow motion through beams of golden hour sunlight. Camera tracks the petal as it descends, rotating gently. The petal passes through alternating zones of warm light and cool shadow, creating chiaroscuro contrast. Volumetric god rays stream through branches. The petal lands on a still pond, creating perfectly concentric ripples catching ethereal golden reflections. Dust particles float in sunbeams. Serene, contemplative, Japanese wabi-sabi aesthetic.\n\nポイント: \"wabi-sabi aesthetic\" + 光と影の交互ゾーンで日本的な美意識を演出","プロンプトで「不可能な映像」を作るコツ:\n\n物理法則を破る指示:\n・\"passes through solid wall\" — 壁通過\n・\"frozen moment in time\" — 時間停止\n・\"ultra slow motion\" — 超スロー\n\nそれを映画的にする品質ブースター:\n・chiaroscuro lighting — 明暗のドラマ\n・volumetric god rays — 光線の立体感\n・dust particles — 空気の存在感\n・golden hour — 黄金の光\n\nRound 1と合わせて6技法×プロンプト全文。保存しておくと便利🔖\n6本合計コスト: $2.10（¥315）"],"media":["https://v3b.fal.media/files/b/0a94dc52/W2bNnFR9dFlOE0wJSLzBZ_output.mp4","https://v3b.fal.media/files/b/0a94dc53/C63mxi02apJhNaG_cLKtT_output.mp4","https://v3b.fal.media/files/b/0a94dc53/o4V9mWLFjcjTydrAeUIvg_output.mp4"],"created":"2026-04-04"},{"id":"2026-04-04-P2-claude-video-mcp","path":"10_X-Marketing/drafts/posts/2026-04-04-P2-claude-video-mcp.md","title":"2026-04-04-P2-claude-video-mcp","post_type":"","status":"legacy","quality":"","body":"- https://x.com/om_patel5/status/2039939578694438979 (❤️2,366 🔖5,228)\n- https://x.com/SuguruKun_ai/status/2039997135664648215 (❤️952 🔖1,213)\n\n---","thread":["具体的なフロー:\n\n① NB2 Editでシーン画像生成（$0.03）\n② 同じ画像をKling/Vidu/Veo等に並列I2V送信\n③ FFmpegで品質自動チェック（scene>0.4で破綻検出）\n④ ベストテイク選定\n⑤ Remotionで字幕+エフェクト追加（$0）\n\n60秒アニメの合計コスト: 約$2.73（¥410）\n\nリンクはリプ欄の下に🔗"],"media":[],"created":"2026-04-04"},{"id":"2026-04-04-P3-article-promo","path":"10_X-Marketing/drafts/posts/2026-04-04-P3-article-promo.md","title":"2026-04-04-P3-article-promo","post_type":"x-post","status":"legacy","quality":"","body":"X Article「AI動画生成7モデル完全比較」のプロモーション投稿。\nブックマーク需要が高いテーマなので「保存して見返す」動機を刺激する。\n\n---","thread":["- 図解2（コスト比較グラフ）\n- 図解3（用途別マップ）\n- 参考リンク一覧"],"media":[],"created":"2026-04-04"},{"id":"2026-04-04-P3-overseas-techniques","path":"10_X-Marketing/drafts/posts/2026-04-04-P3-overseas-techniques.md","title":"2026-04-04-P3-overseas-techniques","post_type":"","status":"legacy","quality":"","body":"- Timeline Markers: https://x.com/doctorwasif/status/2039221897116725724 (❤️91 🔖40)\n- Art World Step-In: https://x.com/Kling_ai/status/2038949432985637063 (❤️494 🔖109)\n- Top-View Miniature: https://x.com/onofumi_AI/status/2038213681067274555 (❤️621 🔖385)","thread":["①Timeline Markers:\n「0-3s: handheld medium shot, samurai walks calmly | 3-6s: wind picks up, ground cracks with golden light | 6-10s: supernatural transformation, shockwave, wide angle pull-back」\n\nポイント: 秒数で区切ると、1本の動画内で「静→動→爆発」の感情曲線が作れる。","②Art World Step-In（浮世絵版で検証）:\n「camera pushes through framed ukiyo-e woodblock print, flat painted world transforms into living 3D environment」\n\n浮世絵の大波が3Dで動き出す。日本の名画でやると海外ウケもかなりよさそう✨","③Top-View Miniature:\n「top-down overhead view, miniature scale diorama, tiny paper crane flies through Japanese room, tilt-shift bokeh effect, continuous one-take」\n\nティルトシフトで本物のミニチュアみたいになる。Kling V3の物理表現がここで活きてる。\n\nコスト: 3本で$1.05（¥158）\n全てClaude Code + MCP経由で生成🎬"],"media":["https://v3b.fal.media/files/b/0a94d9fd/FOZgh47rWxdQasO9uavyb_output.mp4","https://v3b.fal.media/files/b/0a94d9fd/tSJf-xUMmdpvZTPqCXJR6_output.mp4","https://v3b.fal.media/files/b/0a94d9fd/0FTK-aHwHHU0_xgc2vvSn_output.mp4"],"created":"2026-04-04"},{"id":"2026-04-04-P4-obsidian-memory","path":"10_X-Marketing/drafts/posts/2026-04-04-P4-obsidian-memory.md","title":"2026-04-04-P4-obsidian-memory","post_type":"","status":"legacy","quality":"","body":"- https://x.com/tom_doerr/status/2039906409387610408 (❤️1,377 🔖2,350)\n\n---","thread":[],"media":[],"created":"2026-04-04"},{"id":"2026-04-03-P2-nb2-kling-workflow","path":"10_X-Marketing/drafts/posts/2026-04-03-P2-nb2-kling-workflow.md","title":"2026-04-03-P2-nb2-kling-workflow","post_type":"","status":"legacy","quality":"","body":"- 元Disney/PrimeVideoクリエイターが「NB画像→Kling動画」のハイブリッドWFを公開\n- 海外で定番化しつつあるが、日本語圏ではまだ解説が少ない\n- Ryoは既にこのフローで制作しており、コスト感も実測済み\n- ソース: https://x.com/drpeepee/status/2039811667979297181\n\n---","thread":[],"media":[],"created":"2026-04-03"},{"id":"2026-04-03-P3-cinema-techniques","path":"10_X-Marketing/drafts/posts/2026-04-03-P3-cinema-techniques.md","title":"2026-04-03-P3-cinema-techniques","post_type":"","status":"legacy","quality":"","body":"同一画像から5種類の映画的カメラワークをプロンプトだけで指定し、\nKling 3.0がどこまで再現できるかを検証。\n海外クリエイター（PrimeVideo/Disney出身者）が始めたアプローチを\n日本語圏で先行検証する。","thread":["①Rack Focus:\n「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」\n\n②Dolly Zoom:\n「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」\n\n③Whip Pan:\n「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」\n\n④Low Angle Tracking:\n「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」\n\n⑤Crane Shot:\n「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」\n\n全てKling V3 Pro / 8秒 / 16:9 / 音声ON\n元画像はNano Banana 2 Editで生成（$0.03）"],"media":[],"created":"2026-04-03"},{"id":"2026-04-03-P4-seedance-landscape","path":"10_X-Marketing/drafts/posts/2026-04-03-P4-seedance-landscape.md","title":"2026-04-03-P4-seedance-landscape","post_type":"","status":"legacy","quality":"","body":"- Seedance 2.0がHiggsfield/OpenArtで正式公開（1.6M views, 1779 likes）\n- Ryoは現時点でSeedance 2.0未使用 → 使用感レビューではなく「業界俯瞰」の切り口\n- Kling 3.0のカメラワーク再現度が高評価継続中\n- 元Disney/PrimeVideoクリエイターがKling検証を始めた（プロ参入の兆候）\n\n---","thread":[],"media":[],"created":"2026-04-03"},{"id":"2026-04-03-cinema-techniques-final","path":"10_X-Marketing/drafts/posts/2026-04-03-cinema-techniques-final.md","title":"2026-04-03-cinema-techniques-final","post_type":"","status":"legacy","quality":"","body":"| # | 技法 | 動画URL | 状態 |\n|---|------|---------|------|\n| 1 | Rack Focus | https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4 | ✅ |\n| 2 | Whip Pan | https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4 | ✅ |\n| 3 | Low Angle Tracking | https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4 | ✅ |\n| 4 | Crane Shot | https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4 | ✅ |\n| 5 | Dolly Zoom | request: 019d5014-81ad-7df2-bc65-f1d6c03364f8 | ⏳生成中 |\n\n元画像: https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png","thread":["使用プロンプト全文（全てKling V3 Pro / 8秒 / 16:9 / 音声ON）\n\n①Rack Focus:\n「rack focus from foreground cherry blossom to character face, slow 2-second transition, cinematic shallow depth of field」\n\n②Dolly Zoom:\n「dolly zoom (vertigo effect), camera moves backward while zooming in on face, background compression effect」\n\n③Whip Pan:\n「whip pan from left to right with motion blur, transitioning from neon signs to reveal character」","④Low Angle Tracking:\n「low angle tracking shot, camera near ground level looking up, puddle reflections, character walks forward」\n\n⑤Crane Shot:\n「crane shot starting at ground level near feet, slowly rises vertically above rooftops, epic scale reveal」\n\n元画像はNano Banana 2 Editで生成（$0.03）\n動画5本の合計コスト: $1.78（¥267）\n\nポイント: カメラワークの名前を英語でそのまま書くのが一番効く✨","検証結果の印象:\n\nCrane Shot → 垂直移動の再現度が一番高い。スケール感も出る\nLow Angle → 地面からの見上げ構図、かなり自然\nRack Focus → ピント移動は効くが速度の細かい制御はまだ粗い\nWhip Pan → 動きは出るがモーションブラーの表現は発展途上\nDolly Zoom → 背景圧縮の再現が最も難しい（挑戦的なプロンプトほど面白い結果に）\n\n映画のカメラワーク用語をそのまま英語で入れると、\nKlingが「あ、これね」って理解してくれる感覚がある。"],"media":["https://v3b.fal.media/files/b/0a9496f7/gWonMnxfj4d3-gOUtAcgU_output.mp4","https://v3b.fal.media/files/b/0a94aff0/B5FR7JRzB6JmyK6yZ5VyV_output.mp4","https://v3b.fal.media/files/b/0a94afe7/_vFfTbBEeOAQZfgoYdPCs_output.mp4","https://v3b.fal.media/files/b/0a94afec/6lAph5KEHQt_NMjC3lWuz_output.mp4","https://v3b.fal.media/files/b/0a9496dd/HRmRGmZoLbQjxCpWj6nRa_Jx5fmGOb.png"],"created":"2026-04-03"},{"id":"2026-04-02-P1-midday","path":"10_X-Marketing/drafts/posts/2026-04-02-P1-midday.md","title":"2026-04-02-P1-midday","post_type":"","status":"legacy","quality":"","body":"Seedance 2.0のOmni-Reference、実際に触ってみた。\n\n参照画像からキャラの特徴をちゃんと拾ってくれるのがすごい。\nSeedance 1.5だと崩れがちだった横顔も、2.0はかなり安定してる。\n\nで、動きの滑らかさが別物になってる😳\n物理シミュレーションの精度が上がった感じ。\n\n検閲がちょっとキツめなので、そこだけ注意。\n\n[添付: 検証デモ動画]","thread":[],"media":[],"created":"2026-04-02"},{"id":"2026-04-02-P2-evening","path":"10_X-Marketing/drafts/posts/2026-04-02-P2-evening.md","title":"2026-04-02-P2-evening","post_type":"","status":"legacy","quality":"","body":"Kling 3.0のラックフォーカス演出、短編に組み込んでみた🎬\n\nプロンプトで「rack focus from foreground to character」と指定すると、\n映画っぽいフォーカス移動が入る。\nマルチショットと組み合わせると、カットの繋がりがかなり自然。\n\nストーリー系はKlingが頭一つ抜けてる印象。\nプロンプト設計次第で演出の幅が広がる。\n\n[添付: 完成映像]","thread":[],"media":[],"created":"2026-04-02"},{"id":"2026-04-02-P4-morning","path":"10_X-Marketing/drafts/posts/2026-04-02-P4-morning.md","title":"2026-04-02-P4-morning","post_type":"","status":"legacy","quality":"","body":"Sora終了から1週間。\n思った以上にKling 3.0とSeedance 2.0に動きが集中してる。\n\nKlingはストーリー演出の制御力、\nSeedanceは物理シミュレーションの滑らかさ、\nそれぞれ明確に得意領域が分かれてきた印象。\n\n次はこの2つを同条件で検証してみたい。\n\n[添付: なし or 勢力図の簡易図解]","thread":[],"media":[],"created":"2026-04-02"},{"id":"2026-04-02-vidu-cpp-promo","path":"10_X-Marketing/drafts/posts/2026-04-02-vidu-cpp-promo.md","title":"2026-04-02-vidu-cpp-promo","post_type":"","status":"legacy","quality":"","body":"- 新規ユーザー限定 初回注文＆初月特別価格\n- Standard $8 / Premium $24.5 / Ultimate $60\n- 招待コード: VIDUINVITES\n- 必須タグ: #Vidu #ViduCPP #ViduDiscount","thread":[],"media":[],"created":"2026-04-02"}],"video_releases":[],"apps":[{"name":"かぞくムービー","icon":"👨‍👩‍👧","desc":"写真・動画から60秒の家族ムービーを自動生成する PWA","url":"https://family-films.pages.dev","group":"public","category":"family","launch":"","source":"Desktop/life/04_Apps/family-films"},{"name":"X投稿プレビュー (旧版)","icon":"📰","desc":"旧 x-preview。投稿候補の全文プレビュー + コピー","url":"https://ryominami.github.io/x-preview/classic.html","group":"public","category":"sns","launch":"","source":"knowledge/10_X-Marketing/generate-preview.py"},{"name":"X Articles プレビュー","icon":"📚","desc":"X長文記事ドラフトのプレビュー","url":"https://ryominami.github.io/x-preview/articles.html","group":"public","category":"sns","launch":"","source":"knowledge/10_X-Marketing/_site/articles.html"},{"name":"メディアDB","icon":"🎞","desc":"制作メディアの一覧データベース","url":"https://ryominami.github.io/x-preview/media-db.html","group":"public","category":"production","launch":"","source":"knowledge/10_X-Marketing/_site/media-db.html"},{"name":"たぱぞうアドバイザー","icon":"📈","desc":"資産運用アドバイザー。Discord知見を日次で蓄積し投資相談に回答 (同一Wi-Fiなら携帯から http://<PC-IP>:8712)","url":"","group":"local","category":"finance","launch":"Desktop\\life\\04_Apps\\tapazou-advisor\\run_app.cmd → http://localhost:8712","source":"Desktop/life/04_Apps/tapazou-advisor"},{"name":"BizCockpit","icon":"🛩","desc":"発信・販売の毎朝ループを1画面4ゾーンに集約する業務司令塔","url":"","group":"local","category":"business","launch":"knowledge\\00_System\\biz_cockpit\\start_cockpit.cmd → http://localhost:8787","source":"knowledge/00_System/biz_cockpit"},{"name":"Swarm Storyboard","icon":"🎬","desc":"チャット駆動の映像制作SaaS (Workbench / Edit Lab / Logo Lab / MV)","url":"","group":"local","category":"production","launch":"cd knowledge/08_Output/_active/swarm-storyboard && npm run dev → http://localhost:3000","source":"knowledge/08_Output/_active/swarm-storyboard"},{"name":"スキルダッシュボード","icon":"🗺","desc":"スキル棚卸し + 映像WFマップ (Skill使用のたび自動更新)","url":"","group":"local","category":"system","launch":"knowledge/00_System/skill_ops/skill_dashboard.html をブラウザで開く","source":"knowledge/00_System/skill_ops"}],"money":{"revenue_months":[{"month":"2026-04","pillars":{"instructor":"¥10,000","contract":"—","brain":"—","note":"—"},"total":10000,"goal":null,"rate":"—"},{"month":"2026-05","pillars":{"instructor":"¥80,000","contract":"¥20,000 (AIPET demo)","brain":"—","note":"—"},"total":100000,"goal":null,"rate":"—"},{"month":"2026-06","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":120000,"rate":null},{"month":"2026-07","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":400000,"rate":null},{"month":"2026-08","pillars":{"instructor":"","contract":"","brain":"","note":""},"total":0,"goal":500000,"rate":null}],"deals":[{"name":"ソフビ案件 (3D化)","client":"グローバルハーモニー(篠崎功)","stage":"提案","quote":180000,"confirmed":null,"next_action":"[[ask_kit_202607]] ASK1 を 7/3 に X DM 送信 (添付=ケローネン3Dキャプチャ1点)","updated":"2026-07-02"},{"name":"PixVerse Originals","client":"PixVerse (creator@pixverse.ai)","stage":"lead","quote":null,"confirmed":null,"next_action":"[[ask_kit_202607]] ASK6 を 7/9 に送信 (シリーズ名のみ要記入)","updated":"2026-07-02"}],"conversions":[],"cpp":{"summary_lines":["PixVerse CPP 専用台帳ファイルは vault 未作成 (pixverse_cpp_ledger.md 不在) — 締切は .claude/skills/pixverse-cpp-pipeline/SKILL.md の固定要件から算出","毎週日曜 23:59 UTC 提出 / #pixversecpp + @PixVerse タグ必須 / 30%以上PixVerse制作"],"next_deadline_utc":"2026-07-12T23:59:00+00:00"}},"counts":{"approve_wait":13,"onetap_wait":1}};
 const SB_URL='https://puultkmxrtfzigvogxqa.supabase.co';
 const SB_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1dWx0a214cnRmemlndm9neHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2MTM0MjYsImV4cCI6MjA5MTE4OTQyNn0.4-ne0i9Mvl-lQDHrMP-E-X0PUUGMgPz3vlTxzvCTOb4';
+const TODAY = DATA.today || new Date().toISOString().slice(0,10);
 
 function esc(s){return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function fmtYen(n){return '¥'+Math.round(n||0).toLocaleString('ja-JP')}
@@ -355,6 +442,13 @@ function showView(id,el){
   const btn=el||document.querySelector('nav .bt[data-view="'+id+'"]');
   if(btn)btn.classList.add('on');
   window.scrollTo({top:0});
+  if(id==='voice'){
+    fetchVoiceList();
+    clearInterval(vListInt);
+    vListInt=setInterval(fetchVoiceList,10000);
+  }else{
+    clearInterval(vListInt);
+  }
 }
 
 /* ---- Supabase write-back ---- */
@@ -397,9 +491,14 @@ function countdown(iso){
   return 'あと '+h+'時間 '+m+'分';
 }
 
-/* ---- Badges ---- */
+/* ---- Labels ---- */
 const TYPE_LABEL={rescue:'救済',verification:'検証',conversation:'会話',work:'作品'};
-const STATUS_LABEL={approved:'承認済み',queued:'配信キュー',posted:'投稿済み',sent_to_inbox:'公開待ち'};
+const STATUS_LABEL={review:'承認待ち',approved:'承認済み',queued:'配信キュー',posted:'投稿済み',
+  sent_to_inbox:'公開待ち',rejected:'却下',draft:'下書き',legacy:'過去(旧)',archived:'アーカイブ',skipped:'スキップ'};
+const PLAT_LABEL={x:'X',tiktok:'TikTok',instagram:'IG',youtube:'YT'};
+const PLAT_ICON={x:'&#x1D54F;',tiktok:'&#x266A;',instagram:'&#x1F4F7;',youtube:'&#x25B6;'};
+function statusLabel(s){return STATUS_LABEL[s]||s||''}
+function pillClass(s){return ['review','approved','queued','posted','sent_to_inbox','rejected','draft'].includes(s)?s:'other'}
 
 /* ================= 今日 ================= */
 function renderToday(){
@@ -408,7 +507,30 @@ function renderToday(){
   const on=document.getElementById('t-onetap-n');
   an.textContent=c.approve_wait||0; an.className='n'+((c.approve_wait||0)===0?' zero':(c.approve_wait>=5?' hot':''));
   on.textContent=c.onetap_wait||0; on.className='n'+((c.onetap_wait||0)===0?' zero':(c.onetap_wait>=5?' hot':''));
-  document.getElementById('dot-approve').classList.toggle('show',(c.approve_wait||0)+(c.onetap_wait||0)>0);
+  document.getElementById('dot-posts').classList.toggle('show',(c.approve_wait||0)+(c.onetap_wait||0)>0);
+
+  // 今日の投稿案 (created==今日 の X下書き。タップで投稿ハブへ)
+  const todays=(DATA.x_drafts||[]).filter(d=>d.created===TODAY);
+  const tEl=document.getElementById('today-drafts');
+  document.getElementById('today-drafts-cnt').textContent=todays.length?todays.length+'件':'';
+  tEl.innerHTML='';
+  if(!todays.length){tEl.innerHTML='<div class="empty-note">今日の投稿案はまだありません</div>'}
+  todays.slice(0,3).forEach(d=>{
+    const row=document.createElement('div');row.className='deal-mini';row.style.cursor='pointer';
+    row.innerHTML='<div style="min-width:0;flex:1"><div class="nm" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+
+      esc((d.body||d.title||'').slice(0,42))+'</div>'+
+      '<div class="na">'+esc(TYPE_LABEL[d.post_type]||d.post_type||'')+'</div></div>'+
+      '<span class="pill '+pillClass(d.status)+'">'+esc(statusLabel(d.status))+'</span>';
+    row.onclick=()=>{showView('posts');setPlatform('x');};
+    tEl.appendChild(row);
+  });
+  if(todays.length>3){
+    const more=document.createElement('div');
+    more.className='empty-note';more.style.padding='8px';more.style.cursor='pointer';
+    more.textContent='ほか'+(todays.length-3)+'件 — 投稿タブで見る →';
+    more.onclick=()=>{showView('posts');setPlatform('x');};
+    tEl.appendChild(more);
+  }
 
   const months=(DATA.money&&DATA.money.revenue_months)||[];
   const cur=months[months.length-1];
@@ -437,91 +559,259 @@ function renderToday(){
 
   const cpp=(DATA.money&&DATA.money.cpp)||{};
   const cd=countdown(cpp.next_deadline_utc);
-  document.getElementById('cpp-cnt').textContent=cd||'&mdash;';
+  document.getElementById('cpp-cnt').textContent=cd||'—';
   document.getElementById('cpp-lb').textContent=(cpp.summary_lines&&cpp.summary_lines[0])||'締切情報なし';
 }
 
-/* ================= 承認 ================= */
+/* ================= 投稿ハブ ================= */
+let curPlat='x', curTime='all';
+
+function platformList(){
+  const plats=['x'];
+  (DATA.video_releases||[]).forEach(v=>Object.keys(v.platforms||{}).forEach(p=>{
+    if(p!=='x'&&!plats.includes(p))plats.push(p);
+  }));
+  ['tiktok','instagram'].forEach(p=>{if(!plats.includes(p))plats.push(p)});
+  return plats;
+}
+function platPending(p){
+  if(p==='x')return (DATA.x_drafts||[]).filter(d=>d.status==='review').length;
+  let n=0;
+  (DATA.video_releases||[]).forEach(v=>{
+    const info=(v.platforms||{})[p];
+    if(info&&(info.status==='review'||info.status==='sent_to_inbox'))n++;
+  });
+  return n;
+}
+function setPlatform(p){
+  curPlat=p;
+  renderPosts();
+}
+function setTime(t){
+  curTime=t;
+  renderPosts();
+}
+
+function renderPlatSeg(){
+  const seg=document.getElementById('plat-seg');
+  seg.innerHTML='';
+  platformList().forEach(p=>{
+    const b=document.createElement('button');
+    if(p===curPlat)b.classList.add('on');
+    const n=platPending(p);
+    b.innerHTML=(PLAT_ICON[p]||'')+' '+esc(PLAT_LABEL[p]||p)+(n?' <span class="b-cnt">'+n+'</span>':'');
+    b.onclick=()=>setPlatform(p);
+    seg.appendChild(b);
+  });
+}
+
 function draftFullText(d){
   let t=d.body||'';
   (d.thread||[]).forEach((r,i)=>{t+='\n\n---リプ'+(i+1)+'---\n\n'+r});
   return t;
 }
-function renderApprove(){
-  const xList=(DATA.x_drafts||[]).filter(d=>d.status==='review');
-  const xEl=document.getElementById('approve-x-list');
-  xEl.innerHTML='';
-  if(!xList.length){xEl.innerHTML='<div class="card"><div class="empty-note">承認待ちの下書きはありません</div></div>'}
-  xList.forEach(d=>{
-    const card=document.createElement('div');card.className='card';card.id='xd-'+d.id;
-    const badge=TYPE_LABEL[d.post_type]||d.post_type||'';
-    let media='';
-    if(d.media&&d.media.length){
-      media='<div class="media-row">'+d.media.map(m=>'<img src="'+esc(m)+'" loading="lazy">').join('')+'</div>';
-    }
-    let thread='';
-    if(d.thread&&d.thread.length){
-      thread='<div class="dcard-thread">'+d.thread.map((r,i)=>
-        '<div class="tlabel">リプ'+(i+1)+'</div><div class="dcard-body">'+esc(r)+'</div>').join('')+'</div>';
-    }
-    card.innerHTML=
-      '<div class="dcard-head">'+
-        '<span class="badge '+esc(d.post_type||'')+'">'+esc(badge)+'</span>'+
-        (d.quality?'<span class="qbadge">'+esc(d.quality)+'</span>':'')+
-      '</div>'+
-      (d.title?'<div style="font-weight:700;font-size:13px;margin-bottom:6px">'+esc(d.title)+'</div>':'')+
-      '<div class="dcard-body">'+esc(d.body||'')+'</div>'+
-      media+thread+
-      '<div class="btn-row">'+
-        '<button class="btn approve" data-role="a">&#x2705; 承認</button>'+
-        '<button class="btn reject" data-role="r">&#x274C; 却下</button>'+
-        '<button class="btn copy" data-role="c">&#x1F4CB;</button>'+
-      '</div>';
-    card.querySelector('[data-role="a"]').onclick=(e)=>doDraftAction(d,'approve',e.target,card);
-    card.querySelector('[data-role="r"]').onclick=(e)=>doDraftAction(d,'reject',e.target,card);
-    card.querySelector('[data-role="c"]').onclick=()=>copyText(draftFullText(d));
-    xEl.appendChild(card);
-  });
 
-  const vList=(DATA.video_releases||[]).filter(v=>Object.values(v.platforms||{}).some(p=>p.status==='review'));
-  const vEl=document.getElementById('approve-v-list');
-  vEl.innerHTML='';
-  if(!vList.length){vEl.innerHTML='<div class="card"><div class="empty-note">承認待ちの動画はありません</div></div>'}
-  vList.forEach(v=>{
-    const card=document.createElement('div');card.className='card';card.id='vr-'+v.slug;
-    const durMin=v.duration_s?Math.round(v.duration_s)+'s':'';
-    card.innerHTML=
-      '<div class="vcard">'+
-        (v.thumb?'<img class="thumb" src="'+esc(v.thumb)+'" loading="lazy">':'<div class="thumb"></div>')+
-        '<div class="vcard-main">'+
-          '<div class="slug">'+esc(v.slug||'')+'</div>'+
-          '<div class="meta">'+esc(durMin)+(v.created?' &middot; '+esc(v.created):'')+'</div>'+
-        '</div>'+
-      '</div><div class="plats"></div>';
-    const platsEl=card.querySelector('.plats');
-    Object.entries(v.platforms||{}).forEach(([pname,p])=>{
-      if(p.status!=='review')return;
-      const box=document.createElement('div');box.className='plat';
-      box.innerHTML=
-        '<div class="plat-head" data-toggle="1">'+
-          '<span class="plat-name">'+esc(pname)+'</span>'+
-          '<span class="plat-status">&#x25BE; '+esc(p.status||'')+'</span>'+
-        '</div>'+
-        '<div class="plat-cap">'+esc(p.caption||'')+'</div>'+
-        '<div class="btn-row">'+
-          '<button class="btn approve" data-role="a">&#x2705; 承認</button>'+
-          '<button class="btn reject" data-role="r">&#x23ED; スキップ</button>'+
-          '<button class="btn copy" data-role="c">&#x1F4CB;</button>'+
-        '</div>';
-      box.querySelector('.plat-head').onclick=()=>box.querySelector('.plat-cap').classList.toggle('open');
-      box.querySelector('[data-role="a"]').onclick=(e)=>doVideoAction(v,pname,'approve',e.target,box);
-      box.querySelector('[data-role="r"]').onclick=(e)=>doVideoAction(v,pname,'reject',e.target,box);
-      box.querySelector('[data-role="c"]').onclick=()=>copyText(p.caption||'');
-      platsEl.appendChild(box);
-    });
-    vEl.appendChild(card);
+/* --- X: 承認待ちフルカード --- */
+function xReviewCard(d){
+  const card=document.createElement('div');card.className='card';card.id='xd-'+d.id;
+  const badge=TYPE_LABEL[d.post_type]||d.post_type||'';
+  let media='';
+  if(d.media&&d.media.length){
+    media='<div class="media-row">'+d.media.map(m=>'<img src="'+esc(m)+'" loading="lazy">').join('')+'</div>';
+  }
+  let thread='';
+  if(d.thread&&d.thread.length){
+    thread='<div class="dcard-thread">'+d.thread.map((r,i)=>
+      '<div class="tlabel">リプ'+(i+1)+'</div><div class="dcard-body">'+esc(r)+'</div>').join('')+'</div>';
+  }
+  card.innerHTML=
+    '<div class="dcard-head">'+
+      '<span class="badge '+esc(d.post_type||'')+'">'+esc(badge)+'</span>'+
+      (d.quality?'<span class="qbadge">'+esc(d.quality)+'</span>':'')+
+    '</div>'+
+    (d.title?'<div style="font-weight:700;font-size:13px;margin-bottom:6px">'+esc(d.title)+'</div>':'')+
+    '<div class="dcard-body">'+esc(d.body||'')+'</div>'+
+    media+thread+
+    '<div class="btn-row">'+
+      '<button class="btn approve" data-role="a">&#x2705; 承認</button>'+
+      '<button class="btn reject" data-role="r">&#x274C; 却下</button>'+
+      '<button class="btn copy" data-role="c">&#x1F4CB;</button>'+
+    '</div>'+
+    '<div class="btn-row" style="margin-top:8px">'+
+      '<button class="btn ghost" data-role="d">&#x1FA84; 他SNS用の下書きをAIに依頼</button>'+
+    '</div>';
+  card.querySelector('[data-role="a"]').onclick=(e)=>doDraftAction(d,'approve',e.target,card);
+  card.querySelector('[data-role="r"]').onclick=(e)=>doDraftAction(d,'reject',e.target,card);
+  card.querySelector('[data-role="c"]').onclick=()=>copyText(draftFullText(d));
+  card.querySelector('[data-role="d"]').onclick=(e)=>requestPlatformDrafts(d,e.target);
+  return card;
+}
+
+/* --- X: コンパクト行 (キュー/過去。タップで展開) --- */
+function xPostRow(d,showDate){
+  const row=document.createElement('div');row.className='card post-row';
+  const ttl=(d.body||d.title||'').replace(/\s+/g,' ').slice(0,44);
+  row.innerHTML=
+    '<div class="pr-head">'+
+      '<div class="pr-main">'+
+        '<div class="pr-ttl">'+esc(ttl||d.id)+'</div>'+
+        '<div class="pr-sub">'+esc(TYPE_LABEL[d.post_type]||d.post_type||'')+
+          (d.created?' &middot; '+esc(d.created):'')+'</div>'+
+      '</div>'+
+      '<span class="pill '+pillClass(d.status)+'">'+esc(statusLabel(d.status))+'</span>'+
+    '</div>'+
+    '<div class="pr-body">'+
+      '<div class="dcard-body">'+esc(d.body||'')+'</div>'+
+      ((d.thread&&d.thread.length)?'<div class="dcard-thread">'+d.thread.map((r,i)=>
+        '<div class="tlabel">リプ'+(i+1)+'</div><div class="dcard-body">'+esc(r)+'</div>').join('')+'</div>':'')+
+      '<div class="btn-row">'+
+        '<button class="btn copy" data-role="c" style="flex:1">&#x1F4CB; コピー</button>'+
+        '<button class="btn ghost" data-role="d" style="flex:1">&#x1FA84; 他SNS下書き</button>'+
+      '</div>'+
+      (['approved','queued'].includes(d.status)?
+        '<div class="btn-row" style="margin-top:8px">'+
+          '<button class="btn ghost" data-role="t" style="flex:1">&#x26A1; Typefullyに下書き作成 (即時)</button>'+
+        '</div>':'')+
+    '</div>';
+  row.querySelector('.pr-head').onclick=()=>row.classList.toggle('open');
+  row.querySelector('[data-role="c"]').onclick=(e)=>{e.stopPropagation();copyText(draftFullText(d))};
+  row.querySelector('[data-role="d"]').onclick=(e)=>{e.stopPropagation();requestPlatformDrafts(d,e.target)};
+  const tBtn=row.querySelector('[data-role="t"]');
+  if(tBtn)tBtn.onclick=(e)=>{
+    e.stopPropagation();
+    e.target.disabled=true;
+    sendAction('x_draft',d.id,'typefully_sync',{},()=>{
+      e.target.textContent='依頼済み — 数分後にTypefullyアプリで確認';
+    },()=>{e.target.disabled=false});
+  };
+  return row;
+}
+
+function renderXFeed(root){
+  const ds=DATA.x_drafts||[];
+  const byTime=d=>curTime==='all'?true:(curTime==='today'?d.created===TODAY:d.created!==TODAY);
+  const review=ds.filter(d=>d.status==='review').filter(byTime);
+  const queue=ds.filter(d=>['approved','queued','draft'].includes(d.status)).filter(byTime);
+  const done=ds.filter(d=>!['review','approved','queued','draft'].includes(d.status)).filter(byTime);
+
+  // 時間フィルタ
+  const chips=document.createElement('div');chips.className='chip-row time';
+  [['all','すべて'],['today','今日'],['past','過去']].forEach(([k,l])=>{
+    const c=document.createElement('button');c.className='chip'+(curTime===k?' on':'');
+    c.textContent=l;c.onclick=()=>setTime(k);
+    chips.appendChild(c);
+  });
+  root.appendChild(chips);
+
+  const sec=(html)=>{const h=document.createElement('div');h.className='sec-h';h.innerHTML=html;root.appendChild(h)};
+
+  sec('&#x1F534; 承認待ち <span class="cnt">'+review.length+'件</span>');
+  if(!review.length){const e=document.createElement('div');e.className='card';
+    e.innerHTML='<div class="empty-note">承認待ちの下書きはありません</div>';root.appendChild(e)}
+  review.forEach(d=>root.appendChild(xReviewCard(d)));
+
+  sec('&#x1F4E6; 配信キュー <span class="cnt">'+queue.length+'件</span>');
+  if(!queue.length){const e=document.createElement('div');e.className='card';
+    e.innerHTML='<div class="empty-note">キューは空です</div>';root.appendChild(e)}
+  queue.forEach(d=>root.appendChild(xPostRow(d)));
+
+  sec('&#x1F553; 過去の投稿案 <span class="cnt">'+done.length+'件</span>');
+  if(!done.length){const e=document.createElement('div');e.className='card';
+    e.innerHTML='<div class="empty-note">過去の投稿案はありません</div>';root.appendChild(e)}
+  // 日付ごとにグループ化 (新しい順)
+  const groups={};
+  done.forEach(d=>{(groups[d.created||'日付不明']=groups[d.created||'日付不明']||[]).push(d)});
+  Object.keys(groups).sort().reverse().forEach(date=>{
+    const h=document.createElement('div');h.className='date-h';
+    h.innerHTML='<span>'+esc(date)+'</span><span>'+groups[date].length+'件</span>';
+    root.appendChild(h);
+    groups[date].forEach(d=>root.appendChild(xPostRow(d)));
   });
 }
+
+/* --- 動画プラットフォーム (TikTok/IG/...) --- */
+function videoPlatCard(v,p,info){
+  const card=document.createElement('div');card.className='card';
+  const durMin=v.duration_s?Math.round(v.duration_s)+'s':'';
+  card.innerHTML=
+    '<div class="vcard">'+
+      (v.thumb?'<img class="thumb" src="'+esc(v.thumb)+'" loading="lazy">':'<div class="thumb"></div>')+
+      '<div class="vcard-main">'+
+        '<div class="slug">'+esc(v.slug||'')+'</div>'+
+        '<div class="meta">'+esc(durMin)+(v.created?' &middot; '+esc(v.created):'')+'</div>'+
+      '</div>'+
+      '<span class="pill '+pillClass(info.status)+'" style="align-self:flex-start">'+esc(statusLabel(info.status))+'</span>'+
+    '</div>';
+  if(info.caption){
+    const capHead=document.createElement('div');capHead.className='plat-head';
+    capHead.innerHTML='<span class="plat-name">キャプション</span><span class="plat-status">&#x25BE; タップで表示</span>';
+    const cap=document.createElement('div');cap.className='plat-cap';cap.textContent=info.caption;
+    capHead.onclick=()=>cap.classList.toggle('open');
+    card.appendChild(capHead);card.appendChild(cap);
+  }
+  const btns=document.createElement('div');btns.className='btn-row';
+  if(info.status==='review'){
+    btns.innerHTML='<button class="btn approve" data-role="a">&#x2705; 承認</button>'+
+      '<button class="btn reject" data-role="r">&#x23ED; スキップ</button>'+
+      '<button class="btn copy" data-role="c">&#x1F4CB;</button>';
+    btns.querySelector('[data-role="a"]').onclick=(e)=>doVideoAction(v,p,'approve',e.target,card);
+    btns.querySelector('[data-role="r"]').onclick=(e)=>doVideoAction(v,p,'reject',e.target,card);
+    btns.querySelector('[data-role="c"]').onclick=()=>copyText(info.caption||'');
+    card.appendChild(btns);
+  }else if(info.status==='sent_to_inbox'){
+    const hot=document.createElement('div');hot.className='tiktok-hot';
+    hot.innerHTML='<div class="hh">'+esc(PLAT_LABEL[p]||p)+'アプリで公開待ち</div>'+
+      '<div class="btn-row"><button class="btn wide" data-role="rec">&#x1F517; 投稿URLを記録</button></div>';
+    hot.querySelector('[data-role="rec"]').onclick=(e)=>{
+      const url=prompt(p+'の投稿URLを入力してください');
+      if(!url)return;
+      e.target.disabled=true;
+      sendAction('video_platform',v.slug,'mark_posted',{platform:p,note:url},()=>{
+        hot.innerHTML='<div class="status-note">記録しました（次回同期で反映）</div>';
+      },()=>{e.target.disabled=false});
+    };
+    card.appendChild(hot);
+  }else if(info.caption){
+    btns.innerHTML='<button class="btn copy" data-role="c" style="flex:1">&#x1F4CB; キャプションをコピー</button>';
+    btns.querySelector('[data-role="c"]').onclick=()=>copyText(info.caption||'');
+    card.appendChild(btns);
+  }
+  return card;
+}
+
+function renderVideoPlatFeed(root,p){
+  const items=[];
+  (DATA.video_releases||[]).forEach(v=>{
+    const info=(v.platforms||{})[p];
+    if(info)items.push({v,info});
+  });
+  const sec=(html)=>{const h=document.createElement('div');h.className='sec-h';h.innerHTML=html;root.appendChild(h)};
+  const order=['review','sent_to_inbox','approved','queued','posted'];
+  const buckets={};
+  items.forEach(it=>{(buckets[it.info.status||'other']=buckets[it.info.status||'other']||[]).push(it)});
+  const keys=order.filter(k=>buckets[k]).concat(Object.keys(buckets).filter(k=>!order.includes(k)));
+  if(!keys.length){
+    const e=document.createElement('div');e.className='card';
+    e.innerHTML='<div class="empty-note">'+esc(PLAT_LABEL[p]||p)+' のコンテンツはまだありません<br>'+
+      '<span style="font-size:11px">(動画リリース release.yaml から自動反映されます)</span></div>';
+    root.appendChild(e);
+    return;
+  }
+  keys.forEach(k=>{
+    sec(esc(statusLabel(k))+' <span class="cnt">'+buckets[k].length+'件</span>');
+    buckets[k].forEach(({v,info})=>root.appendChild(videoPlatCard(v,p,info)));
+  });
+}
+
+function renderPosts(){
+  renderPlatSeg();
+  const root=document.getElementById('posts-body');
+  root.innerHTML='';
+  if(curPlat==='x')renderXFeed(root);
+  else renderVideoPlatFeed(root,curPlat);
+}
+
+/* --- アクション --- */
 function doDraftAction(d,action,btnEl,card){
   const row=btnEl.closest('.btn-row');
   row.querySelectorAll('button').forEach(b=>b.disabled=true);
@@ -538,72 +828,12 @@ function doVideoAction(v,platform,action,btnEl,box){
     row.outerHTML='<div class="status-note">'+(action==='approve'?'承認済み':'スキップ済み')+'（次回同期で反映）</div>';
   },()=>{row.querySelectorAll('button').forEach(b=>b.disabled=false)});
 }
-
-/* ================= 配信 ================= */
-function renderDistribute(){
-  const xEl=document.getElementById('dist-x-list');
-  xEl.innerHTML='';
-  const order=['approved','queued','posted'];
-  const buckets={};
-  (DATA.x_drafts||[]).filter(d=>d.status!=='review').forEach(d=>{
-    (buckets[d.status]=buckets[d.status]||[]).push(d);
-  });
-  const keys=order.filter(k=>buckets[k]).concat(Object.keys(buckets).filter(k=>!order.includes(k)));
-  if(!keys.length){xEl.innerHTML='<div class="card"><div class="empty-note">配信データなし</div></div>'}
-  keys.forEach(k=>{
-    const items=buckets[k].slice(0,5);
-    const card=document.createElement('div');card.className='card';
-    card.innerHTML='<div class="stage-h"><span class="st-name">'+esc(STATUS_LABEL[k]||k)+'</span>'+
-      '<span class="st-cnt">'+buckets[k].length+'件</span></div>';
-    items.forEach(d=>{
-      const row=document.createElement('div');row.className='dist-row';
-      row.innerHTML='<div class="main"><div class="ttl">'+esc(d.title||d.body||'')+'</div>'+
-        '<div class="sub">'+esc(d.post_type||'')+(d.created?' &middot; '+esc(d.created):'')+'</div></div>'+
-        '<span class="pill '+esc(k)+'">'+esc(STATUS_LABEL[k]||k)+'</span>';
-      card.appendChild(row);
-    });
-    xEl.appendChild(card);
-  });
-
-  const vEl=document.getElementById('dist-v-list');
-  vEl.innerHTML='';
-  const hot=[],posted=[];
-  (DATA.video_releases||[]).forEach(v=>{
-    Object.entries(v.platforms||{}).forEach(([pname,p])=>{
-      if(p.status==='sent_to_inbox')hot.push({v,pname,p});
-      else if(p.status==='posted')posted.push({v,pname,p});
-    });
-  });
-  if(hot.length){
-    const card=document.createElement('div');card.className='card';
-    card.innerHTML='<div class="stage-h"><span class="st-name">公開待ち</span><span class="st-cnt">'+hot.length+'件</span></div>';
-    hot.forEach(({v,pname,p})=>{
-      const box=document.createElement('div');box.className='tiktok-hot';
-      box.innerHTML='<div class="hh">'+esc(pname)+'アプリで公開待ち &mdash; '+esc(v.slug)+'</div>'+
-        '<div class="btn-row"><button class="btn wide" data-role="rec">&#x1F517; 投稿URLを記録</button></div>';
-      box.querySelector('[data-role="rec"]').onclick=(e)=>{
-        const url=prompt(pname+'の投稿URLを入力してください');
-        if(!url)return;
-        e.target.disabled=true;
-        sendAction('video_platform',v.slug,'mark_posted',{platform:pname,note:url},()=>{
-          box.innerHTML='<div class="status-note">記録しました（次回同期で反映）</div>';
-        },()=>{e.target.disabled=false});
-      };
-      card.appendChild(box);
-    });
-    vEl.appendChild(card);
-  }
-  const pcard=document.createElement('div');pcard.className='card';
-  pcard.innerHTML='<div class="stage-h"><span class="st-name">投稿済み</span><span class="st-cnt">'+posted.length+'件</span></div>';
-  if(!posted.length){pcard.innerHTML+='<div class="empty-note">まだありません</div>'}
-  posted.slice(0,8).forEach(({v,pname})=>{
-    const row=document.createElement('div');row.className='dist-row';
-    row.innerHTML='<div class="main"><div class="ttl">'+esc(v.slug)+'</div>'+
-      '<div class="sub">'+esc(pname)+'</div></div><span class="pill posted">投稿済み</span>';
-    pcard.appendChild(row);
-  });
-  vEl.appendChild(pcard);
-  if(!hot.length&&!posted.length){vEl.innerHTML='<div class="card"><div class="empty-note">配信データなし</div></div>'}
+/* 他SNS下書き依頼: PC側 watcher が拾い、Claude が TikTok/IG 等の下書きを生成 */
+function requestPlatformDrafts(d,btnEl){
+  btnEl.disabled=true;
+  sendAction('draft_request',d.id,'create_platform_drafts',{},()=>{
+    btnEl.textContent='依頼済み（PCのClaudeが下書きを作成します）';
+  },()=>{btnEl.disabled=false});
 }
 
 /* ================= 売上 ================= */
@@ -665,13 +895,194 @@ function renderMoney(){
   }
 }
 
+/* ================= Apps (リンク集) ================= */
+function hostOf(url){
+  try{return new URL(url).host}catch(e){return url}
+}
+function renderApps(){
+  const apps=DATA.apps||[];
+  const pub=apps.filter(a=>a.group!=='local'&&a.url);
+  const loc=apps.filter(a=>a.group==='local'||!a.url);
+
+  document.getElementById('apps-pub-cnt').textContent=pub.length?pub.length+'件':'';
+  document.getElementById('apps-local-cnt').textContent=loc.length?loc.length+'件':'';
+
+  const pEl=document.getElementById('apps-public');
+  pEl.innerHTML='';
+  if(!pub.length){
+    pEl.innerHTML='<div class="card" style="grid-column:1/-1"><div class="empty-note">公開アプリの登録なし (apps.yaml)</div></div>';
+  }
+  pub.forEach(a=>{
+    const card=document.createElement('a');
+    card.className='app-card';card.href=a.url;card.target='_blank';card.rel='noopener';
+    card.innerHTML='<div class="ai">'+(a.icon||'&#x1F517;')+'</div>'+
+      '<div class="an">'+esc(a.name)+'</div>'+
+      '<div class="ad">'+esc(a.desc||'')+'</div>'+
+      '<div class="ah">'+esc(hostOf(a.url))+'</div>';
+    pEl.appendChild(card);
+  });
+
+  const lEl=document.getElementById('apps-local');
+  lEl.innerHTML='';
+  if(!loc.length){
+    lEl.innerHTML='<div class="card"><div class="empty-note">ローカルアプリの登録なし (apps.yaml)</div></div>';
+  }
+  loc.forEach(a=>{
+    const card=document.createElement('div');card.className='card';
+    card.innerHTML='<div style="display:flex;gap:10px;align-items:flex-start">'+
+      '<div class="ai" style="font-size:24px">'+(a.icon||'&#x1F4BB;')+'</div>'+
+      '<div style="flex:1;min-width:0">'+
+        '<div class="an" style="font-size:14px;font-weight:800">'+esc(a.name)+'</div>'+
+        '<div class="ad" style="font-size:12px;color:var(--sub);margin-top:2px">'+esc(a.desc||'')+'</div>'+
+        (a.launch?'<div class="app-launch" style="margin-top:8px">'+esc(a.launch)+'</div>':'')+
+        (a.source?'<div style="font-size:10px;color:var(--sub);margin-top:6px">&#x1F4C1; '+esc(a.source)+'</div>':'')+
+      '</div></div>';
+    if(a.launch){
+      const btns=document.createElement('div');btns.className='btn-row';
+      btns.innerHTML='<button class="btn small copy">&#x1F4CB; 起動コマンドをコピー</button>';
+      btns.querySelector('button').onclick=()=>copyText(a.launch);
+      card.appendChild(btns);
+    }
+    if(a.url){
+      const link=document.createElement('div');
+      link.innerHTML='<a href="'+esc(a.url)+'" target="_blank" rel="noopener" style="font-size:12px">'+esc(a.url)+'</a>';
+      card.appendChild(link);
+    }
+    lEl.appendChild(card);
+  });
+}
+
+/* ================= 声 (Voice Memo) ================= */
+let vRecorder=null, vChunks=[], vStream=null, vTimerInt=null, vStartTs=0, vBlob=null, vMime='', vSelectedType='', vListInt=null;
+
+function _voiceMime(){
+  const cands=['audio/mp4','audio/webm;codecs=opus','audio/webm'];
+  for(const c of cands){ if(window.MediaRecorder && MediaRecorder.isTypeSupported(c)) return c; }
+  return '';
+}
+function _voiceExt(mime){
+  if(mime.indexOf('mp4')>=0)return 'm4a';
+  if(mime.indexOf('webm')>=0)return 'webm';
+  return 'dat';
+}
+function _fmtTimer(sec){
+  const m=Math.floor(sec/60), s=sec%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function _voiceChipInit(){
+  document.querySelectorAll('#voice-chips .chip').forEach(c=>{
+    c.onclick=()=>{
+      document.querySelectorAll('#voice-chips .chip').forEach(x=>x.classList.remove('on'));
+      c.classList.add('on');
+      vSelectedType=c.dataset.type||'';
+    };
+  });
+}
+async function toggleRecording(){
+  if(vRecorder&&vRecorder.state==='recording'){ vRecorder.stop(); return; }
+  let stream;
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  }catch(e){ toast('マイクにアクセスできません'); return; }
+  vStream=stream;
+  vMime=_voiceMime();
+  vChunks=[];
+  vRecorder=vMime?new MediaRecorder(stream,{mimeType:vMime}):new MediaRecorder(stream);
+  vRecorder.ondataavailable=(e)=>{ if(e.data&&e.data.size>0)vChunks.push(e.data); };
+  vRecorder.onstop=()=>{
+    clearInterval(vTimerInt);
+    vStream.getTracks().forEach(t=>t.stop());
+    vBlob=new Blob(vChunks,{type:vMime||'audio/webm'});
+    document.getElementById('voice-preview').src=URL.createObjectURL(vBlob);
+    document.getElementById('voice-review-card').classList.remove('hidden');
+    const btn=document.getElementById('voice-rec-btn');
+    btn.classList.remove('recording');
+    document.getElementById('voice-hint').textContent='タップして録音開始';
+  };
+  vRecorder.start();
+  vStartTs=Date.now();
+  document.getElementById('voice-review-card').classList.add('hidden');
+  document.getElementById('voice-rec-btn').classList.add('recording');
+  document.getElementById('voice-hint').textContent='タップして録音停止';
+  vTimerInt=setInterval(()=>{
+    const sec=Math.floor((Date.now()-vStartTs)/1000);
+    document.getElementById('voice-timer').textContent=_fmtTimer(sec);
+  },250);
+}
+function discardRecording(){
+  vBlob=null; vChunks=[]; vSelectedType='';
+  document.getElementById('voice-review-card').classList.add('hidden');
+  document.getElementById('voice-timer').textContent='00:00';
+  document.getElementById('voice-preview').removeAttribute('src');
+  document.querySelectorAll('#voice-chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.type===''));
+}
+async function sendVoiceMemo(){
+  if(!vBlob){ toast('録音データがありません'); return; }
+  const btn=document.getElementById('voice-send-btn');
+  btn.disabled=true;
+  const parts=(document.getElementById('voice-timer').textContent||'0:0').split(':');
+  const durSec=Math.max(1,Number(parts[0])*60+Number(parts[1]));
+  const now=new Date();
+  const yyyy=now.getFullYear(), mm=String(now.getMonth()+1).padStart(2,'0');
+  const ext=_voiceExt(vMime);
+  const uuid=(crypto.randomUUID?crypto.randomUUID():'v'+Date.now()+Math.random().toString(16).slice(2));
+  const relPath=yyyy+'/'+mm+'/'+uuid+'.'+ext;
+  const storagePath='voice-memos/'+relPath;
+  try{
+    const upRes=await fetch(SB_URL+'/storage/v1/object/voice-memos/'+relPath,{
+      method:'POST',
+      headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Content-Type':vBlob.type||'application/octet-stream'},
+      body:vBlob
+    });
+    if(!upRes.ok)throw new Error('upload HTTP '+upRes.status);
+    const insRes=await fetch(SB_URL+'/rest/v1/voice_memos',{
+      method:'POST',
+      headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({storage_path:storagePath,duration_sec:durSec,memo_type:vSelectedType||null})
+    });
+    if(!insRes.ok)throw new Error('insert HTTP '+insRes.status);
+    toast('送信しました');
+    discardRecording();
+    fetchVoiceList();
+  }catch(err){
+    toast('送信に失敗しました：'+(err.message||''),{retry:sendVoiceMemo});
+  }finally{
+    btn.disabled=false;
+  }
+}
+const V_STATUS_ICON={pending:'&#x23F3;',transcribed:'&#x1F4DD;',filed:'&#x2705;',error:'&#x274C;'};
+const V_TYPE_LABEL={insight:'知見',belief:'信念',diary:'日記',task:'タスク',idea:'アイデア'};
+async function fetchVoiceList(){
+  const el=document.getElementById('voice-list');
+  try{
+    const res=await fetch(SB_URL+'/rest/v1/voice_memos?select=id,status,title,transcript,memo_type,created_at&order=created_at.desc&limit=10',{
+      headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON}
+    });
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const rows=await res.json();
+    el.innerHTML='';
+    if(!rows.length){ el.innerHTML='<div class="empty-note">まだメモがありません</div>'; return; }
+    rows.forEach(r=>{
+      const row=document.createElement('div');row.className='voice-row';
+      const txt=r.title||r.transcript||'(文字起こし待ち)';
+      row.innerHTML='<div class="vtxt"><div>'+esc(String(txt).slice(0,40))+'</div>'+
+        '<div class="vtype">'+esc(V_TYPE_LABEL[r.memo_type]||'')+'</div></div>'+
+        '<span class="vst">'+(V_STATUS_ICON[r.status]||'&#x2753;')+'</span>';
+      el.appendChild(row);
+    });
+  }catch(err){
+    el.innerHTML='<div class="empty-note">読み込み失敗</div>';
+  }
+}
+
 /* ---- Boot ---- */
 function boot(){
   document.getElementById('updatedAt').textContent='Updated '+(DATA.generated_at||'');
   renderToday();
-  renderApprove();
-  renderDistribute();
+  renderPosts();
   renderMoney();
+  renderApps();
+  _voiceChipInit();
   setInterval(renderToday,60000);
 }
 if(document.getElementById('app').classList.contains('on'))boot();
