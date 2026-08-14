@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RYO SERVICE HUB</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --bg-elevated: #ffffff;
+    --text: #1a1d24;
+    --text-dim: #6b7280;
+    --border: #e2e4e9;
+    --accent: #3b5bfd;
+    --ok: #1f9d55;
+    --ok-bg: #e7f7ee;
+    --warn: #b7791f;
+    --warn-bg: #fdf3dc;
+    --ng: #c0362c;
+    --ng-bg: #fce9e7;
+    --code-bg: #eef0f4;
+    --shadow: 0 1px 2px rgba(20, 22, 30, 0.06), 0 1px 1px rgba(20, 22, 30, 0.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161c;
+      --bg-elevated: #1c1f28;
+      --text: #eceef2;
+      --text-dim: #9098a8;
+      --border: #2b2f3a;
+      --accent: #7b93ff;
+      --ok: #4ade80;
+      --ok-bg: rgba(74, 222, 128, 0.12);
+      --warn: #f2c14e;
+      --warn-bg: rgba(242, 193, 78, 0.12);
+      --ng: #f16a63;
+      --ng-bg: rgba(241, 106, 99, 0.12);
+      --code-bg: #262a35;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 3rem;
+  }
+  header {
+    padding: 1.5rem 1rem 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.15rem;
+    font-weight: 700;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+  .search-box {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text);
+    font-size: 0.95rem;
+    outline: none;
+  }
+  .search-box:focus { border-color: var(--accent); }
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .group {
+    margin-top: 1.6rem;
+  }
+  .group-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    padding-left: 0.1rem;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.7rem;
+  }
+  .card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.85rem 0.95rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .card-name {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .card-name a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .card-name a:hover { color: var(--accent); }
+  .card-slug {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .card-purpose {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.1rem;
+  }
+  .badge {
+    font-size: 0.68rem;
+    padding: 0.16rem 0.5rem;
+    border-radius: 999px;
+    background: var(--code-bg);
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .badge.host { color: var(--accent); }
+  .badge.auth { }
+  .badge.status-active { background: var(--ok-bg); color: var(--ok); }
+  .badge.status-attention, .badge.status-orphan { background: var(--warn-bg); color: var(--warn); }
+  .badge.status-paused { background: var(--code-bg); color: var(--text-dim); }
+  .badge.status-local { background: var(--code-bg); color: var(--text-dim); }
+  .badge.audit-ok { background: var(--ok-bg); color: var(--ok); }
+  .badge.audit-warn { background: var(--warn-bg); color: var(--warn); }
+  .badge.audit-ng { background: var(--ng-bg); color: var(--ng); }
+  .card-deploy {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+  }
+  .card-deploy code {
+    display: block;
+    margin-top: 0.15rem;
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 0.35rem 0.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--text);
+  }
+  .card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 0.15rem;
+  }
+  .stale { color: var(--warn); font-weight: 700; }
+  .card-notes {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    border-top: 1px dashed var(--border);
+    padding-top: 0.35rem;
+    margin-top: 0.1rem;
+  }
+  .empty-state {
+    text-align: center;
+    color: var(--text-dim);
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+  }
+  .hidden { display: none !important; }
+  footer {
+    max-width: 960px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>RYO SERVICE HUB</h1>
+  <div class="meta" id="hub-meta"></div>
+  <input class="search-box" id="search" type="search" placeholder="サービス名・目的・slugで絞り込み…" autocomplete="off">
+</header>
+<main id="hub-main"></main>
+<footer>services.yaml が唯一の正 — <code>svc.py add / deploy / audit</code> で更新</footer>
+
+<script id="hub-data" type="application/json">{"built_at": "2026-08-14 16:37", "stale_days": 45, "domain": null, "services": [{"slug": "ryo-ops", "name": "Ryo Ops", "purpose": "スマホからの承認・検収・ダッシュボード", "url": "https://ryominami.github.io/ryo-ops/", "subdomain": "ops", "host": "github-pages", "path": "00_System/mobile_ops/", "deploy_cmd": "bash 00_System/scripts/deploy_ryo_ops.sh", "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": "2026-08-14", "last_check": null, "last_status": null, "notes": "モバイル司令室PWA本体", "age_days": 0, "stale": false}, {"slug": "media-db", "name": "メディア台帳DB", "purpose": "生成メディアの検索台帳 (AES-GCM PWゲート)", "url": "https://ryominami.github.io/ryo-ops/media-db.html", "subdomain": "media", "host": "github-pages", "path": null, "deploy_cmd": "bash 00_System/scripts/deploy_media_db.sh <pw>", "cwd": null, "status": "active", "auth": "password", "visibility": "public", "last_deploy": "2026-08-14", "last_check": null, "last_status": null, "notes": "", "age_days": 0, "stale": false}, {"slug": "articles-preview", "name": "X記事プレビュー", "purpose": "記事レーンのレビュー用 (PWゲート)", "url": "https://ryominami.github.io/ryo-ops/articles.html", "subdomain": "articles", "host": "github-pages", "path": null, "deploy_cmd": "bash 12_Contents_making/tools/deploy_article_review.sh <pw>", "cwd": null, "status": "active", "auth": "password", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "refs-canon", "name": "参考映像カノン", "purpose": "ref_corpus の閲覧面", "url": "https://ryominami.github.io/ryo-ops/refs.html", "subdomain": "refs", "host": "github-pages", "path": null, "deploy_cmd": null, "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "deploy_ryo_ops.sh に同梱", "age_days": null, "stale": false}, {"slug": "ai-video-academy", "name": "AI動画養成所", "purpose": "講座受講アプリ", "url": "https://ai-video-academy.pages.dev", "subdomain": "academy", "host": "cf-pages", "path": "12_Contents_making/products/ai-agent-video/app", "deploy_cmd": "bash 12_Contents_making/tools/deploy_academy_app.sh", "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "family-films", "name": "かぞくムービー", "purpose": "家族動画アプリ", "url": "https://family-films.pages.dev", "subdomain": "family", "host": "cf-pages", "path": "/mnt/c/Users/ryomi/OneDrive/Desktop/life/04_Apps/family-films", "deploy_cmd": "wrangler pages deploy app --project-name family-films --branch=main --commit-dirty=true", "cwd": "/mnt/c/Users/ryomi/OneDrive/Desktop/life/04_Apps/family-films", "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "knowledge vault外 (life vault) のアプリ", "age_days": null, "stale": false}, {"slug": "mkt-board", "name": "たぱぞう乖離率ボード", "purpose": "市場乖離率の監視ボード", "url": "https://mkt-board.pages.dev", "subdomain": "mkt", "host": "cf-pages", "path": "/mnt/c/Users/ryomi/OneDrive/Desktop/life/04_Apps/tapazou-advisor/worker", "deploy_cmd": null, "cwd": null, "status": "active", "auth": "cf-access", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "Pages advanced mode (_worker.js)・401はAccess保護で正常", "age_days": null, "stale": false}, {"slug": "ai-five-layer-map", "name": "AI五層マップ", "purpose": "(ソース孤児 — 復元or退役候補)", "url": "https://ai-five-layer-map.pages.dev", "subdomain": null, "host": "cf-pages", "path": null, "deploy_cmd": null, "cwd": null, "status": "orphan", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "vault内にソース未発見 (2026-08-14)", "age_days": null, "stale": false}, {"slug": "r2-movie-studio", "name": "R2 Movie Studio", "purpose": "R2動画配信・cron 03:00", "url": "https://r2-movie-studio.ryo-minami0511.workers.dev", "subdomain": "studio", "host": "cf-workers", "path": "02_Configs/Workers/r2-movie-studio", "deploy_cmd": "npx wrangler deploy", "cwd": "02_Configs/Workers/r2-movie-studio", "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "gemini-video-evaluator", "name": "Gemini動画評価API", "purpose": "Gemini動画評価API", "url": "https://gemini-video-evaluator.ryo-minami0511.workers.dev", "subdomain": "eval", "host": "cf-workers", "path": "02_Configs/Workers/gemini-video-evaluator", "deploy_cmd": "npx wrangler deploy", "cwd": "02_Configs/Workers/gemini-video-evaluator", "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "codex-lane", "name": "Ryo Ops Codex編集レーン", "purpose": "記事のCodex編集API (token認証)", "url": "https://ryo-ops-codex-lane.ryo-minami0511.workers.dev", "subdomain": "codex", "host": "cf-workers", "path": "00_System/codex_lane/worker", "deploy_cmd": "npx wrangler deploy", "cwd": "00_System/codex_lane/worker", "status": "active", "auth": "token", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "swarm-gate", "name": "Swarm/Edit Lab ゲート", "purpose": "固定オリジン→PCトンネル", "url": "https://swarm-gate.ryo-minami0511.workers.dev", "subdomain": "swarm", "host": "cf-workers", "path": "08_Output/_active/swarm-storyboard/workers/swarm-gate", "deploy_cmd": null, "cwd": null, "status": "attention", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "530=PC側 scripts/remote.sh start 未起動", "age_days": null, "stale": false}, {"slug": "mumei-hub", "name": "MUMEI 配信ハブ", "purpose": "MUMEI 配信ハブ (PWゲート)", "url": "https://ryominami.github.io/mumei-hub/", "subdomain": "mumei", "host": "github-pages", "path": null, "deploy_cmd": "bash 09_AIVideo-studio/MUMEI/distribution/deploy.sh", "cwd": null, "status": "active", "auth": "password", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "movie-portfolio", "name": "映像ポートフォリオ", "purpose": "映像ポートフォリオ", "url": "https://ryominami.github.io/Movie-portfolio/", "subdomain": null, "host": "github-pages", "path": null, "deploy_cmd": null, "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "/video-portfolio-publisher スキル経由", "age_days": null, "stale": false}, {"slug": "lecture-preview", "name": "講義プレビュー", "purpose": "講義動画のプレビュー", "url": "https://ryominami.github.io/lecture-preview/", "subdomain": null, "host": "github-pages", "path": null, "deploy_cmd": null, "cwd": null, "status": "paused", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "knowledge-books", "name": "knowledge-books", "purpose": "蔵書/知識ベースの公開ページ", "url": "https://ryominami.github.io/knowledge-books/", "subdomain": null, "host": "github-pages", "path": null, "deploy_cmd": null, "cwd": null, "status": "paused", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "mcp-workers", "name": "自作MCP Worker群", "purpose": "自作MCP Workerの集約行 (~95本・個別サービスとしては数えない)", "url": null, "subdomain": null, "host": "cf-workers", "path": null, "deploy_cmd": null, "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "100本上限到達済・棚卸し台帳=00_System/codex_lane/worker_cleanup_candidates.md", "age_days": null, "stale": false}, {"slug": "skill-dashboard", "name": "スキル棚卸ダッシュボード", "purpose": "スキル棚卸ダッシュボード", "url": null, "subdomain": null, "host": "local", "path": "00_System/skill_ops/skill_dashboard.html", "deploy_cmd": null, "cwd": null, "status": "local", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "production-board", "name": "制作盤", "purpose": "制作盤 (Obsidian司令室)", "url": null, "subdomain": null, "host": "local", "path": "00_System/production_board/_BOARD.base", "deploy_cmd": null, "cwd": null, "status": "local", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}, {"slug": "hub", "name": "サービスハブ", "purpose": "全自作サービスの住所録 (この索引そのもの)", "url": "https://ryo-hub.pages.dev", "subdomain": "hub", "host": "cf-pages", "path": "00_System/service_hub", "deploy_cmd": "python3 02_Configs/Skill_Catalog/scripts/svc.py deploy-hub", "cwd": null, "status": "active", "auth": "none", "visibility": "public", "last_deploy": null, "last_check": null, "last_status": null, "notes": "", "age_days": null, "stale": false}]}</script>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById("hub-data").textContent);
+  var services = data.services || [];
+
+  document.getElementById("hub-meta").textContent =
+    "更新: " + data.built_at + " ・ stale閾値 " + data.stale_days + "日" +
+    (data.domain ? " ・ domain: " + data.domain : "");
+
+  var GROUPS = [
+    { key: "active", label: "🟢 稼働", match: function (s) { return s.status === "active"; } },
+    { key: "attention", label: "⚠️ 要注意", match: function (s) { return s.status === "attention" || s.status === "orphan"; } },
+    { key: "paused", label: "⏸ 休止", match: function (s) { return s.status === "paused"; } },
+    { key: "local", label: "💻 ローカル", match: function (s) { return s.status === "local"; } }
+  ];
+
+  var HOST_LABEL = {
+    "github-pages": "GitHub Pages",
+    "cf-pages": "CF Pages",
+    "cf-workers": "CF Workers",
+    "r2": "R2",
+    "local": "local"
+  };
+  var AUTH_LABEL = {
+    "none": null,
+    "password": "🔒 password",
+    "token": "🔑 token",
+    "cf-access": "🛡 cf-access"
+  };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function auditBadge(s) {
+    if (!s.last_status) return "";
+    var cls = "audit-ok";
+    if (/NG|timeout|not found|unreachable|unauthorized/i.test(s.last_status)) cls = "audit-ng";
+    else if (/warn|530|stale/i.test(s.last_status)) cls = "audit-warn";
+    return '<span class="badge ' + cls + '" title="last_check: ' + esc(s.last_check || "-") + '">' + esc(s.last_status) + "</span>";
+  }
+
+  function card(s) {
+    var badges = [];
+    badges.push('<span class="badge host">' + esc(HOST_LABEL[s.host] || s.host) + "</span>");
+    var authLabel = AUTH_LABEL[s.auth];
+    if (authLabel) badges.push('<span class="badge auth">' + esc(authLabel) + "</span>");
+    var ab = auditBadge(s);
+    if (ab) badges.push(ab);
+
+    var nameHtml = s.url
+      ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + "</a>"
+      : esc(s.name);
+
+    var ageHtml = "";
+    if (s.age_days !== null && s.age_days !== undefined) {
+      ageHtml = (s.stale ? '<span class="stale">' : "<span>") + s.last_deploy + " (" + s.age_days + "日前)" + "</span>";
+    } else if (s.last_deploy) {
+      ageHtml = "<span>" + esc(s.last_deploy) + "</span>";
+    } else {
+      ageHtml = "<span>未デプロイ</span>";
+    }
+
+    var deployHtml = s.deploy_cmd
+      ? '<div class="card-deploy">deploy_cmd<code>' + esc(s.deploy_cmd) + "</code></div>"
+      : "";
+
+    var notesHtml = s.notes
+      ? '<div class="card-notes">' + esc(s.notes) + "</div>"
+      : "";
+
+    var searchBlob = [s.name, s.slug, s.purpose, s.notes].join(" ").toLowerCase();
+
+    return (
+      '<div class="card" data-search="' + esc(searchBlob) + '">' +
+        '<div class="card-head">' +
+          '<div class="card-name">' + nameHtml + "</div>" +
+          '<div class="card-slug">' + esc(s.slug) + "</div>" +
+        "</div>" +
+        '<div class="card-purpose">' + esc(s.purpose || "") + "</div>" +
+        '<div class="badges">' + badges.join("") + "</div>" +
+        deployHtml +
+        '<div class="card-foot">' + ageHtml + "</div>" +
+        notesHtml +
+      "</div>"
+    );
+  }
+
+  var main = document.getElementById("hub-main");
+  var html = "";
+  GROUPS.forEach(function (g) {
+    var items = services.filter(g.match);
+    if (!items.length) return;
+    html +=
+      '<section class="group" data-group="' + g.key + '">' +
+        '<div class="group-title">' + g.label + " (" + items.length + ")</div>" +
+        '<div class="cards">' + items.map(card).join("") + "</div>" +
+      "</section>";
+  });
+  main.innerHTML = html || '<div class="empty-state">サービスがありません</div>';
+
+  var search = document.getElementById("search");
+  search.addEventListener("input", function () {
+    var q = search.value.trim().toLowerCase();
+    var anyVisibleByGroup = {};
+    document.querySelectorAll(".card").forEach(function (el) {
+      var match = !q || el.getAttribute("data-search").indexOf(q) !== -1;
+      el.classList.toggle("hidden", !match);
+      if (match) {
+        var group = el.closest(".group");
+        if (group) anyVisibleByGroup[group.getAttribute("data-group")] = true;
+      }
+    });
+    document.querySelectorAll(".group").forEach(function (g) {
+      g.classList.toggle("hidden", !anyVisibleByGroup[g.getAttribute("data-group")]);
+    });
+  });
+})();
+</script>
+</body>
+</html>
