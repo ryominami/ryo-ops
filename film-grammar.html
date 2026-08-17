@@ -6,8 +6,11 @@ header{position:sticky;top:0;z-index:30;background:rgba(238,241,248,.92);backdro
 h1{font-size:18px;margin:0 0 2px;letter-spacing:.02em}
 .sub{font-size:11.5px;color:#6b7280;margin:0}
 .prog{font-size:11.5px;color:#4b5568;margin-top:4px;font-weight:600}
-.drillbtn{font-size:12px;padding:8px 14px;border-radius:12px;border:none;background:#2b3245;color:#fff;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(43,50,69,.25)}
-.chips{display:flex;gap:7px;overflow-x:auto;padding:12px 2px 2px;-webkit-overflow-scrolling:touch}
+.streak{font-size:11.5px;color:#e8590c;margin-top:2px;font-weight:700}
+.modenav{display:flex;gap:8px;margin-top:10px}
+.modebtn{flex:1;font-size:12.5px;padding:9px 6px;border-radius:12px;border:1.5px solid #d7dcea;background:#fff;color:#4b5568;font-weight:700}
+.modebtn.on{background:#2b3245;border-color:#2b3245;color:#fff}
+.chips{display:none;gap:7px;overflow-x:auto;padding:12px 2px 2px;-webkit-overflow-scrolling:touch}
 .chip{flex:0 0 auto;font-size:12px;padding:7px 13px;border-radius:999px;border:1px solid #d7dcea;background:#fff;color:#4b5568;white-space:nowrap}
 .chip.on{color:#fff;border-color:transparent;font-weight:700}
 .chip b{font-weight:700}
@@ -25,7 +28,7 @@ main{padding:12px 14px 100px;max-width:640px;margin:0 auto}
 .card.open .bd{display:block}
 .rule{font-size:13px;font-weight:700;color:var(--cc);background:color-mix(in srgb, var(--cc) 8%, #fff);border-left:3px solid var(--cc);padding:9px 11px;border-radius:0 8px 8px 0;margin:6px 0 12px}
 .diagram{margin:10px 0;background:#fbfbfd;border:1px solid #eceff5;border-radius:12px;padding:8px}
-.diagram svg{width:100%;height:auto;display:block}
+.diagram svg,.diagram img{width:100%;height:auto;display:block}
 .prose p{font-size:13px;color:#454b5c;margin:7px 0}
 .ainote{background:#fff8e6;border:1px solid #f2e2ad;border-radius:10px;padding:10px 12px;margin:12px 0;font-size:12.5px;color:#6b5a1c}
 .ainote b{display:block;font-size:11px;color:#ad9430;margin-bottom:3px}
@@ -36,7 +39,8 @@ main{padding:12px 14px 100px;max-width:640px;margin:0 auto}
 .mbtn.on{background:#2f9e44;border-color:#2f9e44;color:#fff}
 footer.note{font-size:11px;color:#8b93a7;text-align:center;padding:10px 24px 30px;line-height:1.7}
 
-/* ドリル */
+/* 今日の1枚 / ドリル共通 (Q&Aパネル) */
+#today{display:block;padding:16px 14px 100px;max-width:640px;margin:0 auto}
 #drill{display:none;padding:16px 14px 100px;max-width:640px;margin:0 auto}
 .dcard{background:#fff;border-radius:18px;box-shadow:0 1px 2px rgba(30,34,60,.06),0 8px 20px -12px rgba(30,34,60,.18);padding:20px 18px;min-height:280px}
 .dprog{font-size:11.5px;color:#8b93a7;margin-bottom:10px}
@@ -52,808 +56,129 @@ footer.note{font-size:11px;color:#8b93a7;text-align:center;padding:10px 24px 30p
 .dresult{text-align:center;padding:30px 10px}
 .dresult .big{font-size:34px;font-weight:800;color:#2b3245;margin:10px 0}
 .dresult button{margin-top:18px;font-size:14px;padding:12px 24px;border-radius:12px;border:none;background:#2b3245;color:#fff;font-weight:700}
-.chip[data-cat].on{background:var(--cc,#2b3245)}</style></head><body><header><div class="htop"><div><h1>映像文法デッキ</h1><p class="sub">症状から引く、プロ品質のディレクション技術 24</p><p class="prog" id="prog">覚えた 0 / 24</p></div><button class="drillbtn" id="drillToggle">ドリル</button></div><div class="chips"><span class="chip on" data-cat="__all__">全部 (24)</span><span class="chip" data-cat="design" style="--cc:#e8590c">構成とシーン設計 (7)</span><span class="chip" data-cat="connect" style="--cc:#1971c2">カットを繋ぐ (6)</span><span class="chip" data-cat="time" style="--cc:#2f9e44">時間を操る (3)</span><span class="chip" data-cat="meaning" style="--cc:#9c36b5">視線と意味 (4)</span><span class="chip" data-cat="duration" style="--cc:#e67700">尺と読速 (2)</span><span class="chip" data-cat="sound" style="--cc:#0c8599">音で繋ぐ (2)</span><span class="chip" id="chip-todo">まだ</span></div></header><main id="list"><article class="card" data-id="beat_row" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#12</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">ビートは、構成表の一行</div><div class="hook">いいカットは撮れたのに全体が繋がらない…ってとき。カットから考え始めているのが原因かもしれません。</div></div><div class="bd"><div class="rule">先に構成表の一行 (役割+伝えること+尺) を並べる — 画はまだ決めない</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <rect x="8" y="12" width="130" height="24" rx="4" fill="none" stroke="#dee2e6" stroke-width="1.5"/>
-  <text x="16" y="28" font-family="sans-serif" font-size="11" fill="#495057">① つかみ / 3秒</text>
-
-  <rect x="8" y="42" width="130" height="24" rx="4" fill="none" stroke="#dee2e6" stroke-width="1.5"/>
-  <text x="16" y="58" font-family="sans-serif" font-size="11" fill="#495057">② 結論 / 4秒</text>
-
-  <rect x="8" y="72" width="130" height="27" rx="4" fill="#fff3e8" stroke="#e8590c" stroke-width="2.5"/>
-  <text x="16" y="90" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold">③ 課題 / 6秒</text>
-
-  <rect x="8" y="105" width="130" height="24" rx="4" fill="none" stroke="#dee2e6" stroke-width="1.5"/>
-  <text x="16" y="121" font-family="sans-serif" font-size="11" fill="#495057">④ 解決 / 5秒</text>
-
-  <path d="M138,86 Q168,86 190,28" fill="none" stroke="#e8590c" stroke-width="1.5"/>
-  <path d="M138,86 Q168,86 190,88" fill="none" stroke="#e8590c" stroke-width="1.5"/>
-  <path d="M138,86 Q168,86 190,148" fill="none" stroke="#e8590c" stroke-width="1.5"/>
-
-  <text x="192" y="16" font-family="sans-serif" font-size="11" fill="#495057">物語で展開</text>
-  <rect x="192" y="22" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="212" y="22" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="232" y="22" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-
-  <text x="192" y="76" font-family="sans-serif" font-size="11" fill="#495057">データで展開</text>
-  <rect x="192" y="82" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="212" y="82" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="232" y="82" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-
-  <text x="192" y="136" font-family="sans-serif" font-size="11" fill="#495057">羅列で展開</text>
-  <rect x="192" y="142" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="212" y="142" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <rect x="232" y="142" width="16" height="16" fill="none" stroke="#e8590c" stroke-width="2"/>
-
-  <text x="160" y="180" font-family="sans-serif" font-size="11" fill="#868e96" text-anchor="middle">絵は違っても、伝える意味は同じ「課題」</text>
-</svg></div><div class="prose"><p>ビートとは構成表の一行のこと (例: 「1. つかみ / 商品を印象的に見せる / 3秒」)。役割と伝えることと尺だけを持ち、画はまだ決まっていない。 同じ「課題を提示する」ビートでも、物語で展開 (山積みの書類→時計→ため息)、データで展開 (グラフ→手元)、羅列で展開 (書類・電話・深夜) と絵の作り方は自由 — 伝える意味は同じ。 ビート=意味の単位 (何を伝えるか) / シーン=場所と時間の単位 (どこで・いつ)。だからモンタージュにシーンはなくてもビートはある。</p></div><div class="ainote"><b>★AI生成では</b>AI生成はいきなりカットから考えがち — カットから積むと全体が繋がらない。ビート表が並んだ時点で構成は完成、あとは各ビートを絵にするだけ。</div><div class="check">☑ カットを書き出す前に、構成表の一行×nを並べたか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="beat_row">まだ</button></div></div></article><article class="card" data-id="incident_on_camera" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#01</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">事件を画に写す</div><div class="hook">上手いんだけど、何も起きていない…ってとき。反応だけ写して、事件が画にないのかもしれません。</div></div><div class="bd"><div class="rule">シーン = 事件 → 反応。この順番は逆にならない — 事件を1カット足す</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210">
-  <text x="8" y="12" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold">○ 事件が挟まっている</text>
-  <!-- frame1: 歩く -->
-  <rect x="8" y="18" width="88" height="78" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="52" cy="42" r="7" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="49" x2="52" y2="70" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="55" x2="40" y2="62" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="55" x2="64" y2="60" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="70" x2="40" y2="88" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="70" x2="64" y2="86" stroke="#868e96" stroke-width="2"/>
-  <text x="52" y="106" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">歩く</text>
-
-  <line x1="98" y1="55" x2="112" y2="55" stroke="#495057" stroke-width="2"/>
-  <polygon points="112,50 120,55 112,60" fill="#495057"/>
-
-  <!-- frame2: 事件 (札束が落ちる) -->
-  <rect x="120" y="18" width="88" height="78" rx="6" fill="#fff3e8" stroke="#e8590c" stroke-width="3"/>
-  <line x1="164" y1="24" x2="150" y2="10" stroke="#e8590c" stroke-width="2"/>
-  <line x1="164" y1="24" x2="178" y2="10" stroke="#e8590c" stroke-width="2"/>
-  <line x1="150" y1="30" x2="132" y2="24" stroke="#e8590c" stroke-width="2"/>
-  <line x1="178" y1="30" x2="196" y2="24" stroke="#e8590c" stroke-width="2"/>
-  <rect x="152" y="55" width="24" height="15" rx="2" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <line x1="152" y1="61" x2="176" y2="61" stroke="#e8590c" stroke-width="1"/>
-  <text x="164" y="90" font-family="sans-serif" font-size="10" fill="#e8590c" font-weight="bold" text-anchor="middle">事件: 札束が落ちる</text>
-
-  <line x1="210" y1="55" x2="224" y2="55" stroke="#495057" stroke-width="2"/>
-  <polygon points="224,50 232,55 224,60" fill="#495057"/>
-
-  <!-- frame3: 驚く -->
-  <rect x="232" y="18" width="80" height="78" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="272" cy="46" r="9" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="272" y1="55" x2="272" y2="72" stroke="#868e96" stroke-width="2"/>
-  <line x1="272" y1="59" x2="258" y2="50" stroke="#868e96" stroke-width="2"/>
-  <line x1="272" y1="59" x2="286" y2="50" stroke="#868e96" stroke-width="2"/>
-  <line x1="272" y1="72" x2="262" y2="88" stroke="#868e96" stroke-width="2"/>
-  <line x1="272" y1="72" x2="282" y2="88" stroke="#868e96" stroke-width="2"/>
-  <text x="256" y="30" font-family="sans-serif" font-size="14" fill="#e8590c" font-weight="bold">!</text>
-  <text x="272" y="106" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">驚く (反応)</text>
-
-  <line x1="8" y1="128" x2="312" y2="128" stroke="#dee2e6" stroke-width="1"/>
-  <text x="8" y="146" font-family="sans-serif" font-size="11" fill="#e03131" font-weight="bold">× 事件が抜けている</text>
-
-  <rect x="8" y="152" width="88" height="50" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="52" cy="168" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="174" x2="52" y2="188" stroke="#868e96" stroke-width="2"/>
-  <text x="52" y="200" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">歩く</text>
-
-  <text x="112" y="182" font-family="sans-serif" font-size="18" fill="#e03131" font-weight="bold" text-anchor="middle">×</text>
-
-  <rect x="128" y="152" width="88" height="50" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="172" cy="168" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="172" y1="174" x2="172" y2="188" stroke="#868e96" stroke-width="2"/>
-  <text x="164" y="164" font-family="sans-serif" font-size="11" fill="#e03131">!</text>
-  <text x="172" y="200" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">驚く</text>
-
-  <text x="222" y="182" font-family="sans-serif" font-size="10" fill="#e03131">「誰かが何かして驚いた」にしか見えない</text>
-</svg></div><div class="prose"><p>「歩く→驚く」だけの映像は「誰かが何かして驚いた」にしか見えない。間に事件 (札束が落ちる) を1カット入れると、反応が意味を持ちシーンが立ち上がる。 アクション (反応) は事件の後にしか置けない。事件が画に写っていない映像は、どれだけ芝居が上手くても空回りする。</p></div><div class="ainote"><b>★AI生成では</b>生成後の採点でも検出しにくい欠陥 — 課金前のシーン設計でしか潰せない。shot_grammar.py の SG-17 が機械検査する。</div><div class="check">☑ このシーンの事件は何で、それは反応より前に画に写っているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="incident_on_camera">まだ</button></div></div></article><article class="card" data-id="wide_tight_wide" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#02</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">引きで始まり、引きで終わる</div><div class="hook">終わったのに終わった気がしない…ってとき。頭か尻が寄りのままかもしれません。</div></div><div class="bd"><div class="rule">頭=引き (いつ/どこ/誰) → 中=寄り (芝居) → 尻=引き (何が変わったか)。頭と尻は同画角</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <path d="M20,10 Q160,-6 300,10" fill="none" stroke="#e8590c" stroke-width="1.5" stroke-dasharray="3,3"/>
-  <text x="160" y="10" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold" text-anchor="middle">同画角</text>
-
-  <!-- 頭: 引き -->
-  <rect x="8" y="18" width="92" height="140" rx="6" fill="none" stroke="#e8590c" stroke-width="3"/>
-  <rect x="22" y="90" width="64" height="8" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <circle cx="34" cy="70" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="34" y1="76" x2="34" y2="90" stroke="#868e96" stroke-width="2"/>
-  <circle cx="74" cy="70" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="74" y1="76" x2="74" y2="90" stroke="#868e96" stroke-width="2"/>
-  <text x="54" y="150" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">頭: 引き (2人)</text>
-
-  <line x1="100" y1="88" x2="112" y2="88" stroke="#495057" stroke-width="2"/>
-  <polygon points="112,83 120,88 112,93" fill="#495057"/>
-
-  <!-- 中: 寄り (顔) -->
-  <rect x="120" y="18" width="80" height="140" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="160" cy="88" r="34" fill="none" stroke="#868e96" stroke-width="2.5"/>
-  <circle cx="150" cy="82" r="2.5" fill="#868e96"/>
-  <circle cx="170" cy="82" r="2.5" fill="#868e96"/>
-  <path d="M148,100 Q160,108 172,100" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="160" y="150" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">中: 寄り (芝居)</text>
-
-  <line x1="200" y1="88" x2="212" y2="88" stroke="#495057" stroke-width="2"/>
-  <polygon points="212,83 220,88 212,93" fill="#495057"/>
-
-  <!-- 尻: 引き (1人になった同じ画角) -->
-  <rect x="220" y="18" width="92" height="140" rx="6" fill="none" stroke="#e8590c" stroke-width="3"/>
-  <rect x="234" y="90" width="64" height="8" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <circle cx="246" cy="70" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="246" y1="76" x2="246" y2="90" stroke="#868e96" stroke-width="2"/>
-  <line x1="278" y1="86" x2="290" y2="86" stroke="#dee2e6" stroke-width="2" stroke-dasharray="2,2"/>
-  <text x="266" y="150" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">尻: 引き (1人)</text>
-  <text x="266" y="176" font-family="sans-serif" font-size="10" fill="#e8590c" text-anchor="middle">差分だけで変化が読める</text>
-</svg></div><div class="prose"><p>頭の引きで「いつ・どこ・誰・位置関係」が1カットで渡り、尻の引きで「二人いたテーブルが一人になった」= 変化が見える。 寄って→引くではなく、引いて→寄って→引く。頭と尻を同じ画角にすると、差分だけが目に入るので変化が一発で読める。</p></div><div class="ainote"><b>★AI生成では</b>AI生成は1カットごとに空間を作り直すため、引きの頭がないと観客の中に地図ができない。頭尻の同画角は同一参照画像の再利用で作れる。</div><div class="check">☑ 頭と尻が引きで、しかも同じ画角になっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="wide_tight_wide">まだ</button></div></div></article><article class="card" data-id="late_start" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#03</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">本題の直前から始める</div><div class="hook">間延びする・途中で離脱される…ってとき。始まりが早すぎるのかもしれません。</div></div><div class="bd"><div class="rule">見せたいものの直前から始める — 前置きは総尺の30%以内、迷ったら削る</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 170">
-  <defs>
-    <pattern id="ls-hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="0" y2="8" stroke="#dee2e6" stroke-width="4"/>
-    </pattern>
-  </defs>
-
-  <rect x="20" y="60" width="280" height="36" rx="4" fill="none" stroke="#868e96" stroke-width="2"/>
-  <rect x="20" y="60" width="112" height="36" fill="url(#ls-hatch)"/>
-  <line x1="132" y1="60" x2="132" y2="96" stroke="#868e96" stroke-width="1.5" stroke-dasharray="2,2"/>
-
-  <text x="76" y="45" font-family="sans-serif" font-size="11" fill="#868e96" text-anchor="middle">前置き (捨てる)</text>
-  <path d="M60,32 l6,6 M66,32 l-6,6" stroke="#868e96" stroke-width="2"/>
-  <path d="M56,30 q6,4 0,10" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <path d="M56,30 q-6,4 0,10" fill="none" stroke="#868e96" stroke-width="1.5"/>
-
-  <!-- 事件マーク -->
-  <polygon points="160,66 163,74 172,74 165,79 168,88 160,82 152,88 155,79 148,74 157,74"
-           fill="#e8590c" stroke="#e8590c"/>
-  <text x="160" y="108" font-family="sans-serif" font-size="10" fill="#e8590c" text-anchor="middle">事件</text>
-
-  <!-- 開始旗 (事件の直前) -->
-  <line x1="132" y1="52" x2="132" y2="98" stroke="#e8590c" stroke-width="2.5"/>
-  <polygon points="132,52 154,58 132,64" fill="#e8590c"/>
-  <text x="132" y="42" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold" text-anchor="middle">ここから始める</text>
-
-  <!-- 30%ゲージ -->
-  <text x="20" y="126" font-family="sans-serif" font-size="10" fill="#495057">前置き上限ゲージ</text>
-  <rect x="20" y="132" width="280" height="12" rx="3" fill="none" stroke="#dee2e6" stroke-width="1.5"/>
-  <rect x="20" y="132" width="84" height="12" rx="3" fill="#e8590c"/>
-  <text x="106" y="141" font-family="sans-serif" font-size="10" fill="#e8590c">30%</text>
-</svg></div><div class="prose"><p>コーヒーを飲む時間・歩いて向かう時間は捨てる。「まだ本題に入らないな」と思われた時点で負け。 前置きは尺に比例して許される (15秒なら4.5秒まで) が、迷ったら削る方に倒す。</p></div><div class="ainote"><b>★AI生成では</b>生成尺は貴重 — 前置きに使った秒は事件と反応から奪った秒。プロンプトは「start immediately before the turn; no preamble」。</div><div class="check">☑ 本題の直前から始まっているか (前置きは総尺の30%以内か)</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="late_start">まだ</button></div></div></article><article class="card" data-id="intro_protagonist" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#04</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">主人公は最初に紹介する</div><div class="hook">伝えたいことと違う印象になる…ってとき。紹介の順番が逆なのかもしれません。</div></div><div class="bd"><div class="rule">観客は最初に紹介された人物に感情移入する — 紹介 = ウエスト〜バストの寄り</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold">先に寄りで見せた方に感情移入する</text>
-
-  <!-- row1: ハンター先 -->
-  <rect x="8" y="22" width="70" height="60" rx="5" fill="#fff3e8" stroke="#e8590c" stroke-width="2.5"/>
-  <circle cx="43" cy="44" r="10" fill="none" stroke="#e8590c" stroke-width="2.5"/>
-  <line x1="43" y1="54" x2="43" y2="70" stroke="#e8590c" stroke-width="2.5"/>
-  <text x="43" y="18" font-family="sans-serif" font-size="9" fill="#e8590c" text-anchor="middle">寄り</text>
-
-  <rect x="84" y="22" width="60" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <ellipse cx="114" cy="58" rx="12" ry="8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="114" y1="50" x2="110" y2="38" stroke="#868e96" stroke-width="2"/>
-  <line x1="114" y1="50" x2="118" y2="38" stroke="#868e96" stroke-width="2"/>
-  <text x="114" y="78" font-family="sans-serif" font-size="8" fill="#868e96" text-anchor="middle">鹿</text>
-
-  <rect x="150" y="22" width="60" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <line x1="160" y1="52" x2="200" y2="52" stroke="#868e96" stroke-width="2"/>
-  <path d="M195,44 l10,8 l-10,8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="180" y="70" font-family="sans-serif" font-size="8" fill="#868e96" text-anchor="middle">発砲</text>
-
-  <line x1="212" y1="52" x2="228" y2="52" stroke="#e8590c" stroke-width="2"/>
-  <polygon points="228,47 236,52 228,57" fill="#e8590c"/>
-  <text x="240" y="40" font-family="sans-serif" font-size="10" fill="#e8590c">感情移入</text>
-  <text x="240" y="54" font-family="sans-serif" font-size="12" fill="#e8590c" font-weight="bold">→ ハンター</text>
-  <text x="240" y="70" font-family="sans-serif" font-size="10" fill="#495057">「狩りの話」</text>
-
-  <!-- row2: 鹿先 -->
-  <rect x="8" y="112" width="70" height="60" rx="5" fill="#fff3e8" stroke="#e8590c" stroke-width="2.5"/>
-  <ellipse cx="43" cy="146" rx="13" ry="9" fill="none" stroke="#e8590c" stroke-width="2.5"/>
-  <line x1="43" y1="137" x2="38" y2="123" stroke="#e8590c" stroke-width="2.5"/>
-  <line x1="43" y1="137" x2="48" y2="123" stroke="#e8590c" stroke-width="2.5"/>
-  <text x="43" y="108" font-family="sans-serif" font-size="9" fill="#e8590c" text-anchor="middle">寄り</text>
-
-  <rect x="84" y="112" width="60" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <circle cx="114" cy="138" r="8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="114" y1="146" x2="114" y2="162" stroke="#868e96" stroke-width="2"/>
-  <text x="114" y="168" font-family="sans-serif" font-size="8" fill="#868e96" text-anchor="middle">ハンター</text>
-
-  <rect x="150" y="112" width="60" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <line x1="160" y1="142" x2="200" y2="142" stroke="#868e96" stroke-width="2"/>
-  <path d="M195,134 l10,8 l-10,8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="180" y="160" font-family="sans-serif" font-size="8" fill="#868e96" text-anchor="middle">発砲</text>
-
-  <line x1="212" y1="142" x2="228" y2="142" stroke="#e8590c" stroke-width="2"/>
-  <polygon points="228,137 236,142 228,147" fill="#e8590c"/>
-  <text x="240" y="130" font-family="sans-serif" font-size="10" fill="#e8590c">感情移入</text>
-  <text x="240" y="144" font-family="sans-serif" font-size="12" fill="#e8590c" font-weight="bold">→ 鹿</text>
-  <text x="240" y="160" font-family="sans-serif" font-size="10" fill="#495057">「撃たれる話」</text>
-</svg></div><div class="prose"><p>ハンターを先に見せれば「狩りが成功した」、鹿を先に見せれば「撃たれた」— 同じカット列でも紹介順で受け取りが真逆になる。 紹介はウエスト〜バストの寄りで見せること (全身→ウエストのズームも可)。インサートは紹介に数えない。</p></div><div class="ainote"><b>★AI生成では</b>C1とC2の入れ替えだけで印象が反転する — 生成前のカット順設計の問題で、生成後には直せない。SG-20 が機械検査する。</div><div class="check">☑ 最初に寄りで紹介される人物 = 主人公になっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="intro_protagonist">まだ</button></div></div></article><article class="card" data-id="tightest_frame" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#05</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">サイズは「見せたいもの」から決まる</div><div class="hook">画が緩慢・何を見ればいいか分からない…ってとき。サイズに根拠がないのかもしれません。</div></div><div class="bd"><div class="rule">見せたいものが全部収まる、いちばん寄ったサイズにする</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <!-- 人物 -->
-  <circle cx="120" cy="40" r="14" fill="none" stroke="#495057" stroke-width="2"/>
-  <line x1="120" y1="54" x2="120" y2="140" stroke="#495057" stroke-width="2"/>
-  <line x1="120" y1="80" x2="95" y2="70" stroke="#495057" stroke-width="2"/>
-  <line x1="120" y1="80" x2="145" y2="95" stroke="#495057" stroke-width="2"/>
-  <line x1="120" y1="140" x2="102" y2="180" stroke="#495057" stroke-width="2"/>
-  <line x1="120" y1="140" x2="138" y2="180" stroke="#495057" stroke-width="2"/>
-  <!-- スマホ (手元) -->
-  <rect x="130" y="85" width="20" height="32" rx="3" fill="none" stroke="#e8590c" stroke-width="2.5"/>
-  <line x1="134" y1="108" x2="146" y2="108" stroke="#e8590c" stroke-width="1.5"/>
-
-  <!-- 全身フレーム (点線) -->
-  <rect x="70" y="8" width="110" height="182" rx="4" fill="none" stroke="#dee2e6" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="184" y="16" font-family="sans-serif" font-size="9" fill="#adb5bd">全身 (見せたいもの3つ+)</text>
-
-  <!-- ウエストフレーム (点線) -->
-  <rect x="85" y="8" width="80" height="110" rx="4" fill="none" stroke="#dee2e6" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="168" y="60" font-family="sans-serif" font-size="9" fill="#adb5bd">ウエスト (2つ)</text>
-
-  <!-- 手元フレーム (実線・強調) -->
-  <rect x="122" y="80" width="34" height="42" rx="4" fill="#fff3e8" stroke="#e8590c" stroke-width="3"/>
-  <text x="160" y="105" font-family="sans-serif" font-size="10" fill="#e8590c" font-weight="bold">手元 (1つ) ← 最大の寄り</text>
-
-  <line x1="139" y1="122" x2="139" y2="170" stroke="#e8590c" stroke-width="1.5" stroke-dasharray="2,2"/>
-  <text x="20" y="175" font-family="sans-serif" font-size="11" fill="#495057">見せたいもの = スマホ</text>
-  <line x1="20" y1="182" x2="120" y2="182" stroke="#495057" stroke-width="1.5"/>
-  <polygon points="120,178 128,182 120,186" fill="#495057"/>
-  <text x="132" y="185" font-family="sans-serif" font-size="11" fill="#e8590c" font-weight="bold">サイズ = 手元</text>
-</svg></div><div class="prose"><p>スマホ画面を見せたいなら手元の寄り、悲しむ表情ならバスト、握手する二人ならウエスト。見せたいものが決まらないとサイズは決まらない — 「なんとなくミディアム」はここが未決定のサイン。 目安: 見せたいものが3つ以上→FS以上 / 2つ→CUより引く / 1つ→収まる範囲で最大限寄る。</p></div><div class="ainote"><b>★AI生成では</b>プロンプトは「tightest framing that still contains {X}」。各カットの show (見せるもの) を宣言すると SG-21 が検査する。</div><div class="check">☑ このカットで何を見せるかが決まっていて、サイズがそこから導かれているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="tightest_frame">まだ</button></div></div></article><article class="card" data-id="kishotenketsu" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#08</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">シーンの中にも起承転結 — 起結は短く</div><div class="hook">シーンとして成立しない・平坦…ってとき。状況説明と結果に尺を使いすぎかもしれません。</div></div><div class="bd"><div class="rule">起 (状況・引き) 短く → 承 (事件) 長く → 転 (反応) 最長 → 結 (変化・引き) 短く</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <!-- 画角カーブ: 引き→寄り→引き -->
-  <path d="M20,30 Q90,70 160,72 Q230,70 300,30" fill="none" stroke="#e8590c" stroke-width="2"/>
-  <circle cx="20" cy="30" r="3" fill="#e8590c"/>
-  <circle cx="160" cy="72" r="3" fill="#e8590c"/>
-  <circle cx="300" cy="30" r="3" fill="#e8590c"/>
-  <text x="160" y="20" font-family="sans-serif" font-size="10" fill="#e8590c" text-anchor="middle">画角: 引き → 寄り → 引き</text>
-
-  <!-- 起承転結バー -->
-  <g transform="translate(20,110)">
-    <rect x="0" y="0" width="42" height="40" fill="#ffe8d6" stroke="#e8590c" stroke-width="1.5"/>
-    <text x="21" y="24" font-family="sans-serif" font-size="12" fill="#e8590c" text-anchor="middle">起</text>
-
-    <rect x="42" y="0" width="84" height="40" fill="#ffcda3" stroke="#e8590c" stroke-width="1.5"/>
-    <text x="84" y="24" font-family="sans-serif" font-size="12" fill="#c2410c" text-anchor="middle">承</text>
-
-    <rect x="126" y="0" width="112" height="40" fill="#e8590c" stroke="#e8590c" stroke-width="1.5"/>
-    <text x="182" y="24" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">転</text>
-
-    <rect x="238" y="0" width="42" height="40" fill="#ffe8d6" stroke="#e8590c" stroke-width="1.5"/>
-    <text x="259" y="24" font-family="sans-serif" font-size="12" fill="#e8590c" text-anchor="middle">結</text>
-  </g>
-
-  <text x="84" y="168" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">事件</text>
-  <text x="182" y="168" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle" font-weight="bold">反応 = メイン</text>
-  <text x="20" y="185" font-family="sans-serif" font-size="9" fill="#868e96">起・結 = 短く</text>
-  <text x="220" y="185" font-family="sans-serif" font-size="9" fill="#868e96">承・転 = 尺を配分</text>
-</svg></div><div class="prose"><p>「事件→反応」を時間軸に展開すると1シーンの中にも起承転結がある。メインディッシュは承 (熊と遭遇) と転 (逃げる・追われる) — 起と結に尺を使うと肝心の事件と行動が薄くなる。 「本題の直前から始める」= 起の最短化、「引き→寄り→引き」= 起結の画角設計。5則は起承転結の実装則として束ねて使う。</p></div><div class="ainote"><b>★AI生成では</b>「◯◯なシーンを描きたい」→ まず4拍に分解して尺を配分してから割る。これだけで葛藤のあるシーンになる。</div><div class="check">☑ 起承転結に分解し、起・結が短く、承・転に尺が配分されているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="kishotenketsu">まだ</button></div></div></article><article class="card" data-id="arc30" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">#06</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">同じ被写体は、30度以上動かして繋ぐ</div><div class="hook">カットが繋がってない感じがする…ってとき。サイズか角度の変化が足りないのかもしれません。</div></div><div class="bd"><div class="rule">カメラ位置を30度以上動かす — もしくはサイズを1段階以上変える</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#1971c2" font-weight="bold">俯瞰図: カメラ位置の変化量</text>
-
-  <!-- 被写体 -->
-  <circle cx="120" cy="100" r="6" fill="#495057"/>
-  <text x="120" y="118" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">被写体</text>
-
-  <!-- カメラA -->
-  <circle cx="120" cy="40" r="5" fill="#1971c2"/>
-  <text x="120" y="30" font-family="sans-serif" font-size="9" fill="#1971c2" text-anchor="middle">A</text>
-  <line x1="120" y1="46" x2="120" y2="94" stroke="#1971c2" stroke-width="1" stroke-dasharray="2,2"/>
-
-  <!-- カメラB (30度以上) -->
-  <circle cx="184" cy="65" r="5" fill="#1971c2"/>
-  <text x="192" y="60" font-family="sans-serif" font-size="9" fill="#1971c2">B</text>
-  <line x1="184" y1="70" x2="124" y2="98" stroke="#1971c2" stroke-width="1" stroke-dasharray="2,2"/>
-  <path d="M120,70 A30,30 0 0,1 152,54" fill="none" stroke="#1971c2" stroke-width="2"/>
-  <text x="152" y="42" font-family="sans-serif" font-size="10" fill="#1971c2" font-weight="bold">30°+ ○</text>
-
-  <!-- カメラC (5度しか動かない・NG) -->
-  <circle cx="132" cy="40" r="5" fill="#e03131"/>
-  <text x="140" y="34" font-family="sans-serif" font-size="9" fill="#e03131">C (5°)</text>
-  <text x="140" y="46" font-family="sans-serif" font-size="12" fill="#e03131" font-weight="bold">×</text>
-
-  <!-- 代替案: サイズ1段ジャンプ -->
-  <line x1="8" y1="140" x2="312" y2="140" stroke="#dee2e6" stroke-width="1"/>
-  <text x="8" y="156" font-family="sans-serif" font-size="10" fill="#495057">代替案: サイズを1段ジャンプ</text>
-
-  <rect x="8" y="162" width="70" height="34" rx="4" fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <ellipse cx="43" cy="185" rx="20" ry="10" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="43" y="200" font-family="sans-serif" font-size="8" fill="#868e96" text-anchor="middle">バスト</text>
-
-  <line x1="82" y1="179" x2="96" y2="179" stroke="#1971c2" stroke-width="2"/>
-  <polygon points="96,174 104,179 96,184" fill="#1971c2"/>
-
-  <rect x="108" y="162" width="70" height="34" rx="4" fill="#eaf2fc" stroke="#1971c2" stroke-width="2.5"/>
-  <circle cx="143" cy="179" r="13" fill="none" stroke="#1971c2" stroke-width="2.5"/>
-  <text x="143" y="200" font-family="sans-serif" font-size="8" fill="#1971c2" text-anchor="middle">CU ○</text>
-</svg></div><div class="prose"><p>バストショットから「ちょっとだけ寄ったバストショット」に繋ぐと気持ち悪い。変化が小さすぎて「新しいカット」と認識されず、脳が同じ画の続きだと思っているところに違う画が来るので、ワープしたように見える。 回避はシンプル: カメラ30度以上 or サイズ1段階以上。どちらかを満たせば別のカットになる。両方やるとさらに安全。ただし180度の線は越えない — 2つでセット。</p></div><div class="ainote"><b>★AI生成では</b>同じプロンプトで少しだけ画角を変えて生成すると、まさにこの状態を量産する。繋がらないと思ったら、まずカメラを回すか思い切って寄る。</div><div class="check">☑ 同一被写体の連続カットは、30度以上かサイズ1段階以上変わっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="arc30">まだ</button></div></div></article><article class="card" data-id="axis180" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">#07</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">イマジナリーラインは越えない</div><div class="hook">繋いだら人物の向きが変・左右が入れ替わる…ってとき。線を越えているのかもしれません。</div></div><div class="bd"><div class="rule">カメラは二人を結ぶ線の片側180度の中だけで動かす</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210">
-  <!-- 俯瞰図 -->
-  <line x1="70" y1="70" x2="250" y2="70" stroke="#495057" stroke-width="2"/>
-  <circle cx="70" cy="70" r="7" fill="none" stroke="#495057" stroke-width="2"/>
-  <text x="70" y="55" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">A</text>
-  <circle cx="250" cy="70" r="7" fill="none" stroke="#495057" stroke-width="2"/>
-  <text x="250" y="55" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">B</text>
-  <text x="160" y="62" font-family="sans-serif" font-size="9" fill="#868e96" text-anchor="middle">イマジナリーライン</text>
-
-  <path d="M40,70 A120,120 0 0,1 280,70" fill="none" stroke="#1971c2" stroke-width="1.5" stroke-dasharray="3,3"/>
-  <circle cx="90" cy="20" r="5" fill="#1971c2"/>
-  <circle cx="160" cy="8" r="5" fill="#1971c2"/>
-  <circle cx="230" cy="20" r="5" fill="#1971c2"/>
-  <text x="160" y="-2" font-family="sans-serif" font-size="10" fill="#1971c2" font-weight="bold" text-anchor="middle">この半円 (片側180°) は全部○</text>
-
-  <circle cx="160" cy="132" r="5" fill="#e03131"/>
-  <text x="160" y="150" font-family="sans-serif" font-size="12" fill="#e03131" font-weight="bold" text-anchor="middle">× 反対側から撮ると破綻</text>
-
-  <!-- 左右反転比較 -->
-  <line x1="8" y1="168" x2="312" y2="168" stroke="#dee2e6" stroke-width="1"/>
-  <rect x="20" y="176" width="120" height="30" rx="4" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-  <text x="35" y="196" font-family="sans-serif" font-size="10" fill="#1971c2">A(左)</text>
-  <text x="110" y="196" font-family="sans-serif" font-size="10" fill="#1971c2">B(右)</text>
-
-  <text x="160" y="196" font-family="sans-serif" font-size="14" fill="#e03131">→×→</text>
-
-  <rect x="180" y="176" width="120" height="30" rx="4" fill="#fdecec" stroke="#e03131" stroke-width="2"/>
-  <text x="195" y="196" font-family="sans-serif" font-size="10" fill="#e03131">B(左)</text>
-  <text x="270" y="196" font-family="sans-serif" font-size="10" fill="#e03131">A(右)</text>
-</svg></div><div class="prose"><p>向き合う二人を結んだ線がイマジナリーライン (axis of action)。線の片側にいる限りどこへ動かしてもいいが、越えて反対側から撮ると画面の左右が入れ替わり、観客は理屈が分からないまま「なんか変」とだけ感じる。 軸は2種: アクション軸 (走る向きが左→右なら次カットも左→右) と視線軸 (誰が誰を見ているか)。会話では事実上同じ線。日本の現場用語で線越え=ドンデン。</p></div><div class="ainote"><b>★AI生成では</b>AI生成はカットごとに空間が作り直されるため、実写より線越えが起きやすい。繋いで向きが変だと思ったら、まず線を疑う。プロンプトで「camera never crosses the axis of action」。</div><div class="check">☑ 会話・対峙の連続カットで、左右の位置と視線の向きが保たれているか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="axis180">まだ</button></div></div></article><article class="card" data-id="cross_legal" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">線を合法的に越える5法</div><div class="hook">どうしても反対側から撮りたい…ってとき。黙って越えるから破綻するのかもしれません。</div></div><div class="bd"><div class="rule">ニュートラル / カッタウェイ / 見せながら越える / 軸の再確立 / J-cut — 手続きを踏めば越えられる</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210">
-  <!-- 軸ミニ図 -->
-  <line x1="130" y1="30" x2="190" y2="30" stroke="#495057" stroke-width="2"/>
-  <circle cx="130" cy="30" r="5" fill="none" stroke="#495057" stroke-width="2"/>
-  <circle cx="190" cy="30" r="5" fill="none" stroke="#495057" stroke-width="2"/>
-  <text x="160" y="20" font-family="sans-serif" font-size="9" fill="#868e96" text-anchor="middle">軸</text>
-
-  <!-- 5法アイコン (番号付き) -->
-  <g font-family="sans-serif">
-    <!-- 1 ニュートラル -->
-    <circle cx="30" cy="90" r="12" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-    <text x="30" y="94" font-size="11" fill="#1971c2" text-anchor="middle" font-weight="bold">1</text>
-    <line x1="14" y1="120" x2="46" y2="120" stroke="#868e96" stroke-width="1.5"/>
-    <circle cx="30" cy="120" r="4" fill="#1971c2"/>
-    <text x="30" y="140" font-size="9" fill="#495057" text-anchor="middle">線上に</text>
-    <text x="30" y="152" font-size="9" fill="#495057" text-anchor="middle">カメラ</text>
-
-    <!-- 2 カッタウェイ -->
-    <circle cx="94" cy="90" r="12" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-    <text x="94" y="94" font-size="11" fill="#1971c2" text-anchor="middle" font-weight="bold">2</text>
-    <rect x="84" y="112" width="20" height="16" fill="none" stroke="#868e96" stroke-width="1.5"/>
-    <text x="94" y="142" font-size="9" fill="#495057" text-anchor="middle">小道具に</text>
-    <text x="94" y="154" font-size="9" fill="#495057" text-anchor="middle">カット</text>
-
-    <!-- 3 アーク移動 -->
-    <circle cx="160" cy="90" r="12" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-    <text x="160" y="94" font-size="11" fill="#1971c2" text-anchor="middle" font-weight="bold">3</text>
-    <path d="M144,124 Q160,108 176,124" fill="none" stroke="#868e96" stroke-width="1.5"/>
-    <polygon points="176,124 170,120 172,128" fill="#868e96"/>
-    <text x="160" y="142" font-size="9" fill="#495057" text-anchor="middle">見せながら</text>
-    <text x="160" y="154" font-size="9" fill="#495057" text-anchor="middle">アーク移動</text>
-
-    <!-- 4 軸の再確立 -->
-    <circle cx="226" cy="90" r="12" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-    <text x="226" y="94" font-size="11" fill="#1971c2" text-anchor="middle" font-weight="bold">4</text>
-    <rect x="212" y="114" width="28" height="18" rx="3" fill="none" stroke="#868e96" stroke-width="1.5"/>
-    <text x="226" y="142" font-size="9" fill="#495057" text-anchor="middle">引きで</text>
-    <text x="226" y="154" font-size="9" fill="#495057" text-anchor="middle">軸を宣言</text>
-
-    <!-- 5 プレラップ -->
-    <circle cx="290" cy="90" r="12" fill="#eaf2fc" stroke="#1971c2" stroke-width="2"/>
-    <text x="290" y="94" font-size="11" fill="#1971c2" text-anchor="middle" font-weight="bold">5</text>
-    <text x="290" y="126" font-size="16" fill="#868e96" text-anchor="middle">♪</text>
-    <text x="290" y="142" font-size="9" fill="#495057" text-anchor="middle">音を</text>
-    <text x="290" y="154" font-size="9" fill="#495057" text-anchor="middle">先行 (J)</text>
-  </g>
-
-  <text x="160" y="188" font-family="sans-serif" font-size="10" fill="#1971c2" text-anchor="middle" font-weight="bold">
-    手続きを踏めば線を越えられる
-  </text>
-</svg></div><div class="prose"><p>①ニュートラルショット: 線の真上 (正対位置) を1枚挟んで軸をリセット。②カッタウェイ: 小道具・第三者に一旦カットし、その間に軸を再設定したことにする。③見せながら越える: カットせずアーク/ドリーでカメラが線を跨ぐ — 観客が目で追えるので混乱しない。④軸の再確立: 被写体自身が動いたら引きに戻して新しい軸を宣言し直す。⑤プレラップ (J-cut): 台詞を先行させ注意を音に向けて違和感を沈める (Murch)。</p></div><div class="ainote"><b>★AI生成では</b>AI生成では③が特に使える — 1本のカメラ移動ショットとして生成すれば線越えがそのまま演出になる。</div><div class="check">☑ 線を越えるカットに、5法のどれかの手続きがあるか</div><div class="src">出典: 正典 (Murch / 実務調査 2026-08-13) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cross_legal">まだ</button></div></div></article><article class="card" data-id="cut_on_action" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カットは動作の途中で割る</div><div class="hook">カットが編集として目立つ・うるさい…ってとき。静止中に割っているのかもしれません。</div></div><div class="bd"><div class="rule">cutting on action — 動きが橋渡しになり、カットが知覚されなくなる</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#1971c2" font-weight="bold">動作の途中で割ると、カットが消える</text>
-
-  <!-- 動作の弧: 手がドアノブへ -->
-  <path d="M40,120 Q140,40 250,60" fill="none" stroke="#868e96" stroke-width="2.5"/>
-  <circle cx="40" cy="120" r="5" fill="#868e96"/>
-  <text x="40" y="140" font-family="sans-serif" font-size="9" fill="#868e96" text-anchor="middle">手を伸ばす</text>
-
-  <circle cx="250" cy="60" r="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="250" y="45" font-family="sans-serif" font-size="9" fill="#868e96" text-anchor="middle">ドアノブ</text>
-
-  <!-- カット点 (動作の途中) -->
-  <circle cx="150" cy="60" r="8" fill="#eaf2fc" stroke="#1971c2" stroke-width="2.5"/>
-  <text x="150" y="95" font-family="sans-serif" font-size="11" fill="#1971c2" font-weight="bold" text-anchor="middle">○ ここで割る</text>
-  <text x="150" y="108" font-family="sans-serif" font-size="9" fill="#1971c2" text-anchor="middle">(動作の途中)</text>
-
-  <!-- 静止点 (NG) -->
-  <circle cx="250" cy="60" r="3" fill="#e03131"/>
-  <text x="250" y="128" font-family="sans-serif" font-size="11" fill="#e03131" font-weight="bold" text-anchor="middle">× ここで割ると目立つ</text>
-  <text x="250" y="141" font-family="sans-serif" font-size="9" fill="#e03131" text-anchor="middle">(静止後)</text>
-
-  <!-- 糊代 (2フレームの重なり) -->
-  <line x1="8" y1="155" x2="312" y2="155" stroke="#dee2e6" stroke-width="1"/>
-  <text x="8" y="170" font-family="sans-serif" font-size="10" fill="#495057">糊代: 前後の動作を両カットに少し重ねる</text>
-  <rect x="20" y="176" width="100" height="18" rx="3" fill="#eaf2fc" stroke="#1971c2" stroke-width="1.5"/>
-  <rect x="90" y="176" width="100" height="18" rx="3" fill="#eaf2fc" stroke="#1971c2" stroke-width="1.5" fill-opacity="0.6"/>
-  <text x="105" y="188" font-family="sans-serif" font-size="8" fill="#1971c2" text-anchor="middle">重なり</text>
-</svg></div><div class="prose"><p>ドアに手を伸ばす途中・振り向きの途中で割る。動作が完了して静止してから切ると、カットの継ぎ目そのものが目立つ。 動きの途中で割ると、観客の目は動作の続きを追うのでカットが消える。前のカットの動き出しと次のカットの動き終わりを重ねるのがコツ。</p></div><div class="ainote"><b>★AI生成では</b>2本の生成クリップを繋ぐとき、両方に同じ動作の「途中」を含ませておくと編集点を隠せる。糊代 (動作の前後) を切り落としすぎない。</div><div class="check">☑ 目立つカットは、動作の途中に移動できないか</div><div class="src">出典: 正典 (Dmytryk / Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cut_on_action">まだ</button></div></div></article><article class="card" data-id="eyeline" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">視線は画面の中で交差させる</div><div class="hook">会話しているのに噛み合って見えない…ってとき。視線の向きが揃っていないのかもしれません。</div></div><div class="bd"><div class="rule">eyeline match — 彼女は画面右を見る、彼は画面左を見る。剣がぶつかるように</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 210">
-  <!-- 上: 女性、画面右向き -->
-  <rect x="8" y="10" width="140" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="40" cy="40" r="12" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="52" y1="40" x2="130" y2="40" stroke="#1971c2" stroke-width="2.5"/>
-  <polygon points="130,35 140,40 130,45" fill="#1971c2"/>
-  <text x="88" y="60" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">女性: 画面右を見る</text>
-
-  <!-- 下: 男性、画面左向き -->
-  <rect x="172" y="10" width="140" height="60" rx="5" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="280" cy="40" r="12" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="268" y1="40" x2="190" y2="40" stroke="#1971c2" stroke-width="2.5"/>
-  <polygon points="190,35 180,40 190,45" fill="#1971c2"/>
-  <text x="240" y="60" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">男性: 画面左を見る</text>
-
-  <!-- 合成: 交差 (○) -->
-  <line x1="60" y1="100" x2="260" y2="100" stroke="#dee2e6" stroke-width="1"/>
-  <line x1="90" y1="130" x2="230" y2="130" stroke="#1971c2" stroke-width="2.5"/>
-  <polygon points="230,125 240,130 230,135" fill="#1971c2"/>
-  <line x1="230" y1="150" x2="90" y2="150" stroke="#1971c2" stroke-width="2.5"/>
-  <polygon points="90,145 80,150 90,155" fill="#1971c2"/>
-  <text x="160" y="118" font-family="sans-serif" font-size="11" fill="#1971c2" font-weight="bold" text-anchor="middle">○ 剣がぶつかるように交差</text>
-
-  <!-- NG: 両方右向き -->
-  <line x1="80" y1="185" x2="140" y2="185" stroke="#e03131" stroke-width="2"/>
-  <polygon points="140,180 150,185 140,190" fill="#e03131"/>
-  <line x1="170" y1="185" x2="230" y2="185" stroke="#e03131" stroke-width="2"/>
-  <polygon points="230,180 240,185 230,190" fill="#e03131"/>
-  <text x="160" y="203" font-family="sans-serif" font-size="10" fill="#e03131" text-anchor="middle">× 両方同じ向き = 並んで同じものを見ている別人</text>
-</svg></div><div class="prose"><p>切り返しの2カットで、互いの視線が画面内で交差する向きに揃っていると「見つめ合っている」ことが伝わる。両方とも同じ向きを見ていると、同じものを並んで見ている別人になる。 Murch は「二人の視線は剣がぶつかるように交差せよ」と言う。イマジナリーラインを守れば自然に揃う — 視線がズレたらまず線越えを疑う。</p></div><div class="ainote"><b>★AI生成では</b>生成プロンプトに「she looks frame-right, he looks frame-left」と明示する。左右の宣言なしの切り返し生成は五分五分で破綻する。</div><div class="check">☑ 切り返しの2カットで、視線が画面内で交差しているか</div><div class="src">出典: 正典 (Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="eyeline">まだ</button></div></div></article><article class="card" data-id="matchcut" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">マッチカット — 形と動きで意味を飛ばす</div><div class="hook">場面転換が説明臭い・もたつく…ってとき。形の一致で飛べるかもしれません。</div></div><div class="bd"><div class="rule">前カットと次カットで形・動き・構図を一致させ、時間と場所を一瞬で越える</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <rect x="8" y="20" width="130" height="130" rx="6" fill="#0b1220" stroke="#868e96" stroke-width="2"/>
-  <circle cx="73" cy="85" r="42" fill="#dee2e6" stroke="none"/>
-  <text x="73" y="164" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">満月</text>
-
-  <rect x="182" y="20" width="130" height="130" rx="6" fill="#f8f9fa" stroke="#868e96" stroke-width="2"/>
-  <circle cx="247" cy="85" r="42" fill="none" stroke="#495057" stroke-width="2.5"/>
-  <line x1="247" y1="85" x2="247" y2="58" stroke="#495057" stroke-width="2.5"/>
-  <line x1="247" y1="85" x2="266" y2="95" stroke="#495057" stroke-width="2.5"/>
-  <circle cx="247" cy="85" r="2.5" fill="#495057"/>
-  <text x="247" y="164" font-family="sans-serif" font-size="10" fill="#495057" text-anchor="middle">時計の文字盤</text>
-
-  <!-- 形の一致オーバーレイ -->
-  <circle cx="73" cy="85" r="46" fill="none" stroke="#1971c2" stroke-width="2.5" stroke-dasharray="5,3"/>
-  <circle cx="247" cy="85" r="46" fill="none" stroke="#1971c2" stroke-width="2.5" stroke-dasharray="5,3"/>
-
-  <!-- カット記号 (稲妻) -->
-  <polygon points="160,60 148,95 158,95 150,120 172,80 162,80 168,60"
-           fill="#1971c2"/>
-  <text x="160" y="24" font-family="sans-serif" font-size="10" fill="#1971c2" text-anchor="middle" font-weight="bold">形の一致</text>
-</svg></div><div class="prose"><p>回る車輪→回る時計、投げた骨→宇宙船。形か動きが一致していると、観客は転換を「理解」ではなく「快感」として受け取る — 知的快感が再視聴を生む。 音のマッチ (前カットの音が次カットの音に化ける) も同じ原理。</p></div><div class="ainote"><b>★AI生成では</b>AI生成は同一構図・同一運動方向の別モチーフを作るのが得意 — マッチカット素材の量産に向く。参照画像で構図を固定し、モチーフだけ差し替えて生成する。</div><div class="check">☑ この場面転換、形か動きの一致で飛ばせないか</div><div class="src">出典: 正典 (編集正典 / kc_映像編集リズム) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="matchcut">まだ</button></div></div></article><article class="card" data-id="cut_reason" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#09</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カットを割る理由は2つだけ</div><div class="hook">どこで割ればいいか分からない…ってとき。理由の言えないカットを割っているのかもしれません。</div></div><div class="bd"><div class="rule">①見せたい画が変わる ②尺を調整したい — 説明できないカットは割らなくていい</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <rect x="120" y="10" width="80" height="34" rx="17" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
-  <text x="160" y="32" font-family="sans-serif" font-size="12" fill="#2f9e44" font-weight="bold" text-anchor="middle">割る?</text>
-
-  <path d="M140,44 Q100,70 60,88" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <path d="M180,44 Q220,70 260,88" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <path d="M160,44 L160,150" fill="none" stroke="#868e96" stroke-width="2"/>
-
-  <!-- ①新しい画 -->
-  <rect x="20" y="92" width="80" height="60" rx="6" fill="#e9f7ee" stroke="#2f9e44" stroke-width="2"/>
-  <text x="60" y="110" font-family="sans-serif" font-size="10" fill="#2f9e44" font-weight="bold" text-anchor="middle">① 新しい画</text>
-  <rect x="34" y="118" width="18" height="18" fill="none" stroke="#2f9e44" stroke-width="1.5"/>
-  <polygon points="56,127 66,122 66,132" fill="#2f9e44"/>
-  <rect x="70" y="118" width="18" height="18" fill="none" stroke="#2f9e44" stroke-width="1.5" transform="rotate(20 79 127)"/>
-
-  <!-- ②時間を飛ばす -->
-  <rect x="220" y="92" width="80" height="60" rx="6" fill="#e9f7ee" stroke="#2f9e44" stroke-width="2"/>
-  <text x="260" y="110" font-family="sans-serif" font-size="10" fill="#2f9e44" font-weight="bold" text-anchor="middle">② 時間を飛ばす</text>
-  <circle cx="245" cy="130" r="12" fill="none" stroke="#2f9e44" stroke-width="1.5"/>
-  <line x1="245" y1="130" x2="245" y2="122" stroke="#2f9e44" stroke-width="1.5"/>
-  <line x1="245" y1="130" x2="251" y2="133" stroke="#2f9e44" stroke-width="1.5"/>
-  <line x1="264" y1="122" x2="280" y2="122" stroke="#2f9e44" stroke-width="2"/>
-  <polygon points="280,117 288,122 280,127" fill="#2f9e44"/>
-
-  <!-- どちらでもない -->
-  <circle cx="160" cy="160" r="9" fill="none" stroke="#868e96" stroke-width="2"/>
-  <text x="160" y="182" font-family="sans-serif" font-size="10" fill="#868e96" text-anchor="middle">どちらでもない → 割らない</text>
-</svg></div><div class="prose"><p>①見せたいものを、見せたいタイミングで、見せたいアングルで出すために割る (啜る主人公→麺そのもの)。 ②別のものを挟んでいる間に時間は勝手に進む — ラーメン残り7割→店主の湯切り→食べ終わり。省略した時間は観客が自動補完する (elliptical editing)。映像は実時間を見せる必要がない。</p></div><div class="ainote"><b>★AI生成では</b>長い動作を丸ごと生成するのは難しい — インサート1枚で飛ばす方が速くてきれい。edit_design.yaml では全カットに cut_reason (new_info/time_adjust) を書く契約。</div><div class="check">☑ このカットを割る理由は①②のどちらか言えるか — 言えないなら割らない</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cut_reason">まだ</button></div></div></article><article class="card" data-id="substitute" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#14</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">動作は、周りの反応で描写できる</div><div class="hook">繋いだら急に不自然になった…ってとき。端折ってはいけない動作を飛ばしているかもしれません。</div></div><div class="bd"><div class="rule">代替描写 — 見せたくない動作は写さず、周りの反応で描く</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 195">
-  <!-- 1: ドアが開く (先生) -->
-  <rect x="6" y="15" width="72" height="90" rx="5" fill="none" stroke="#868e96" stroke-width="2"/>
-  <rect x="18" y="30" width="24" height="55" fill="none" stroke="#868e96" stroke-width="1.5" transform="rotate(-25 18 85)"/>
-  <circle cx="55" cy="55" r="8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="55" y1="63" x2="55" y2="88" stroke="#868e96" stroke-width="2"/>
-  <text x="42" y="118" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">①ドアが開く(先生)</text>
-
-  <!-- 2: 生徒の目線が動く -->
-  <rect x="84" y="15" width="72" height="90" rx="5" fill="#e9f7ee" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="102" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="122" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="142" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <line x1="98" y1="45" x2="146" y2="45" stroke="#2f9e44" stroke-width="2"/>
-  <polygon points="146,40 154,45 146,50" fill="#2f9e44"/>
-  <text x="120" y="80" font-family="sans-serif" font-size="9" fill="#2f9e44" text-anchor="middle">②目線が左→右へ</text>
-  <text x="120" y="96" font-family="sans-serif" font-size="8" fill="#2f9e44" text-anchor="middle">(先生は映らない)</text>
-
-  <!-- 3: 目線が止まる + 起立ーっ -->
-  <rect x="162" y="15" width="72" height="90" rx="5" fill="#e9f7ee" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="180" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="200" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <circle cx="220" cy="45" r="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
-  <path d="M186,70 h32 l-6,10 h-20 z" fill="none" stroke="#2f9e44" stroke-width="1.5"/>
-  <text x="202" y="78" font-family="sans-serif" font-size="8" fill="#2f9e44" text-anchor="middle">起立ーっ</text>
-  <text x="198" y="96" font-family="sans-serif" font-size="8" fill="#2f9e44" text-anchor="middle">(先生は映らない)</text>
-
-  <!-- 4: 教壇でお辞儀 (先生) -->
-  <rect x="240" y="15" width="74" height="90" rx="5" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="277" cy="48" r="8" fill="none" stroke="#868e96" stroke-width="2"/>
-  <path d="M277,56 L277,72 L265,90" stroke="#868e96" stroke-width="2" fill="none"/>
-  <line x1="255" y1="90" x2="300" y2="90" stroke="#868e96" stroke-width="2"/>
-  <text x="277" y="118" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">④教壇でお辞儀</text>
-
-  <text x="8" y="148" font-family="sans-serif" font-size="11" fill="#2f9e44" font-weight="bold">歩く・向き直る動作を1コマも見せずに全部伝わる</text>
-</svg></div><div class="prose"><p>「ドアが開く→教壇でお辞儀」は、歩く・止まる・向き直るが丸ごと消えているので不自然。かといって歩く7秒は長い。 先生を写さず生徒で描写する: 生徒たちの目線が動く (=歩いている) → 目線が止まる (=立ち止まった) → 「起立ーっ」(=こちらを向いた) → 教壇でお辞儀。先生はドアの後一度も映らないのに、全部伝わる。 構造は時間の圧縮と同じ — 別のものを見せている間に、時間が進む。</p></div><div class="ainote"><b>★AI生成では</b>破綻しやすい歩行・方向転換・立ち座りの生成を丸ごと回避できる。反応ショットは静的で生成が安定する。</div><div class="check">☑ 見せると長い動作を、周りの反応に置き換えられないか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="substitute">まだ</button></div></div></article><article class="card" data-id="frame_in" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#15</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カラ画を挟んで、アクションをリセットする</div><div class="hook">尺を詰めたいけど繋がらない…ってとき。カラ画を1枚挟むだけで解決することがあります。</div></div><div class="bd"><div class="rule">誰もいない画を先に見せ、そこに人物がフレーム・インする</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <!-- 1: カラ画 -->
-  <rect x="8" y="18" width="92" height="120" rx="6" fill="#e9f7ee" stroke="#2f9e44" stroke-width="2.5"/>
-  <line x1="20" y1="120" x2="88" y2="120" stroke="#2f9e44" stroke-width="2"/>
-  <text x="54" y="60" font-family="sans-serif" font-size="14" fill="#2f9e44">♪ ♪</text>
-  <text x="54" y="76" font-family="sans-serif" font-size="9" fill="#2f9e44" text-anchor="middle">コツ、コツ</text>
-  <text x="54" y="146" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">①誰もいない教壇</text>
-  <text x="54" y="158" font-family="sans-serif" font-size="8" fill="#2f9e44" text-anchor="middle">飛んだ証拠が画面にない</text>
-
-  <line x1="100" y1="78" x2="112" y2="78" stroke="#495057" stroke-width="2"/>
-  <polygon points="112,73 120,78 112,83" fill="#495057"/>
-
-  <!-- 2: フレーム・イン途中 -->
-  <rect x="122" y="18" width="92" height="120" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="122" y1="120" x2="214" y2="120" stroke="#868e96" stroke-width="2"/>
-  <circle cx="140" cy="95" r="8" fill="none" stroke="#2f9e44" stroke-width="2.5"/>
-  <line x1="140" y1="103" x2="140" y2="118" stroke="#2f9e44" stroke-width="2.5"/>
-  <line x1="128" y1="80" x2="152" y2="80" stroke="#2f9e44" stroke-width="2" stroke-dasharray="3,2"/>
-  <polygon points="152,75 162,80 152,85" fill="#2f9e44"/>
-  <text x="168" y="146" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">②入ってくる途中</text>
-
-  <line x1="214" y1="78" x2="226" y2="78" stroke="#495057" stroke-width="2"/>
-  <polygon points="226,73 234,78 226,83" fill="#495057"/>
-
-  <!-- 3: お辞儀 -->
-  <rect x="236" y="18" width="76" height="120" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="236" y1="120" x2="312" y2="120" stroke="#868e96" stroke-width="2"/>
-  <circle cx="274" cy="80" r="8" fill="none" stroke="#495057" stroke-width="2"/>
-  <path d="M274,88 L274,100 L260,116" stroke="#495057" stroke-width="2" fill="none"/>
-  <line x1="252" y1="116" x2="296" y2="116" stroke="#495057" stroke-width="2"/>
-  <text x="274" y="146" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">③お辞儀</text>
-
-  <text x="160" y="176" font-family="sans-serif" font-size="10" fill="#2f9e44" font-weight="bold" text-anchor="middle">カラ画1枚で尺も稼げる (靴音2〜3秒)</text>
-</svg></div><div class="prose"><p>ジャンプカットになるのは、アクションが途中で飛んだのが見えてしまうから。アクションが写っていない画 (誰もいない教壇) を挟めば、飛んだ証拠が画面上に存在しないので違和感が出ない — カラ画でアクションを一度リセットする。 しかも尺の調整に効く: カラ画に靴音だけ響かせて2〜3秒稼ぐと、本来10歩7秒の移動が5歩4秒の体感で成立する。 使い分け: 時間があるなら代替描写、時間がないならフレーム・イン。</p></div><div class="ainote"><b>★AI生成では</b>人物のいない空間は生成が安定するし、歩行を丸ごと作る必要もなくなる — AI生成では特に実用的。</div><div class="check">☑ 繋がらないとき、アクションを写さない画を1枚挟めないか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="frame_in">まだ</button></div></div></article><article class="card" data-id="scene_vs_montage" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">#11</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">シーンとモンタージュは別物</div><div class="hook">かっこいいのに何も伝わらない…ってとき。物語のつもりでモンタージュを作っているのかもしれません。</div></div><div class="bd"><div class="rule">判定テスト — カットの順番を入れ替えて成立するなら、それはモンタージュ</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#9c36b5" font-weight="bold">シーン = 因果の鎖 (入れ替え不可)</text>
-  <rect x="8" y="20" width="70" height="52" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="43" y="50" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">原因</text>
-  <line x1="78" y1="46" x2="94" y2="46" stroke="#9c36b5" stroke-width="2"/>
-  <polygon points="94,41 102,46 94,51" fill="#9c36b5"/>
-
-  <rect x="104" y="20" width="70" height="52" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="139" y="50" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">結果1</text>
-  <line x1="174" y1="46" x2="190" y2="46" stroke="#9c36b5" stroke-width="2"/>
-  <polygon points="190,41 198,46 190,51" fill="#9c36b5"/>
-
-  <rect x="200" y="20" width="70" height="52" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="235" y="50" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">結果2</text>
-
-  <text x="290" y="50" font-family="sans-serif" font-size="16" fill="#e03131" font-weight="bold" text-anchor="middle">×</text>
-  <text x="290" y="64" font-family="sans-serif" font-size="8" fill="#e03131" text-anchor="middle">入替不可</text>
-
-  <line x1="8" y1="86" x2="312" y2="86" stroke="#dee2e6" stroke-width="1"/>
-
-  <text x="8" y="102" font-family="sans-serif" font-size="11" fill="#9c36b5" font-weight="bold">モンタージュ = 主題の傘 (入れ替え可)</text>
-  <path d="M40,178 Q160,110 280,178" fill="none" stroke="#9c36b5" stroke-width="2" stroke-dasharray="4,3"/>
-  <text x="160" y="122" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">主題 (例: 成長)</text>
-
-  <rect x="20" y="150" width="70" height="48" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="55" y="178" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">A</text>
-  <rect x="125" y="150" width="70" height="48" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="160" y="178" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">B</text>
-  <rect x="230" y="150" width="70" height="48" rx="5" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2"/>
-  <text x="265" y="178" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">C</text>
-  <text x="160" y="200" font-family="sans-serif" font-size="10" fill="#9c36b5" font-weight="bold" text-anchor="middle">○ A↔B↔C 順不同でも成立</text>
-</svg></div><div class="prose"><p>シーンは場所と時間が繋がった一連の流れで、束ねるのは因果 (前のカットが原因、次が結果) — 順番を入れ替えると壊れる。モンタージュは連続性を度外視した繋ぎで、束ねるのは主題 (成長・努力・季節) — だいたい入れ替えても成立する。 モンタージュが悪いのではない — 物語を伝えたいのにモンタージュの繋ぎ方をしているのが問題。作る前に「どちらを作るのか」を宣言してから割る。</p></div><div class="ainote"><b>★AI生成では</b>実測の裏付け: モンタージュは物語ルーブリック25点がほぼ0点 (2/25)。賞・物語狙いなら因果で繋ぐシーンを作る。</div><div class="check">☑ これはシーンかモンタージュか、作る前に宣言したか (入れ替えテスト)</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="scene_vs_montage">まだ</button></div></div></article><article class="card" data-id="kuleshov" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">意味は並置から生まれる (クレショフ効果)</div><div class="hook">インサートに何を挟めばいいか迷う…ってとき。単カットでなく前後との組み合わせで考えます。</div></div><div class="bd"><div class="rule">同じ無表情 + スープ皿 = 空腹 / 同じ無表情 + 棺 = 悲しみ — 意味は単一ショットでなく並置が作る</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#9c36b5" font-weight="bold">同じ無表情の顔 + 隣のカット = 意味が変わる</text>
-
-  <!-- 上段: 顔+スープ皿 -->
-  <rect x="8" y="24" width="80" height="70" rx="6" fill="none" stroke="#495057" stroke-width="2"/>
-  <circle cx="48" cy="52" r="16" fill="none" stroke="#495057" stroke-width="2"/>
-  <line x1="42" y1="50" x2="46" y2="50" stroke="#495057" stroke-width="1.5"/>
-  <line x1="50" y1="50" x2="54" y2="50" stroke="#495057" stroke-width="1.5"/>
-  <line x1="42" y1="60" x2="54" y2="60" stroke="#495057" stroke-width="1.5"/>
-  <text x="48" y="86" font-family="sans-serif" font-size="8" fill="#495057" text-anchor="middle">同じカット</text>
-
-  <text x="98" y="60" font-family="sans-serif" font-size="18" fill="#9c36b5">+</text>
-
-  <rect x="116" y="24" width="80" height="70" rx="6" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <ellipse cx="156" cy="60" rx="24" ry="10" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <text x="156" y="80" font-family="sans-serif" font-size="9" fill="#9c36b5" text-anchor="middle">スープ皿</text>
-
-  <text x="206" y="60" font-family="sans-serif" font-size="14" fill="#9c36b5">=</text>
-  <rect x="222" y="34" width="90" height="50" rx="6" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2.5"/>
-  <text x="267" y="64" font-family="sans-serif" font-size="13" fill="#9c36b5" font-weight="bold" text-anchor="middle">空腹</text>
-
-  <!-- 下段: 顔+棺 -->
-  <rect x="8" y="118" width="80" height="70" rx="6" fill="none" stroke="#495057" stroke-width="2"/>
-  <circle cx="48" cy="146" r="16" fill="none" stroke="#495057" stroke-width="2"/>
-  <line x1="42" y1="144" x2="46" y2="144" stroke="#495057" stroke-width="1.5"/>
-  <line x1="50" y1="144" x2="54" y2="144" stroke="#495057" stroke-width="1.5"/>
-  <line x1="42" y1="154" x2="54" y2="154" stroke="#495057" stroke-width="1.5"/>
-  <text x="48" y="180" font-family="sans-serif" font-size="8" fill="#495057" text-anchor="middle">同じカット</text>
-
-  <text x="98" y="154" font-family="sans-serif" font-size="18" fill="#9c36b5">+</text>
-
-  <rect x="116" y="118" width="80" height="70" rx="6" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <path d="M126,160 L136,140 L176,140 L186,160 Z" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <text x="156" y="178" font-family="sans-serif" font-size="9" fill="#9c36b5" text-anchor="middle">棺</text>
-
-  <text x="206" y="154" font-family="sans-serif" font-size="14" fill="#9c36b5">=</text>
-  <rect x="222" y="128" width="90" height="50" rx="6" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2.5"/>
-  <text x="267" y="158" font-family="sans-serif" font-size="13" fill="#9c36b5" font-weight="bold" text-anchor="middle">悲しみ</text>
-</svg></div><div class="prose"><p>観客は2つのカットの間に自動で関係を読む。俳優の演技が同じでも、隣に置くカットで意味が変わる。 インサート選定は「何を挟むと前後の意味がどう変わるか」で決める — 綺麗なBロールを挟むのではなく、意味を作るカットを挟む。</p></div><div class="ainote"><b>★AI生成では</b>AI生成の表情演技が弱くても、並置で感情を作れる — 顔の生成をやり直すより、隣のカットを差し替える方が速い。</div><div class="check">☑ このインサートは、前後の意味をどう変えるために挟むのか言えるか</div><div class="src">出典: 正典 (Kuleshov / Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="kuleshov">まだ</button></div></div></article><article class="card" data-id="reaction_shot" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">重要な台詞は、聞き手の顔で受ける</div><div class="hook">台詞カットの口の動きが破綻する…ってとき。話し手を写し続ける必要はないかもしれません。</div></div><div class="bd"><div class="rule">台詞の内容は音声で伝わっている — 聞き手がどう受け止めたかの方が新情報</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <!-- 左: 話者 (破綻) -->
-  <rect x="8" y="15" width="140" height="120" rx="6" fill="none" stroke="#868e96" stroke-width="2"/>
-  <circle cx="78" cy="65" r="26" fill="none" stroke="#868e96" stroke-width="2.5"/>
-  <path d="M64,80 q14,14 28,0" fill="none" stroke="#e03131" stroke-width="2.5"/>
-  <path d="M60,84 l8,8 M76,86 l-4,10" stroke="#e03131" stroke-width="1.5"/>
-  <text x="78" y="120" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">話者 (口元が破綻)</text>
-
-  <text x="140" y="150" font-family="sans-serif" font-size="10" fill="#9c36b5" text-anchor="middle">重要な台詞</text>
-
-  <!-- 右: 聞き手 -->
-  <rect x="172" y="15" width="140" height="120" rx="6" fill="#f5e8fb" stroke="#9c36b5" stroke-width="2.5"/>
-  <circle cx="242" cy="65" r="26" fill="none" stroke="#9c36b5" stroke-width="2.5"/>
-  <path d="M228,58 q6,-6 12,0" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <path d="M244,58 q6,-6 12,0" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <path d="M230,80 q12,6 24,0" fill="none" stroke="#9c36b5" stroke-width="2"/>
-  <text x="242" y="120" font-family="sans-serif" font-size="9" fill="#9c36b5" text-anchor="middle" font-weight="bold">○ 聞き手の目の変化=新情報</text>
-
-  <!-- 音声波形が2フレームを跨ぐ -->
-  <path d="M20,155 q6,-14 12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0 t12,0"
-        fill="none" stroke="#495057" stroke-width="1.5"/>
-  <text x="160" y="176" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">音声はカットを跨いで続く</text>
-</svg></div><div class="prose"><p>Dmytryk 曰く「本当に重要なのはリアクション」。重要な告白ほど、話し終わりでなく聞き手の顔で割る。話者の口元より、受け手の目の変化の方が観客の知りたい情報になっている。</p></div><div class="ainote"><b>★AI生成では</b>AI生成の最弱点=リップシンクを画面から外せる — 破綻隠しと演出強化が同時に成立する。台詞クリップが崩れたら、再生成の前にリアクションショットへ逃がせないか考える。</div><div class="check">☑ この台詞、聞き手の顔で受けた方が強くならないか</div><div class="src">出典: 正典 (Dmytryk &quot;The Reaction Is What Really Counts&quot;) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="reaction_shot">まだ</button></div></div></article><article class="card" data-id="rule_of_six" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">破綻の採否は感情から数える (Rule of Six)</div><div class="hook">生成カットの破綻をどこまで許すか迷う…ってとき。判断の順序が決まっていないのかもしれません。</div></div><div class="bd"><div class="rule">感情51 &gt; 物語23 &gt; リズム10 &gt; 視線7 &gt; 2D平面5 &gt; 3D空間4 — 下位を犠牲にしても上位を守る</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#9c36b5" font-weight="bold">上位を守るためなら下位は捨てられる</text>
-
-  <g font-family="sans-serif" font-size="10" fill="#495057">
-    <text x="8" y="34">感情 51</text>
-    <rect x="70" y="24" width="234" height="14" fill="#9c36b5"/>
-
-    <text x="8" y="56">物語 23</text>
-    <rect x="70" y="46" width="106" height="14" fill="#a259c4"/>
-
-    <text x="8" y="78">リズム 10</text>
-    <rect x="70" y="68" width="46" height="14" fill="#c191d8"/>
-
-    <text x="8" y="100">視線 7</text>
-    <rect x="70" y="90" width="32" height="14" fill="#d6b6e6"/>
-
-    <text x="8" y="122">2D平面 5</text>
-    <rect x="70" y="112" width="23" height="14" fill="#e6d3ef"/>
-
-    <text x="8" y="144">3D空間 4</text>
-    <rect x="70" y="134" width="18" height="14" fill="#f0e6f6"/>
-  </g>
-
-  <line x1="70" y1="160" x2="70" y2="176" stroke="#9c36b5" stroke-width="2"/>
-  <polygon points="65,176 70,186 75,176" fill="#9c36b5"/>
-  <text x="90" y="170" font-family="sans-serif" font-size="10" fill="#9c36b5">空間連続性 (最下位) を破っても</text>
-  <text x="90" y="184" font-family="sans-serif" font-size="10" fill="#9c36b5" font-weight="bold">感情・物語 (上位) が立てば採用</text>
-</svg></div><div class="prose"><p>Murch の編集判断の優先順位。数値は本人も半ば冗談の重み付けで、実務で使うのは順序 — 空間の連続性 (最下位) を破っても、感情と物語 (上位) が立つカットを採る。 空間連続性は「気づかれなければゼロ減点」の最下位。逆に、空間が完璧でも感情が死ぬカットは採らない。</p></div><div class="ainote"><b>★AI生成では</b>AI生成カットの採否にそのまま使える — 手の破綻 (3D) があっても感情が最高のテイクは、破綻が感情を壊さない限り採用。ただし破綻6分類スキャン (counts/joints等) は採点前に別途通す。</div><div class="check">☑ 破綻したテイクの採否を、感情&gt;物語&gt;リズム&gt;視線&gt;2D&gt;3D の順で判断したか</div><div class="src">出典: 正典 (Murch &quot;In the Blink of an Eye&quot;) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="rule_of_six">まだ</button></div></div></article><article class="card" data-id="shortest_duration" data-cat="duration" style="--cc:#e67700"><div class="chd"><div class="badgerow"><span class="no">#13</span><span class="catlabel">尺と読速</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">1カットの尺は「伝わる最短」</div><div class="hook">なんか間延びする…ってとき。1カットの尺に基準がないのかもしれません。</div></div><div class="bd"><div class="rule">そのカットの情報が伝わる、いちばん短い尺 — 「伝わる」の中身はカット種で変わる</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <!-- 情報カット -->
-  <text x="8" y="26" font-family="sans-serif" font-size="10" fill="#495057">情報カット</text>
-  <ellipse cx="30" cy="42" rx="11" ry="7" fill="none" stroke="#e67700" stroke-width="2"/>
-  <circle cx="30" cy="42" r="3" fill="#e67700"/>
-  <rect x="90" y="34" width="60" height="16" rx="3" fill="#e67700"/>
-  <text x="160" y="46" font-family="sans-serif" font-size="9" fill="#e67700">認識に要る時間</text>
-
-  <!-- アクション -->
-  <text x="8" y="70" font-family="sans-serif" font-size="10" fill="#495057">アクション</text>
-  <path d="M20,86 Q45,68 70,86" fill="none" stroke="#e67700" stroke-width="2"/>
-  <rect x="90" y="78" width="16" height="16" rx="3" fill="#ffd8a8"/>
-  <rect x="106" y="78" width="90" height="16" rx="3" fill="#e67700"/>
-  <rect x="196" y="78" width="16" height="16" rx="3" fill="#ffd8a8"/>
-  <text x="230" y="90" font-family="sans-serif" font-size="9" fill="#e67700">前後に糊代</text>
-
-  <!-- テロップ -->
-  <text x="8" y="114" font-family="sans-serif" font-size="10" fill="#495057">テロップ</text>
-  <rect x="90" y="106" width="130" height="16" rx="3" fill="#e67700"/>
-  <text x="230" y="118" font-family="sans-serif" font-size="13" fill="#e67700" font-weight="bold">1秒4文字</text>
-
-  <!-- ナレーション -->
-  <text x="8" y="146" font-family="sans-serif" font-size="10" fill="#495057">ナレーション</text>
-  <rect x="90" y="138" width="180" height="16" rx="3" fill="#e67700"/>
-  <text x="278" y="150" font-family="sans-serif" font-size="13" fill="#e67700" font-weight="bold">1秒6文字</text>
-
-  <text x="8" y="178" font-family="sans-serif" font-size="10" fill="#868e96">尺は「何が伝わればいいか」から逆算する — 感覚で決めない</text>
-</svg></div><div class="prose"><p>情報を見せるカット=認識に要る時間 (表情アップは短くていい、情報量の多い引きは目が動く時間が要る)。 アクション=動作の前後に糊代 (動き出す直前〜終わった直後。切りすぎると繋がらず、残しすぎると待ち時間が生まれる)。 テロップ=1秒4文字 (Netflix日本語字幕と同基準。1行16文字前後・2行まで)。ナレーション=1秒6文字 (台本1分400文字。読むより聞く方が速い)。 尺は感覚で決めない — 「何が伝わればいいか」から決まる。全体尺の調整はそのあと。</p></div><div class="ainote"><b>★AI生成では</b>生成クリップの trim 判断がこれで機械化できる — カット種を宣言すれば目標尺が導出される。ナレ尺は TTS 実測→timecode が正。</div><div class="check">☑ 各カットの尺は「伝わる最短」か — テロップ1秒4文字/ナレ1秒6文字を割っていないか</div><div class="src">出典: 連載 ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="shortest_duration">まだ</button></div></div></article><article class="card" data-id="read_speed" data-cat="duration" style="--cc:#e67700"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">尺と読速</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">0.20秒/字を割ると、映像が壁紙になる</div><div class="hook">テロップを読んでたら映像を見てなかった…と言われるとき。読めても観られない速度があります。</div></div><div class="bd"><div class="rule">0.25秒/字=comfortable / 0.20秒/字が境界 — 未満は「読むか観るか」の二者択一になる</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190">
-  <!-- グレーアウト領域 (0.20未満) -->
-  <rect x="20" y="60" width="90" height="30" fill="#e9ecef"/>
-  <text x="65" y="45" font-family="sans-serif" font-size="9" fill="#868e96" text-anchor="middle">映像が壁紙化</text>
-  <path d="M50,20 a10,10 0 1,0 0.1,0" fill="none" stroke="#868e96" stroke-width="2"/>
-  <line x1="42" y1="12" x2="58" y2="28" stroke="#868e96" stroke-width="1.5"/>
-  <text x="65" y="24" font-family="sans-serif" font-size="8" fill="#868e96">文字だけ見て映像を見ていない</text>
-
-  <!-- スケールバー -->
-  <line x1="20" y1="90" x2="300" y2="90" stroke="#495057" stroke-width="2"/>
-  <text x="20" y="106" font-family="sans-serif" font-size="9" fill="#495057">0.10</text>
-  <text x="300" y="106" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="end">0.35 秒/字</text>
-
-  <!-- 0.20 境界線 -->
-  <line x1="110" y1="70" x2="110" y2="110" stroke="#e03131" stroke-width="2.5"/>
-  <text x="110" y="128" font-family="sans-serif" font-size="10" fill="#e03131" font-weight="bold" text-anchor="middle">0.20 境界</text>
-
-  <!-- 0.25 comfortable マーカー -->
-  <line x1="160" y1="80" x2="160" y2="100" stroke="#e67700" stroke-width="2.5"/>
-  <circle cx="160" cy="80" r="4" fill="#e67700"/>
-  <text x="160" y="70" font-family="sans-serif" font-size="10" fill="#e67700" font-weight="bold" text-anchor="middle">0.25 comfortable</text>
-
-  <text x="205" y="150" font-family="sans-serif" font-size="9" fill="#495057" text-anchor="middle">読める領域 (0.20以上)</text>
-  <text x="65" y="150" font-family="sans-serif" font-size="9" fill="#e03131" text-anchor="middle">読むか観るかの二者択一</text>
-</svg></div><div class="prose"><p>最初の破綻は「読めない」ではなく「動画が観られなくなる」— 文字が注意を勝ち取り、映像が壁紙に落ちる。 行の認識オーバーヘッド0.3秒 + 視線の再取得コスト (位置固定なら0.15秒/行) も乗る。短い行ほど速くできる (3語なら0.8秒で成立)。</p></div><div class="ainote"><b>★AI生成では</b>ショートはループ再生 (15秒で2-3周見られる) 前提なら1周で全部読ませなくてもよい — 2周目に拾える設計は許される。</div><div class="check">☑ テロップの表示秒数 ÷ 文字数が 0.20秒/字を割っていないか</div><div class="src">出典: 正典 (放送字幕一般則 / kc_画面内テキストの読速設計) ・ 深掘り: kc_画面内テキストの読速設計</div><div class="foot"><button class="mbtn" data-id="read_speed">まだ</button></div></div></article><article class="card" data-id="jl_cut" data-cat="sound" style="--cc:#0c8599"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">音で繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">J カットと L カット — 音を先に渡す</div><div class="hook">カットの切り替えが硬い・ブツ切りに感じる…ってとき。映像と音を同時に切っているのかもしれません。</div></div><div class="bd"><div class="rule">J = 次のシーンの音を先行させる / L = 前のシーンの音を残す — 音の橋でカットが消える</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <!-- J カット -->
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#0c8599" font-weight="bold">Jカット: 次の音が先行する</text>
-  <rect x="8" y="20" width="130" height="20" rx="3" fill="#eaf7f9" stroke="#0c8599" stroke-width="1.5"/>
-  <line x1="138" y1="30" x2="145" y2="30" stroke="#dee2e6" stroke-width="1"/>
-  <rect x="145" y="20" width="130" height="20" rx="3" fill="#0c8599" fill-opacity="0.25" stroke="#0c8599" stroke-width="1.5"/>
-  <text x="20" y="34" font-family="sans-serif" font-size="9" fill="#0c8599">映像A</text>
-  <text x="155" y="34" font-family="sans-serif" font-size="9" fill="#0c8599">映像B</text>
-
-  <rect x="118" y="46" width="157" height="20" rx="3" fill="#0c8599" stroke="#0c8599" stroke-width="1.5"/>
-  <text x="126" y="60" font-family="sans-serif" font-size="9" fill="#fff">音B (4-20f 先行)</text>
-  <path d="M118,20 L118,66" stroke="#0c8599" stroke-width="2" stroke-dasharray="3,2"/>
-  <text x="118" y="80" font-family="sans-serif" font-size="8" fill="#0c8599" text-anchor="middle">↑ ここから音が先に来る</text>
-
-  <line x1="8" y1="98" x2="312" y2="98" stroke="#dee2e6" stroke-width="1"/>
-
-  <!-- L カット -->
-  <text x="8" y="116" font-family="sans-serif" font-size="11" fill="#0c8599" font-weight="bold">Lカット: 前の音が残る</text>
-  <rect x="8" y="122" width="130" height="20" rx="3" fill="#0c8599" fill-opacity="0.25" stroke="#0c8599" stroke-width="1.5"/>
-  <rect x="138" y="122" width="130" height="20" rx="3" fill="#eaf7f9" stroke="#0c8599" stroke-width="1.5"/>
-  <text x="20" y="136" font-family="sans-serif" font-size="9" fill="#0c8599">映像A</text>
-  <text x="150" y="136" font-family="sans-serif" font-size="9" fill="#0c8599">映像B</text>
-
-  <rect x="8" y="148" width="150" height="20" rx="3" fill="#0c8599" stroke="#0c8599" stroke-width="1.5"/>
-  <text x="16" y="162" font-family="sans-serif" font-size="9" fill="#fff">音A (2-12f 残る)</text>
-  <path d="M158,122 L158,168" stroke="#0c8599" stroke-width="2" stroke-dasharray="3,2"/>
-  <text x="158" y="182" font-family="sans-serif" font-size="8" fill="#0c8599" text-anchor="middle">↑ 画面はBでも音はまだA</text>
-</svg></div><div class="prose"><p>Jカット (pre-lap): 次の音を4〜20フレーム先行させ、観客の注意を先に次へ運ぶ — 期待とテンポ上昇。Lカット: 前の音を2〜12フレーム残し、感情の余韻を作る。 会話はほぼ全部これで繋がっている。線越えの違和感を沈める用途もある (合法5法の⑤)。</p></div><div class="ainote"><b>★AI生成では</b>生成クリップの音声は編集で分離し、映像より先/後にずらすだけで実装できる — 生成時に作り込む必要がない。</div><div class="check">☑ 映像と音声を同時に切っているカットに、J/L のズレを入れられないか</div><div class="src">出典: 正典 (kc_映像編集リズム) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="jl_cut">まだ</button></div></div></article><article class="card" data-id="downbeat_cut" data-cat="sound" style="--cc:#0c8599"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">音で繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">全拍で切らない — 音ハメはダウンビートだけ</div><div class="hook">音ハメしたのにストロボみたいで疲れる…ってとき。全部の拍で切っているのかもしれません。</div></div><div class="bd"><div class="rule">切るのはダウンビートと楽曲のエネルギー変化点だけ — しかも拍の直前16分音符で</div><div class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
-  <!-- NG: 全拍カット -->
-  <text x="8" y="14" font-family="sans-serif" font-size="11" fill="#e03131" font-weight="bold">× 全拍で切る = ストロボ化</text>
-  <path d="M10,40 q7,-18 14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0"
-        fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <g stroke="#e03131" stroke-width="1.5">
-    <line x1="24" y1="24" x2="24" y2="56"/><line x1="52" y1="24" x2="52" y2="56"/>
-    <line x1="80" y1="24" x2="80" y2="56"/><line x1="108" y1="24" x2="108" y2="56"/>
-    <line x1="136" y1="24" x2="136" y2="56"/><line x1="164" y1="24" x2="164" y2="56"/>
-    <line x1="192" y1="24" x2="192" y2="56"/><line x1="220" y1="24" x2="220" y2="56"/>
-    <line x1="248" y1="24" x2="248" y2="56"/><line x1="276" y1="24" x2="276" y2="56"/>
-    <line x1="304" y1="24" x2="304" y2="56"/>
-  </g>
-  <text x="160" y="72" font-family="sans-serif" font-size="9" fill="#e03131" text-anchor="middle">全拍にカット点 = 疲れる</text>
-
-  <line x1="8" y1="90" x2="312" y2="90" stroke="#dee2e6" stroke-width="1"/>
-
-  <!-- OK: ダウンビートのみ -->
-  <text x="8" y="108" font-family="sans-serif" font-size="11" fill="#0c8599" font-weight="bold">○ ダウンビートのみ + 直前16分でずらす</text>
-  <path d="M10,134 q7,-18 14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0 t14,0"
-        fill="none" stroke="#868e96" stroke-width="1.5"/>
-  <g stroke="#dee2e6" stroke-width="1" stroke-dasharray="1,2">
-    <line x1="24" y1="118" x2="24" y2="150"/><line x1="52" y1="118" x2="52" y2="150"/>
-    <line x1="80" y1="118" x2="80" y2="150"/><line x1="108" y1="118" x2="108" y2="150"/>
-    <line x1="136" y1="118" x2="136" y2="150"/><line x1="164" y1="118" x2="164" y2="150"/>
-    <line x1="192" y1="118" x2="192" y2="150"/><line x1="220" y1="118" x2="220" y2="150"/>
-    <line x1="248" y1="118" x2="248" y2="150"/><line x1="276" y1="118" x2="276" y2="150"/>
-    <line x1="304" y1="118" x2="304" y2="150"/>
-  </g>
-  <line x1="105" y1="118" x2="105" y2="150" stroke="#0c8599" stroke-width="2.5"/>
-  <line x1="217" y1="118" x2="217" y2="150" stroke="#0c8599" stroke-width="2.5"/>
-  <text x="105" y="168" font-family="sans-serif" font-size="8" fill="#0c8599" text-anchor="middle">直前16分でカット</text>
-  <text x="217" y="168" font-family="sans-serif" font-size="8" fill="#0c8599" text-anchor="middle">4拍ごと (大変化は8/16拍)</text>
-</svg></div><div class="prose"><p>全拍カットはストロボ化して離脱を生む。1拍=60/BPM秒を物差しに、4拍ごとに小変化・8/16拍ごとに大変化が目安。 拍ジャストより直前16分音符で切る方が気持ちいい (アンティシペーションカット — 「持ち上がり」で切る)。パターン中断は10-15秒に1回。</p></div><div class="ainote"><b>★AI生成では</b>AI素材の尺は動かせないがタイムラインは動かせる — 決定的瞬間を実測して拍に逆算配置し、足りない尺はフリーズで埋める (スロー再生で誤魔化さない)。</div><div class="check">☑ カット点はダウンビート+直前16分音符に置いたか — 全拍で切っていないか</div><div class="src">出典: 正典 (kc_映像編集リズム 2026-08-13追補 / xc_音ハメと尺合わせ) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="downbeat_cut">まだ</button></div></div></article></main><div id="drill"><div class="dprog" id="drillProg"></div><div class="dcard" id="drillBody"></div></div><footer class="note">連載『AI映像のためのディレクション技術』#01-#15 (#10欠番) + 正典補完 (Murch / Dmytryk / 神井護『動画の文法』/ vault 知見カード)<br>SSOT: 00_System/film_grammar_deck/deck.yaml — 再ビルド: python3 00_System/mobile_ops/build_film_grammar.py</footer><script>
-const K='fg_deck_v1';
-let store={mastered:{}};
-try{const s=JSON.parse(localStorage.getItem(K)||'{}');if(s&&typeof s==='object')store=s;if(!store.mastered)store.mastered={}}catch(e){store={mastered:{}}}
-function save(){try{localStorage.setItem(K,JSON.stringify(store))}catch(e){}}
-function isMastered(id){return store.mastered[id]===true}
+.chip[data-cat].on{background:var(--cc,#2b3245)}</style></head><body><header><div class="htop"><div><h1>映像文法デッキ</h1><p class="sub">症状から引く、プロ品質のディレクション技術 24</p><p class="prog" id="prog"></p><p class="streak" id="streak"></p></div></div><div class="modenav"><button class="modebtn" data-mode="today">今日</button><button class="modebtn" data-mode="list">一覧</button><button class="modebtn" data-mode="drill">ドリル</button></div><div class="chips"><span class="chip on" data-cat="__all__">全部 (24)</span><span class="chip" data-cat="design" style="--cc:#e8590c">構成とシーン設計 (7)</span><span class="chip" data-cat="connect" style="--cc:#1971c2">カットを繋ぐ (6)</span><span class="chip" data-cat="time" style="--cc:#2f9e44">時間を操る (3)</span><span class="chip" data-cat="meaning" style="--cc:#9c36b5">視線と意味 (4)</span><span class="chip" data-cat="duration" style="--cc:#e67700">尺と読速 (2)</span><span class="chip" data-cat="sound" style="--cc:#0c8599">音で繋ぐ (2)</span><span class="chip" id="chip-todo">まだ</span></div></header><div id="today"><div class="dprog" id="todayProg"></div><div class="dcard" id="todayBody"></div></div><main id="list"><article class="card" id="c-beat_row" data-id="beat_row" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#12</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">ビートは、構成表の一行</div><div class="hook">いいカットは撮れたのに全体が繋がらない…ってとき。カットから考え始めているのが原因かもしれません。</div></div><div class="bd"><div class="rule">先に構成表の一行 (役割+伝えること+尺) を並べる — 画はまだ決めない</div><div class="diagram"><img src="media/film-grammar/beat_row.webp" alt="ビートは、構成表の一行" loading="lazy" width="1200" height="675"></div><div class="prose"><p>ビートとは構成表の一行のこと (例: 「1. つかみ / 商品を印象的に見せる / 3秒」)。役割と伝えることと尺だけを持ち、画はまだ決まっていない。 同じ「課題を提示する」ビートでも、物語で展開 (山積みの書類→時計→ため息)、データで展開 (グラフ→手元)、羅列で展開 (書類・電話・深夜) と絵の作り方は自由 — 伝える意味は同じ。 ビート=意味の単位 (何を伝えるか) / シーン=場所と時間の単位 (どこで・いつ)。だからモンタージュにシーンはなくてもビートはある。</p></div><div class="ainote"><b>★AI生成では</b>AI生成はいきなりカットから考えがち — カットから積むと全体が繋がらない。ビート表が並んだ時点で構成は完成、あとは各ビートを絵にするだけ。</div><div class="check">☑ カットを書き出す前に、構成表の一行×nを並べたか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="beat_row">まだ</button></div></div></article><article class="card" id="c-incident_on_camera" data-id="incident_on_camera" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#01</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">事件を画に写す</div><div class="hook">上手いんだけど、何も起きていない…ってとき。反応だけ写して、事件が画にないのかもしれません。</div></div><div class="bd"><div class="rule">シーン = 事件 → 反応。この順番は逆にならない — 事件を1カット足す</div><div class="diagram"><img src="media/film-grammar/incident_on_camera.webp" alt="事件を画に写す" loading="lazy" width="1200" height="675"></div><div class="prose"><p>「歩く→驚く」だけの映像は「誰かが何かして驚いた」にしか見えない。間に事件 (札束が落ちる) を1カット入れると、反応が意味を持ちシーンが立ち上がる。 アクション (反応) は事件の後にしか置けない。事件が画に写っていない映像は、どれだけ芝居が上手くても空回りする。</p></div><div class="ainote"><b>★AI生成では</b>生成後の採点でも検出しにくい欠陥 — 課金前のシーン設計でしか潰せない。shot_grammar.py の SG-17 が機械検査する。</div><div class="check">☑ このシーンの事件は何で、それは反応より前に画に写っているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="incident_on_camera">まだ</button></div></div></article><article class="card" id="c-wide_tight_wide" data-id="wide_tight_wide" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#02</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">引きで始まり、引きで終わる</div><div class="hook">終わったのに終わった気がしない…ってとき。頭か尻が寄りのままかもしれません。</div></div><div class="bd"><div class="rule">頭=引き (いつ/どこ/誰) → 中=寄り (芝居) → 尻=引き (何が変わったか)。頭と尻は同画角</div><div class="diagram"><img src="media/film-grammar/wide_tight_wide.webp" alt="引きで始まり、引きで終わる" loading="lazy" width="1200" height="675"></div><div class="prose"><p>頭の引きで「いつ・どこ・誰・位置関係」が1カットで渡り、尻の引きで「二人いたテーブルが一人になった」= 変化が見える。 寄って→引くではなく、引いて→寄って→引く。頭と尻を同じ画角にすると、差分だけが目に入るので変化が一発で読める。</p></div><div class="ainote"><b>★AI生成では</b>AI生成は1カットごとに空間を作り直すため、引きの頭がないと観客の中に地図ができない。頭尻の同画角は同一参照画像の再利用で作れる。</div><div class="check">☑ 頭と尻が引きで、しかも同じ画角になっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="wide_tight_wide">まだ</button></div></div></article><article class="card" id="c-late_start" data-id="late_start" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#03</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">本題の直前から始める</div><div class="hook">間延びする・途中で離脱される…ってとき。始まりが早すぎるのかもしれません。</div></div><div class="bd"><div class="rule">見せたいものの直前から始める — 前置きは総尺の30%以内、迷ったら削る</div><div class="diagram"><img src="media/film-grammar/late_start.webp" alt="本題の直前から始める" loading="lazy" width="1200" height="675"></div><div class="prose"><p>コーヒーを飲む時間・歩いて向かう時間は捨てる。「まだ本題に入らないな」と思われた時点で負け。 前置きは尺に比例して許される (15秒なら4.5秒まで) が、迷ったら削る方に倒す。</p></div><div class="ainote"><b>★AI生成では</b>生成尺は貴重 — 前置きに使った秒は事件と反応から奪った秒。プロンプトは「start immediately before the turn; no preamble」。</div><div class="check">☑ 本題の直前から始まっているか (前置きは総尺の30%以内か)</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="late_start">まだ</button></div></div></article><article class="card" id="c-intro_protagonist" data-id="intro_protagonist" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#04</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">主人公は最初に紹介する</div><div class="hook">伝えたいことと違う印象になる…ってとき。紹介の順番が逆なのかもしれません。</div></div><div class="bd"><div class="rule">観客は最初に紹介された人物に感情移入する — 紹介 = ウエスト〜バストの寄り</div><div class="diagram"><img src="media/film-grammar/intro_protagonist.webp" alt="主人公は最初に紹介する" loading="lazy" width="1200" height="675"></div><div class="prose"><p>ハンターを先に見せれば「狩りが成功した」、鹿を先に見せれば「撃たれた」— 同じカット列でも紹介順で受け取りが真逆になる。 紹介はウエスト〜バストの寄りで見せること (全身→ウエストのズームも可)。インサートは紹介に数えない。</p></div><div class="ainote"><b>★AI生成では</b>C1とC2の入れ替えだけで印象が反転する — 生成前のカット順設計の問題で、生成後には直せない。SG-20 が機械検査する。</div><div class="check">☑ 最初に寄りで紹介される人物 = 主人公になっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="intro_protagonist">まだ</button></div></div></article><article class="card" id="c-tightest_frame" data-id="tightest_frame" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#05</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">サイズは「見せたいもの」から決まる</div><div class="hook">画が緩慢・何を見ればいいか分からない…ってとき。サイズに根拠がないのかもしれません。</div></div><div class="bd"><div class="rule">見せたいものが全部収まる、いちばん寄ったサイズにする</div><div class="diagram"><img src="media/film-grammar/tightest_frame.webp" alt="サイズは「見せたいもの」から決まる" loading="lazy" width="1200" height="675"></div><div class="prose"><p>スマホ画面を見せたいなら手元の寄り、悲しむ表情ならバスト、握手する二人ならウエスト。見せたいものが決まらないとサイズは決まらない — 「なんとなくミディアム」はここが未決定のサイン。 目安: 見せたいものが3つ以上→FS以上 / 2つ→CUより引く / 1つ→収まる範囲で最大限寄る。</p></div><div class="ainote"><b>★AI生成では</b>プロンプトは「tightest framing that still contains {X}」。各カットの show (見せるもの) を宣言すると SG-21 が検査する。</div><div class="check">☑ このカットで何を見せるかが決まっていて、サイズがそこから導かれているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="tightest_frame">まだ</button></div></div></article><article class="card" id="c-kishotenketsu" data-id="kishotenketsu" data-cat="design" style="--cc:#e8590c"><div class="chd"><div class="badgerow"><span class="no">#08</span><span class="catlabel">構成とシーン設計</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">シーンの中にも起承転結 — 起結は短く</div><div class="hook">シーンとして成立しない・平坦…ってとき。状況説明と結果に尺を使いすぎかもしれません。</div></div><div class="bd"><div class="rule">起 (状況・引き) 短く → 承 (事件) 長く → 転 (反応) 最長 → 結 (変化・引き) 短く</div><div class="diagram"><img src="media/film-grammar/kishotenketsu.webp" alt="シーンの中にも起承転結 — 起結は短く" loading="lazy" width="1200" height="675"></div><div class="prose"><p>「事件→反応」を時間軸に展開すると1シーンの中にも起承転結がある。メインディッシュは承 (熊と遭遇) と転 (逃げる・追われる) — 起と結に尺を使うと肝心の事件と行動が薄くなる。 「本題の直前から始める」= 起の最短化、「引き→寄り→引き」= 起結の画角設計。5則は起承転結の実装則として束ねて使う。</p></div><div class="ainote"><b>★AI生成では</b>「◯◯なシーンを描きたい」→ まず4拍に分解して尺を配分してから割る。これだけで葛藤のあるシーンになる。</div><div class="check">☑ 起承転結に分解し、起・結が短く、承・転に尺が配分されているか</div><div class="src">出典: 連載 ・ 深掘り: kc_シーン設計5則</div><div class="foot"><button class="mbtn" data-id="kishotenketsu">まだ</button></div></div></article><article class="card" id="c-arc30" data-id="arc30" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">#06</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">同じ被写体は、30度以上動かして繋ぐ</div><div class="hook">カットが繋がってない感じがする…ってとき。サイズか角度の変化が足りないのかもしれません。</div></div><div class="bd"><div class="rule">カメラ位置を30度以上動かす — もしくはサイズを1段階以上変える</div><div class="diagram"><img src="media/film-grammar/arc30.webp" alt="同じ被写体は、30度以上動かして繋ぐ" loading="lazy" width="1200" height="675"></div><div class="prose"><p>バストショットから「ちょっとだけ寄ったバストショット」に繋ぐと気持ち悪い。変化が小さすぎて「新しいカット」と認識されず、脳が同じ画の続きだと思っているところに違う画が来るので、ワープしたように見える。 回避はシンプル: カメラ30度以上 or サイズ1段階以上。どちらかを満たせば別のカットになる。両方やるとさらに安全。ただし180度の線は越えない — 2つでセット。</p></div><div class="ainote"><b>★AI生成では</b>同じプロンプトで少しだけ画角を変えて生成すると、まさにこの状態を量産する。繋がらないと思ったら、まずカメラを回すか思い切って寄る。</div><div class="check">☑ 同一被写体の連続カットは、30度以上かサイズ1段階以上変わっているか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="arc30">まだ</button></div></div></article><article class="card" id="c-axis180" data-id="axis180" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">#07</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">イマジナリーラインは越えない</div><div class="hook">繋いだら人物の向きが変・左右が入れ替わる…ってとき。線を越えているのかもしれません。</div></div><div class="bd"><div class="rule">カメラは二人を結ぶ線の片側180度の中だけで動かす</div><div class="diagram"><img src="media/film-grammar/axis180.webp" alt="イマジナリーラインは越えない" loading="lazy" width="1200" height="675"></div><div class="prose"><p>向き合う二人を結んだ線がイマジナリーライン (axis of action)。線の片側にいる限りどこへ動かしてもいいが、越えて反対側から撮ると画面の左右が入れ替わり、観客は理屈が分からないまま「なんか変」とだけ感じる。 軸は2種: アクション軸 (走る向きが左→右なら次カットも左→右) と視線軸 (誰が誰を見ているか)。会話では事実上同じ線。日本の現場用語で線越え=ドンデン。</p></div><div class="ainote"><b>★AI生成では</b>AI生成はカットごとに空間が作り直されるため、実写より線越えが起きやすい。繋いで向きが変だと思ったら、まず線を疑う。プロンプトで「camera never crosses the axis of action」。</div><div class="check">☑ 会話・対峙の連続カットで、左右の位置と視線の向きが保たれているか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="axis180">まだ</button></div></div></article><article class="card" id="c-cross_legal" data-id="cross_legal" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">線を合法的に越える5法</div><div class="hook">どうしても反対側から撮りたい…ってとき。黙って越えるから破綻するのかもしれません。</div></div><div class="bd"><div class="rule">ニュートラル / カッタウェイ / 見せながら越える / 軸の再確立 / J-cut — 手続きを踏めば越えられる</div><div class="diagram"><img src="media/film-grammar/cross_legal.webp" alt="線を合法的に越える5法" loading="lazy" width="1200" height="675"></div><div class="prose"><p>①ニュートラルショット: 線の真上 (正対位置) を1枚挟んで軸をリセット。②カッタウェイ: 小道具・第三者に一旦カットし、その間に軸を再設定したことにする。③見せながら越える: カットせずアーク/ドリーでカメラが線を跨ぐ — 観客が目で追えるので混乱しない。④軸の再確立: 被写体自身が動いたら引きに戻して新しい軸を宣言し直す。⑤プレラップ (J-cut): 台詞を先行させ注意を音に向けて違和感を沈める (Murch)。</p></div><div class="ainote"><b>★AI生成では</b>AI生成では③が特に使える — 1本のカメラ移動ショットとして生成すれば線越えがそのまま演出になる。</div><div class="check">☑ 線を越えるカットに、5法のどれかの手続きがあるか</div><div class="src">出典: 正典 (Murch / 実務調査 2026-08-13) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cross_legal">まだ</button></div></div></article><article class="card" id="c-cut_on_action" data-id="cut_on_action" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カットは動作の途中で割る</div><div class="hook">カットが編集として目立つ・うるさい…ってとき。静止中に割っているのかもしれません。</div></div><div class="bd"><div class="rule">cutting on action — 動きが橋渡しになり、カットが知覚されなくなる</div><div class="diagram"><img src="media/film-grammar/cut_on_action.webp" alt="カットは動作の途中で割る" loading="lazy" width="1200" height="675"></div><div class="prose"><p>ドアに手を伸ばす途中・振り向きの途中で割る。動作が完了して静止してから切ると、カットの継ぎ目そのものが目立つ。 動きの途中で割ると、観客の目は動作の続きを追うのでカットが消える。前のカットの動き出しと次のカットの動き終わりを重ねるのがコツ。</p></div><div class="ainote"><b>★AI生成では</b>2本の生成クリップを繋ぐとき、両方に同じ動作の「途中」を含ませておくと編集点を隠せる。糊代 (動作の前後) を切り落としすぎない。</div><div class="check">☑ 目立つカットは、動作の途中に移動できないか</div><div class="src">出典: 正典 (Dmytryk / Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cut_on_action">まだ</button></div></div></article><article class="card" id="c-eyeline" data-id="eyeline" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">視線は画面の中で交差させる</div><div class="hook">会話しているのに噛み合って見えない…ってとき。視線の向きが揃っていないのかもしれません。</div></div><div class="bd"><div class="rule">eyeline match — 彼女は画面右を見る、彼は画面左を見る。剣がぶつかるように</div><div class="diagram"><img src="media/film-grammar/eyeline.webp" alt="視線は画面の中で交差させる" loading="lazy" width="1200" height="675"></div><div class="prose"><p>切り返しの2カットで、互いの視線が画面内で交差する向きに揃っていると「見つめ合っている」ことが伝わる。両方とも同じ向きを見ていると、同じものを並んで見ている別人になる。 Murch は「二人の視線は剣がぶつかるように交差せよ」と言う。イマジナリーラインを守れば自然に揃う — 視線がズレたらまず線越えを疑う。</p></div><div class="ainote"><b>★AI生成では</b>生成プロンプトに「she looks frame-right, he looks frame-left」と明示する。左右の宣言なしの切り返し生成は五分五分で破綻する。</div><div class="check">☑ 切り返しの2カットで、視線が画面内で交差しているか</div><div class="src">出典: 正典 (Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="eyeline">まだ</button></div></div></article><article class="card" id="c-matchcut" data-id="matchcut" data-cat="connect" style="--cc:#1971c2"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">カットを繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">マッチカット — 形と動きで意味を飛ばす</div><div class="hook">場面転換が説明臭い・もたつく…ってとき。形の一致で飛べるかもしれません。</div></div><div class="bd"><div class="rule">前カットと次カットで形・動き・構図を一致させ、時間と場所を一瞬で越える</div><div class="diagram"><img src="media/film-grammar/matchcut.webp" alt="マッチカット — 形と動きで意味を飛ばす" loading="lazy" width="1200" height="675"></div><div class="prose"><p>回る車輪→回る時計、投げた骨→宇宙船。形か動きが一致していると、観客は転換を「理解」ではなく「快感」として受け取る — 知的快感が再視聴を生む。 音のマッチ (前カットの音が次カットの音に化ける) も同じ原理。</p></div><div class="ainote"><b>★AI生成では</b>AI生成は同一構図・同一運動方向の別モチーフを作るのが得意 — マッチカット素材の量産に向く。参照画像で構図を固定し、モチーフだけ差し替えて生成する。</div><div class="check">☑ この場面転換、形か動きの一致で飛ばせないか</div><div class="src">出典: 正典 (編集正典 / kc_映像編集リズム) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="matchcut">まだ</button></div></div></article><article class="card" id="c-cut_reason" data-id="cut_reason" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#09</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カットを割る理由は2つだけ</div><div class="hook">どこで割ればいいか分からない…ってとき。理由の言えないカットを割っているのかもしれません。</div></div><div class="bd"><div class="rule">①見せたい画が変わる ②尺を調整したい — 説明できないカットは割らなくていい</div><div class="diagram"><img src="media/film-grammar/cut_reason.webp" alt="カットを割る理由は2つだけ" loading="lazy" width="1200" height="675"></div><div class="prose"><p>①見せたいものを、見せたいタイミングで、見せたいアングルで出すために割る (啜る主人公→麺そのもの)。 ②別のものを挟んでいる間に時間は勝手に進む — ラーメン残り7割→店主の湯切り→食べ終わり。省略した時間は観客が自動補完する (elliptical editing)。映像は実時間を見せる必要がない。</p></div><div class="ainote"><b>★AI生成では</b>長い動作を丸ごと生成するのは難しい — インサート1枚で飛ばす方が速くてきれい。edit_design.yaml では全カットに cut_reason (new_info/time_adjust) を書く契約。</div><div class="check">☑ このカットを割る理由は①②のどちらか言えるか — 言えないなら割らない</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="cut_reason">まだ</button></div></div></article><article class="card" id="c-substitute" data-id="substitute" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#14</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">動作は、周りの反応で描写できる</div><div class="hook">繋いだら急に不自然になった…ってとき。端折ってはいけない動作を飛ばしているかもしれません。</div></div><div class="bd"><div class="rule">代替描写 — 見せたくない動作は写さず、周りの反応で描く</div><div class="diagram"><img src="media/film-grammar/substitute.webp" alt="動作は、周りの反応で描写できる" loading="lazy" width="1200" height="675"></div><div class="prose"><p>「ドアが開く→教壇でお辞儀」は、歩く・止まる・向き直るが丸ごと消えているので不自然。かといって歩く7秒は長い。 先生を写さず生徒で描写する: 生徒たちの目線が動く (=歩いている) → 目線が止まる (=立ち止まった) → 「起立ーっ」(=こちらを向いた) → 教壇でお辞儀。先生はドアの後一度も映らないのに、全部伝わる。 構造は時間の圧縮と同じ — 別のものを見せている間に、時間が進む。</p></div><div class="ainote"><b>★AI生成では</b>破綻しやすい歩行・方向転換・立ち座りの生成を丸ごと回避できる。反応ショットは静的で生成が安定する。</div><div class="check">☑ 見せると長い動作を、周りの反応に置き換えられないか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="substitute">まだ</button></div></div></article><article class="card" id="c-frame_in" data-id="frame_in" data-cat="time" style="--cc:#2f9e44"><div class="chd"><div class="badgerow"><span class="no">#15</span><span class="catlabel">時間を操る</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">カラ画を挟んで、アクションをリセットする</div><div class="hook">尺を詰めたいけど繋がらない…ってとき。カラ画を1枚挟むだけで解決することがあります。</div></div><div class="bd"><div class="rule">誰もいない画を先に見せ、そこに人物がフレーム・インする</div><div class="diagram"><img src="media/film-grammar/frame_in.webp" alt="カラ画を挟んで、アクションをリセットする" loading="lazy" width="1200" height="675"></div><div class="prose"><p>ジャンプカットになるのは、アクションが途中で飛んだのが見えてしまうから。アクションが写っていない画 (誰もいない教壇) を挟めば、飛んだ証拠が画面上に存在しないので違和感が出ない — カラ画でアクションを一度リセットする。 しかも尺の調整に効く: カラ画に靴音だけ響かせて2〜3秒稼ぐと、本来10歩7秒の移動が5歩4秒の体感で成立する。 使い分け: 時間があるなら代替描写、時間がないならフレーム・イン。</p></div><div class="ainote"><b>★AI生成では</b>人物のいない空間は生成が安定するし、歩行を丸ごと作る必要もなくなる — AI生成では特に実用的。</div><div class="check">☑ 繋がらないとき、アクションを写さない画を1枚挟めないか</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="frame_in">まだ</button></div></div></article><article class="card" id="c-scene_vs_montage" data-id="scene_vs_montage" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">#11</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">シーンとモンタージュは別物</div><div class="hook">かっこいいのに何も伝わらない…ってとき。物語のつもりでモンタージュを作っているのかもしれません。</div></div><div class="bd"><div class="rule">判定テスト — カットの順番を入れ替えて成立するなら、それはモンタージュ</div><div class="diagram"><img src="media/film-grammar/scene_vs_montage.webp" alt="シーンとモンタージュは別物" loading="lazy" width="1200" height="675"></div><div class="prose"><p>シーンは場所と時間が繋がった一連の流れで、束ねるのは因果 (前のカットが原因、次が結果) — 順番を入れ替えると壊れる。モンタージュは連続性を度外視した繋ぎで、束ねるのは主題 (成長・努力・季節) — だいたい入れ替えても成立する。 モンタージュが悪いのではない — 物語を伝えたいのにモンタージュの繋ぎ方をしているのが問題。作る前に「どちらを作るのか」を宣言してから割る。</p></div><div class="ainote"><b>★AI生成では</b>実測の裏付け: モンタージュは物語ルーブリック25点がほぼ0点 (2/25)。賞・物語狙いなら因果で繋ぐシーンを作る。</div><div class="check">☑ これはシーンかモンタージュか、作る前に宣言したか (入れ替えテスト)</div><div class="src">出典: 連載 ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="scene_vs_montage">まだ</button></div></div></article><article class="card" id="c-kuleshov" data-id="kuleshov" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">意味は並置から生まれる (クレショフ効果)</div><div class="hook">インサートに何を挟めばいいか迷う…ってとき。単カットでなく前後との組み合わせで考えます。</div></div><div class="bd"><div class="rule">同じ無表情 + スープ皿 = 空腹 / 同じ無表情 + 棺 = 悲しみ — 意味は単一ショットでなく並置が作る</div><div class="diagram"><img src="media/film-grammar/kuleshov.webp" alt="意味は並置から生まれる (クレショフ効果)" loading="lazy" width="1200" height="675"></div><div class="prose"><p>観客は2つのカットの間に自動で関係を読む。俳優の演技が同じでも、隣に置くカットで意味が変わる。 インサート選定は「何を挟むと前後の意味がどう変わるか」で決める — 綺麗なBロールを挟むのではなく、意味を作るカットを挟む。</p></div><div class="ainote"><b>★AI生成では</b>AI生成の表情演技が弱くても、並置で感情を作れる — 顔の生成をやり直すより、隣のカットを差し替える方が速い。</div><div class="check">☑ このインサートは、前後の意味をどう変えるために挟むのか言えるか</div><div class="src">出典: 正典 (Kuleshov / Murch) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="kuleshov">まだ</button></div></div></article><article class="card" id="c-reaction_shot" data-id="reaction_shot" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">重要な台詞は、聞き手の顔で受ける</div><div class="hook">台詞カットの口の動きが破綻する…ってとき。話し手を写し続ける必要はないかもしれません。</div></div><div class="bd"><div class="rule">台詞の内容は音声で伝わっている — 聞き手がどう受け止めたかの方が新情報</div><div class="diagram"><img src="media/film-grammar/reaction_shot.webp" alt="重要な台詞は、聞き手の顔で受ける" loading="lazy" width="1200" height="675"></div><div class="prose"><p>Dmytryk 曰く「本当に重要なのはリアクション」。重要な告白ほど、話し終わりでなく聞き手の顔で割る。話者の口元より、受け手の目の変化の方が観客の知りたい情報になっている。</p></div><div class="ainote"><b>★AI生成では</b>AI生成の最弱点=リップシンクを画面から外せる — 破綻隠しと演出強化が同時に成立する。台詞クリップが崩れたら、再生成の前にリアクションショットへ逃がせないか考える。</div><div class="check">☑ この台詞、聞き手の顔で受けた方が強くならないか</div><div class="src">出典: 正典 (Dmytryk &quot;The Reaction Is What Really Counts&quot;) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="reaction_shot">まだ</button></div></div></article><article class="card" id="c-rule_of_six" data-id="rule_of_six" data-cat="meaning" style="--cc:#9c36b5"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">視線と意味</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">破綻の採否は感情から数える (Rule of Six)</div><div class="hook">生成カットの破綻をどこまで許すか迷う…ってとき。判断の順序が決まっていないのかもしれません。</div></div><div class="bd"><div class="rule">感情51 &gt; 物語23 &gt; リズム10 &gt; 視線7 &gt; 2D平面5 &gt; 3D空間4 — 下位を犠牲にしても上位を守る</div><div class="diagram"><img src="media/film-grammar/rule_of_six.webp" alt="破綻の採否は感情から数える (Rule of Six)" loading="lazy" width="1200" height="675"></div><div class="prose"><p>Murch の編集判断の優先順位。数値は本人も半ば冗談の重み付けで、実務で使うのは順序 — 空間の連続性 (最下位) を破っても、感情と物語 (上位) が立つカットを採る。 空間連続性は「気づかれなければゼロ減点」の最下位。逆に、空間が完璧でも感情が死ぬカットは採らない。</p></div><div class="ainote"><b>★AI生成では</b>AI生成カットの採否にそのまま使える — 手の破綻 (3D) があっても感情が最高のテイクは、破綻が感情を壊さない限り採用。ただし破綻6分類スキャン (counts/joints等) は採点前に別途通す。</div><div class="check">☑ 破綻したテイクの採否を、感情&gt;物語&gt;リズム&gt;視線&gt;2D&gt;3D の順で判断したか</div><div class="src">出典: 正典 (Murch &quot;In the Blink of an Eye&quot;) ・ 深掘り: kc_カット割りと空間文法</div><div class="foot"><button class="mbtn" data-id="rule_of_six">まだ</button></div></div></article><article class="card" id="c-shortest_duration" data-id="shortest_duration" data-cat="duration" style="--cc:#e67700"><div class="chd"><div class="badgerow"><span class="no">#13</span><span class="catlabel">尺と読速</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">1カットの尺は「伝わる最短」</div><div class="hook">なんか間延びする…ってとき。1カットの尺に基準がないのかもしれません。</div></div><div class="bd"><div class="rule">そのカットの情報が伝わる、いちばん短い尺 — 「伝わる」の中身はカット種で変わる</div><div class="diagram"><img src="media/film-grammar/shortest_duration.webp" alt="1カットの尺は「伝わる最短」" loading="lazy" width="1200" height="675"></div><div class="prose"><p>情報を見せるカット=認識に要る時間 (表情アップは短くていい、情報量の多い引きは目が動く時間が要る)。 アクション=動作の前後に糊代 (動き出す直前〜終わった直後。切りすぎると繋がらず、残しすぎると待ち時間が生まれる)。 テロップ=1秒4文字 (Netflix日本語字幕と同基準。1行16文字前後・2行まで)。ナレーション=1秒6文字 (台本1分400文字。読むより聞く方が速い)。 尺は感覚で決めない — 「何が伝わればいいか」から決まる。全体尺の調整はそのあと。</p></div><div class="ainote"><b>★AI生成では</b>生成クリップの trim 判断がこれで機械化できる — カット種を宣言すれば目標尺が導出される。ナレ尺は TTS 実測→timecode が正。</div><div class="check">☑ 各カットの尺は「伝わる最短」か — テロップ1秒4文字/ナレ1秒6文字を割っていないか</div><div class="src">出典: 連載 ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="shortest_duration">まだ</button></div></div></article><article class="card" id="c-read_speed" data-id="read_speed" data-cat="duration" style="--cc:#e67700"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">尺と読速</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">0.20秒/字を割ると、映像が壁紙になる</div><div class="hook">テロップを読んでたら映像を見てなかった…と言われるとき。読めても観られない速度があります。</div></div><div class="bd"><div class="rule">0.25秒/字=comfortable / 0.20秒/字が境界 — 未満は「読むか観るか」の二者択一になる</div><div class="diagram"><img src="media/film-grammar/read_speed.webp" alt="0.20秒/字を割ると、映像が壁紙になる" loading="lazy" width="1200" height="675"></div><div class="prose"><p>最初の破綻は「読めない」ではなく「動画が観られなくなる」— 文字が注意を勝ち取り、映像が壁紙に落ちる。 行の認識オーバーヘッド0.3秒 + 視線の再取得コスト (位置固定なら0.15秒/行) も乗る。短い行ほど速くできる (3語なら0.8秒で成立)。</p></div><div class="ainote"><b>★AI生成では</b>ショートはループ再生 (15秒で2-3周見られる) 前提なら1周で全部読ませなくてもよい — 2周目に拾える設計は許される。</div><div class="check">☑ テロップの表示秒数 ÷ 文字数が 0.20秒/字を割っていないか</div><div class="src">出典: 正典 (放送字幕一般則 / kc_画面内テキストの読速設計) ・ 深掘り: kc_画面内テキストの読速設計</div><div class="foot"><button class="mbtn" data-id="read_speed">まだ</button></div></div></article><article class="card" id="c-jl_cut" data-id="jl_cut" data-cat="sound" style="--cc:#0c8599"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">音で繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">J カットと L カット — 音を先に渡す</div><div class="hook">カットの切り替えが硬い・ブツ切りに感じる…ってとき。映像と音を同時に切っているのかもしれません。</div></div><div class="bd"><div class="rule">J = 次のシーンの音を先行させる / L = 前のシーンの音を残す — 音の橋でカットが消える</div><div class="diagram"><img src="media/film-grammar/jl_cut.webp" alt="J カットと L カット — 音を先に渡す" loading="lazy" width="1200" height="675"></div><div class="prose"><p>Jカット (pre-lap): 次の音を4〜20フレーム先行させ、観客の注意を先に次へ運ぶ — 期待とテンポ上昇。Lカット: 前の音を2〜12フレーム残し、感情の余韻を作る。 会話はほぼ全部これで繋がっている。線越えの違和感を沈める用途もある (合法5法の⑤)。</p></div><div class="ainote"><b>★AI生成では</b>生成クリップの音声は編集で分離し、映像より先/後にずらすだけで実装できる — 生成時に作り込む必要がない。</div><div class="check">☑ 映像と音声を同時に切っているカットに、J/L のズレを入れられないか</div><div class="src">出典: 正典 (kc_映像編集リズム) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="jl_cut">まだ</button></div></div></article><article class="card" id="c-downbeat_cut" data-id="downbeat_cut" data-cat="sound" style="--cc:#0c8599"><div class="chd"><div class="badgerow"><span class="no">正典</span><span class="catlabel">音で繋ぐ</span><span class="donemark" style="display:none">✓ 覚えた</span></div><div class="ttl">全拍で切らない — 音ハメはダウンビートだけ</div><div class="hook">音ハメしたのにストロボみたいで疲れる…ってとき。全部の拍で切っているのかもしれません。</div></div><div class="bd"><div class="rule">切るのはダウンビートと楽曲のエネルギー変化点だけ — しかも拍の直前16分音符で</div><div class="diagram"><img src="media/film-grammar/downbeat_cut.webp" alt="全拍で切らない — 音ハメはダウンビートだけ" loading="lazy" width="1200" height="675"></div><div class="prose"><p>全拍カットはストロボ化して離脱を生む。1拍=60/BPM秒を物差しに、4拍ごとに小変化・8/16拍ごとに大変化が目安。 拍ジャストより直前16分音符で切る方が気持ちいい (アンティシペーションカット — 「持ち上がり」で切る)。パターン中断は10-15秒に1回。</p></div><div class="ainote"><b>★AI生成では</b>AI素材の尺は動かせないがタイムラインは動かせる — 決定的瞬間を実測して拍に逆算配置し、足りない尺はフリーズで埋める (スロー再生で誤魔化さない)。</div><div class="check">☑ カット点はダウンビート+直前16分音符に置いたか — 全拍で切っていないか</div><div class="src">出典: 正典 (kc_映像編集リズム 2026-08-13追補 / xc_音ハメと尺合わせ) ・ 深掘り: kc_映像編集リズム</div><div class="foot"><button class="mbtn" data-id="downbeat_cut">まだ</button></div></div></article></main><div id="drill"><div class="dprog" id="drillProg"></div><div class="dcard" id="drillBody"></div></div><footer class="note">連載『AI映像のためのディレクション技術』#01-#15 (#10欠番) + 正典補完 (Murch / Dmytryk / 神井護『動画の文法』/ vault 知見カード)<br>SSOT: 00_System/film_grammar_deck/deck.yaml — 再ビルド: python3 00_System/mobile_ops/build_film_grammar.py</footer><script>
+/* ---------- 状態: fg_deck_v2 (Leitner) — 旧 fg_deck_v1 (mastered bool) があれば移行 ---------- */
+const K1='fg_deck_v1', K2='fg_deck_v2';
+const INTERVALS={1:1,2:2,3:4,4:7,5:14};
+
+function todayStr(d){
+  const dt=d||new Date();
+  const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),day=String(dt.getDate()).padStart(2,'0');
+  return y+'-'+m+'-'+day;
+}
+function addDays(dateStr,n){
+  const p=dateStr.split('-').map(Number);
+  const dt=new Date(p[0],p[1]-1,p[2]);
+  dt.setDate(dt.getDate()+n);
+  return todayStr(dt);
+}
+function yesterdayStr(dateStr){return addDays(dateStr,-1)}
+
+function loadStore(){
+  let v2=null;
+  try{v2=JSON.parse(localStorage.getItem(K2)||'null')}catch(e){}
+  if(v2&&v2.ver===2&&v2.cards&&v2.streak)return v2;
+  let v1=null;
+  try{v1=JSON.parse(localStorage.getItem(K1)||'null')}catch(e){}
+  const day=todayStr();
+  const out={cards:{},streak:{count:0,last:null},ver:2};
+  if(v1&&v1.mastered){
+    for(const id in v1.mastered){
+      out.cards[id]={box:v1.mastered[id]?3:1,due:day,seen:1,last:day};
+    }
+  }
+  return out;
+}
+let store=loadStore();
+function save(){try{localStorage.setItem(K2,JSON.stringify(store))}catch(e){}}
+save(); /* 移行結果を即座に永続化 (v1 はそのまま残す) */
+
+function isMastered(id){const st=store.cards[id];return !!st&&st.box>=4}
+
+function bumpStreak(day){
+  if(store.streak.last===day)return;
+  const y=yesterdayStr(day);
+  store.streak.count=(store.streak.last===y)?(store.streak.count||0)+1:1;
+  store.streak.last=day;
+}
+
+function gradeCard(id,correct){
+  const day=todayStr();
+  const st=store.cards[id]||{box:1,due:day,seen:0,last:null};
+  st.seen=(st.seen||0)+1;
+  st.last=day;
+  st.box=correct?Math.min(5,(st.box||1)+1):1;
+  st.due=addDays(day,INTERVALS[st.box]);
+  store.cards[id]=st;
+  bumpStreak(day);
+  save();
+}
+
+/* FNV-1a — 同順位タイブレークの日付シード (同じ日は同じ結果・リロードで変わらない) */
+function seedHash(s){
+  let h=0x811c9dc5;
+  for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)}
+  return h>>>0;
+}
 
 function allCards(){return [...document.querySelectorAll('#list .card')]}
 
+function countDoneToday(){
+  const day=todayStr();
+  return allCards().filter(c=>{const st=store.cards[c.dataset.id];return st&&st.last===day}).length;
+}
+
+/* 今日の1枚/復習キューの選定: ①due<=今日 のうち box 小さい順 → ②未学習(state無し) num小さい順 →
+   ③box最小のもの。①が複数あれば全部キューに積む (②③は単発)。同順位は日付シードで決める。 */
+function pickQueue(){
+  const day=todayStr();
+  const ids=allCards().map(c=>c.dataset.id);
+  const due=ids.filter(id=>store.cards[id]&&store.cards[id].due<=day);
+  if(due.length){
+    return due.slice().sort((a,b)=>{
+      const ba=store.cards[a].box||1,bb=store.cards[b].box||1;
+      if(ba!==bb)return ba-bb;
+      return seedHash(day+a)-seedHash(day+b);
+    });
+  }
+  const unseen=ids.filter(id=>!store.cards[id]);
+  if(unseen.length){
+    const sorted=unseen.slice().sort((a,b)=>{
+      const ia=ids.indexOf(a),ib=ids.indexOf(b);
+      if(ia!==ib)return ia-ib;
+      return seedHash(day+a)-seedHash(day+b);
+    });
+    return [sorted[0]];
+  }
+  const sorted=ids.slice().sort((a,b)=>{
+    const ba=(store.cards[a]&&store.cards[a].box)||1,bb=(store.cards[b]&&store.cards[b].box)||1;
+    if(ba!==bb)return ba-bb;
+    return seedHash(day+a)-seedHash(day+b);
+  });
+  return [sorted[0]];
+}
+
+/* ---------- ヘッダ ---------- */
 function updateProgress(){
   const cards=allCards();
   const n=cards.filter(c=>isMastered(c.dataset.id)).length;
-  document.getElementById('prog').textContent='覚えた '+n+' / '+cards.length;
+  const m=countDoneToday();
+  document.getElementById('prog').textContent='習得 '+n+' / '+cards.length+' ・ 今日 '+m+'枚';
+  document.getElementById('streak').textContent='🔥 '+(store.streak.count||0)+'日連続';
   cards.forEach(c=>{
     const done=isMastered(c.dataset.id);
     c.classList.toggle('done',done);
-    const m=c.querySelector('.donemark');
-    if(m)m.style.display=done?'':'none';
+    const mk=c.querySelector('.donemark');
+    if(mk)mk.style.display=done?'':'none';
     const b=c.querySelector('.mbtn');
     if(b){b.textContent=done?'✓ 覚えた':'まだ';b.classList.toggle('on',done)}
   });
 }
 
+/* ---------- 一覧 ---------- */
 function toggleMastered(id){
-  store.mastered[id]=!isMastered(id);
-  save();updateProgress();applyFilter();
+  gradeCard(id,!isMastered(id));
+  updateProgress();applyFilter();
 }
 
 function applyFilter(){
@@ -885,49 +210,8 @@ function bindList(){
   document.getElementById('chip-todo').onclick=function(){this.classList.toggle('on');applyFilter()};
 }
 
-/* ---------- ドリル ---------- */
-let drillOrder=[],drillIdx=0,drillRoundMastered=0;
-
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-
-function buildDrillOrder(){
-  const ids=allCards().map(c=>c.dataset.id);
-  const todo=shuffle(ids.filter(id=>!isMastered(id)));
-  const done=shuffle(ids.filter(id=>isMastered(id)));
-  return todo.concat(done);
-}
-
-function enterDrill(){
-  document.getElementById('list').style.display='none';
-  document.querySelector('header .chips').style.display='none';
-  document.getElementById('drill').style.display='block';
-  document.getElementById('drillToggle').textContent='一覧へ';
-  drillOrder=buildDrillOrder();drillIdx=0;
-  showDrillCard();
-}
-function exitDrill(){
-  document.getElementById('list').style.display='';
-  document.querySelector('header .chips').style.display='';
-  document.getElementById('drill').style.display='none';
-  document.getElementById('drillToggle').textContent='ドリル';
-  updateProgress();applyFilter();
-}
-function toggleDrill(){
-  if(document.getElementById('drill').style.display==='block')exitDrill();else enterDrill();
-}
-
-function showDrillCard(){
-  const box=document.getElementById('drillBody');
-  if(drillIdx>=drillOrder.length){
-    const total=allCards().length;
-    const n=allCards().filter(c=>isMastered(c.dataset.id)).length;
-    box.innerHTML='<div class="dresult"><div>1周終了</div><div class="big">'+n+' / '+total+'</div>'
-      +'<div style="color:#8b93a7;font-size:12px">覚えた枚数</div>'
-      +'<button id="again">もう一周</button></div>';
-    document.getElementById('again').onclick=enterDrill;
-    return;
-  }
-  const id=drillOrder[drillIdx];
+/* ---------- Q&Aパネル共通 (今日の1枚・ドリルで共有) ---------- */
+function renderQnA(box,id,onDone){
   const src=document.querySelector('.card[data-id="'+id+'"]');
   const chd=src.querySelector('.chd').cloneNode(true);
   const bd=src.querySelector('.bd').cloneNode(true);
@@ -943,14 +227,91 @@ function showDrillCard(){
   const choices=document.createElement('div');choices.className='dchoices';choices.style.display='none';
   choices.innerHTML='<button class="yes">○ 覚えた</button><button class="no">△ まだ</button>';
   box.appendChild(choices);
-
-  document.getElementById('drillProg').textContent=(drillIdx+1)+' / '+drillOrder.length;
-
   btn.onclick=()=>{ans.classList.add('show');btn.style.display='none';choices.style.display='flex'};
-  choices.querySelector('.yes').onclick=()=>{store.mastered[id]=true;save();drillIdx++;showDrillCard()};
-  choices.querySelector('.no').onclick=()=>{store.mastered[id]=false;save();drillIdx++;showDrillCard()};
+  choices.querySelector('.yes').onclick=()=>onDone(true);
+  choices.querySelector('.no').onclick=()=>onDone(false);
 }
 
-bindList();updateProgress();applyFilter();
-document.getElementById('drillToggle').onclick=toggleDrill;
+/* ---------- 今日の1枚 ---------- */
+let todayQueue=[],todayIdx=0;
+function enterToday(){
+  todayQueue=pickQueue();todayIdx=0;
+  renderTodayCard();
+}
+function renderTodayCard(){
+  const box=document.getElementById('todayBody');
+  const prog=document.getElementById('todayProg');
+  if(todayIdx>=todayQueue.length){
+    prog.textContent='';
+    box.innerHTML='<div class="dresult"><div>今日はここまで</div>'
+      +'<div class="big">🔥 '+(store.streak.count||0)+'日連続</div>'
+      +'<div style="color:#8b93a7;font-size:12px">今日 '+countDoneToday()+' 枚 学習</div>'
+      +'<button id="toListBtn">一覧を見る</button></div>';
+    document.getElementById('toListBtn').onclick=()=>showMode('list');
+    return;
+  }
+  prog.textContent=(todayIdx+1)+' / '+todayQueue.length;
+  const id=todayQueue[todayIdx];
+  renderQnA(box,id,(correct)=>{
+    gradeCard(id,correct);
+    updateProgress();
+    todayIdx++;
+    renderTodayCard();
+  });
+}
+
+/* ---------- ドリル ---------- */
+let drillOrder=[],drillIdx=0;
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function buildDrillOrder(){
+  const ids=allCards().map(c=>c.dataset.id);
+  const todo=shuffle(ids.filter(id=>!isMastered(id)));
+  const done=shuffle(ids.filter(id=>isMastered(id)));
+  return todo.concat(done);
+}
+
+function enterDrill(){
+  drillOrder=buildDrillOrder();drillIdx=0;
+  showDrillCard();
+}
+
+function showDrillCard(){
+  const box=document.getElementById('drillBody');
+  if(drillIdx>=drillOrder.length){
+    const total=allCards().length;
+    const n=allCards().filter(c=>isMastered(c.dataset.id)).length;
+    box.innerHTML='<div class="dresult"><div>1周終了</div><div class="big">'+n+' / '+total+'</div>'
+      +'<div style="color:#8b93a7;font-size:12px">覚えた枚数</div>'
+      +'<button id="again">もう一周</button></div>';
+    document.getElementById('again').onclick=enterDrill;
+    return;
+  }
+  document.getElementById('drillProg').textContent=(drillIdx+1)+' / '+drillOrder.length;
+  const id=drillOrder[drillIdx];
+  renderQnA(box,id,(correct)=>{
+    gradeCard(id,correct);
+    updateProgress();
+    drillIdx++;
+    showDrillCard();
+  });
+}
+
+/* ---------- モード切替 (今日/一覧/ドリル) ---------- */
+function showMode(mode){
+  document.getElementById('today').style.display=mode==='today'?'block':'none';
+  document.getElementById('list').style.display=mode==='list'?'block':'none';
+  document.getElementById('drill').style.display=mode==='drill'?'block':'none';
+  document.querySelector('header .chips').style.display=mode==='list'?'flex':'none';
+  document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.mode===mode));
+  if(mode==='today')enterToday();
+  if(mode==='drill')enterDrill();
+  updateProgress();
+  if(mode==='list')applyFilter();
+}
+
+bindList();
+document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>showMode(b.dataset.mode));
+showMode('today');
 </script></body></html>
