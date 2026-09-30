@@ -1,0 +1,72 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#27415f">
+<meta name="robots" content="noindex,nofollow"><title>レビュー (携帯)</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<style>
+body{margin:0;font-family:"Noto Sans JP","Hiragino Sans",sans-serif}
+.gatewrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#27415f}
+.gatebox{background:#fff;border-radius:14px;padding:26px 22px;width:min(88vw,340px);text-align:center;color:#1D2530}
+.gatebox h2{margin:0;font-size:16px}
+.gatebox input{width:100%;box-sizing:border-box;padding:10px 12px;border-radius:10px;border:1px solid #D5DBE2;font-size:16px;margin:12px 0 10px}
+.gatebox button{width:100%;padding:10px;border-radius:10px;border:0;background:#27415f;color:#fff;font-size:15px;font-weight:600}
+#pwerr{color:#B3261E;font-size:12px;min-height:16px;margin-top:8px}.hint{font-size:10.5px;color:#5A6776}
+</style><style id="appcss"></style></head><body>
+<div id="gate" class="gatewrap"><div class="gatebox"><h2>🎬 レビュー</h2>
+<input id="pwin" type="password" placeholder="パスワード" autocomplete="current-password"><button id="pwbtn">開く</button>
+<div id="pwerr"></div><div class="hint">URL とパスワードを知る人だけが閲覧できます · 約 12.4MB</div></div></div>
+<div id="app"></div>
+<script>
+const _S=Uint8Array.from(atob("noFwNezjLbZ1gzy6Yd75wA=="),c=>c.charCodeAt(0));
+const _I=Uint8Array.from(atob("RkfJZBc6F2Ums/99"),c=>c.charCodeAt(0));
+const _IT=210000;
+let _CT=null;
+async function _data(){
+  if(_CT) return _CT;
+  const r=await fetch("data.bin",{cache:"no-cache"});
+  if(!r.ok) throw new Error("fetch "+r.status);
+  const len=+r.headers.get("content-length")||0, rd=r.body&&r.body.getReader?r.body.getReader():null;
+  if(!rd){_CT=new Uint8Array(await r.arrayBuffer());return _CT}
+  const parts=[];let got=0;
+  for(;;){const {done,value}=await rd.read();if(done)break;parts.push(value);got+=value.length;
+    if(len) document.getElementById("pwerr").textContent="読み込み中 "+Math.round(got/len*100)+"%";}
+  _CT=new Uint8Array(got);let o=0;for(const p of parts){_CT.set(p,o);o+=p.length}
+  return _CT;
+}
+async function _decrypt(pw){
+  const ek=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveKey"]);
+  const k=await crypto.subtle.deriveKey({name:"PBKDF2",salt:_S,iterations:_IT,hash:"SHA-256"},ek,{name:"AES-GCM",length:256},false,["decrypt"]);
+  const ct=await _data();
+  return new Uint8Array(await crypto.subtle.decrypt({name:"AES-GCM",iv:_I},k,ct));
+}
+function init(u8){
+  const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+  const hl=dv.getUint32(4,true), H=JSON.parse(new TextDecoder().decode(u8.subarray(8,8+hl))), base=8+hl, U={};
+  for(const a of H.assets) U[a.n]=URL.createObjectURL(new Blob([u8.subarray(base+a.o,base+a.o+a.l)],{type:a.t}));
+  document.title=H.title;
+  document.getElementById("appcss").textContent=H.css;
+  document.getElementById("app").innerHTML=H.body.replace(/(src|href)="assets\/([^"]+)"/g,(m,at,n)=>U[n]?at+'="'+U[n]+'"':m);
+  const s=document.createElement("script");s.textContent=H.js;document.body.appendChild(s);
+}
+const _LSK="storystock_session";
+async function _tryOpen(pw,silent){
+  try{
+    document.getElementById("pwerr").textContent="読み込み中…";
+    const u8=await _decrypt(pw);
+    try{localStorage.setItem(_LSK,pw);}catch(e){}
+    document.getElementById("gate").remove();
+    init(u8); return true;
+  }catch(e){
+    const el=document.getElementById("pwerr");
+    if(String(e).indexOf("fetch")>=0){ if(el) el.textContent="読み込めませんでした (通信を確認して再読み込み)"; return false; }
+    if(silent){ try{localStorage.removeItem(_LSK);}catch(_){} if(el) el.textContent=""; }
+    else if(el) el.textContent="パスワードが違います";
+    return false;
+  }
+}
+(async()=>{
+  let saved=null;
+  try{saved=localStorage.getItem(_LSK)||localStorage.getItem("mediadb_session");}catch(e){}
+  if(saved && await _tryOpen(saved,true)) return;
+  document.getElementById("pwbtn").onclick=()=>_tryOpen(document.getElementById("pwin").value,false);
+  document.getElementById("pwin").addEventListener("keydown",e=>{if(e.key==="Enter")_tryOpen(document.getElementById("pwin").value,false);});
+})();
+</script></body></html>
